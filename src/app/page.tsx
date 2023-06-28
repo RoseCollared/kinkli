@@ -17,8 +17,8 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 py-12 sm:py-16">
-      <header className="flex w-full justify-between gap-8 px-12">
+    <main className="flex min-h-screen flex-col items-center">
+      <header className="flex w-full justify-between gap-8 px-12 pt-12 sm:pt-16">
         <div />
         <h1 className="text-4xl font-bold drop-shadow-sm sm:text-5xl">
           Kinklist
@@ -28,11 +28,11 @@ export default function HomePage() {
             if (!formRef.current) {
               throw new Error("Failed to get form element for export");
             }
-            // LEFT HERE
-            // TODO: set width/height options to ensure whole form is captured
             // TODO: store JSON result in state rather than image
             // TODO: store JSON result in URL
-            const canvas = await html2canvas(formRef.current);
+            const canvas = await html2canvas(formRef.current, {
+              windowWidth: 1920,
+            });
             const base64image = canvas.toDataURL("image/png");
             setResult(base64image);
             router.push("/result");
@@ -43,7 +43,7 @@ export default function HomePage() {
       </header>
       <form
         ref={formRef}
-        className="flex w-full flex-col flex-wrap gap-8 overflow-auto px-8 sm:max-h-[3200px] sm:px-12"
+        className="flex w-full flex-col flex-wrap gap-8 overflow-auto px-8 py-12 sm:max-h-[3200px] sm:px-12 sm:py-16"
       >
         {Object.entries(kinks).map(([sectionName, questions]) => (
           <Section
