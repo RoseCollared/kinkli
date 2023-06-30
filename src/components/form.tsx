@@ -1,6 +1,6 @@
 "use client";
 
-import kinks from "@/public/kinks.json";
+import kinks from "@kinklist/public/kinks.json";
 import { forwardRef } from "react";
 import { Radio } from "./radio";
 
