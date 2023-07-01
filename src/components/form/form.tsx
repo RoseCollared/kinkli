@@ -1,15 +1,13 @@
 "use client";
 
-import {
-  getEmptyDefaultValues,
-  type FormValues,
-} from "@kinklist/components/form/schema";
+import type { FormValues } from "@kinklist/components/form/schema";
 import { decodeValues, encodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, forwardRef } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks-small.json";
 import { Radio } from "../radio";
+import { getEmptyDefaultValues } from "./default-values";
 
 export const Form = forwardRef<
   HTMLFormElement,
