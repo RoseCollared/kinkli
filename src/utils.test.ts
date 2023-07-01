@@ -1,40 +1,63 @@
-import { decodeValues, encodeValues, fillObject } from "./utils";
+import { decodeValues, encodeValues, deepMapValues } from "./utils";
 
-describe("fillObject()", () => {
-  test("returns an object with the correct shape values", () => {
-    const shape = {
-      x: null,
-      y: {
-        z: null,
+describe("deepMapValues()", () => {
+  test("maps deeply nested values", () => {
+    const obj = {
+      a: 1,
+      b: {
+        c: {
+          d: 2,
+        },
       },
     };
-    const values = [0, 1];
-    const result = fillObject(shape, values);
-    expect(result.x).toBe(0);
-    expect(result.y.z).toBe(1);
+    const result = deepMapValues(obj, (v) => v * 2);
+    expect(result).toStrictEqual({
+      a: 2,
+      b: {
+        c: {
+          d: 4,
+        },
+      },
+    });
   });
 
-  test("throws when not enough values are given", () => {
+  test("traverses in the right order", () => {
     const shape = {
-      x: null,
-      y: {
-        z: null,
+      a: null,
+      b: {
+        c: null,
       },
+      d: null,
     };
-    const values = [0];
-
-    expect(() => {
-      fillObject(shape, values);
-    }).toThrowError();
+    const values = [0, 1, 2];
+    let i = 0;
+    const result = deepMapValues(shape, () => values[i++]);
+    expect(result).toStrictEqual({
+      a: 0,
+      b: {
+        c: 1,
+      },
+      d: 2,
+    });
   });
 });
 
 describe("encode/decodeValues", () => {
-  test("encode and decode values correctly", () => {
+  test("encode/decode are each other's inverse", () => {
     const rawValues = {
-      foo: {
-        bar: null,
-        baz: "1",
+      s1: {
+        q1: {
+          sq1: "1",
+          sq2: null,
+        },
+        q2: {
+          sq1: "7",
+          sq2: "7",
+        },
+        q3: {
+          sq1: null,
+          sq2: "1",
+        },
       },
     };
     const encodedValues = encodeValues(rawValues);
@@ -45,8 +68,10 @@ describe("encode/decodeValues", () => {
   test("encodes null as 0", () => {
     const rawValues = {
       foo: {
-        bar: null,
-        baz: "1",
+        bar: {
+          baz: null,
+          cux: "1",
+        },
       },
     };
     expect(encodeValues(rawValues)).toBe("01");
@@ -55,14 +80,18 @@ describe("encode/decodeValues", () => {
   test("decodes 0 as null", () => {
     const shape = {
       foo: {
-        bar: "anything",
-        baz: "anything",
+        bar: {
+          baz: "anything",
+          cux: "anything",
+        },
       },
     };
     expect(decodeValues("01", shape)).toEqual({
       foo: {
-        bar: null,
-        baz: "1",
+        bar: {
+          baz: null,
+          cux: "1",
+        },
       },
     });
   });

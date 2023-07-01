@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@kinklist/components/button";
-import { Form } from "@kinklist/components/form";
+import { Form } from "@kinklist/components/form/form";
 import html2canvas from "html2canvas";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
