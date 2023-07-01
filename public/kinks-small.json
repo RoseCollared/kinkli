@@ -1,0 +1,94 @@
+{
+  "sections": [
+    {
+      "id": "bodies",
+      "label": "Bodies",
+      "questions": [
+        {
+          "id": "skinny",
+          "label": "Skinny",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
+          "id": "chubby",
+          "label": "Chubby",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
+          "id": "small-breasts",
+          "label": "Small breasts",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
+          "id": "large-breasts",
+          "label": "Large breasts",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
+          "id": "small-cocks",
+          "label": "Small cocks",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
+          "id": "large-cocks",
+          "label": "Large cocks",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
