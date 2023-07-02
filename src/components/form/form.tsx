@@ -93,7 +93,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
   }, [questions, sectionId]);
 
   return (
-    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
+    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-4 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm sm:text-2xl lg:text-3xl">
         {label}
       </h2>
@@ -135,7 +135,7 @@ function Question(props: QuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
   return (
     <tr>
-      <td className="w-32 text-lg font-medium leading-tight text-gray-600">
+      <td className="w-40 text-lg font-medium leading-tight text-gray-600">
         {label}
       </td>
       {subquestions.map((subquestion) => (
