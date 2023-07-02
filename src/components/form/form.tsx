@@ -1,9 +1,15 @@
 "use client";
 
-import type { FormValues } from "@kinklist/components/form/schema";
+import {
+  kinksSchema,
+  type FormValues,
+  type Section,
+  type Question,
+  type Subquestion,
+} from "./schema";
 import { decodeValues, encodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
-import { FormHTMLAttributes, forwardRef } from "react";
+import { FormHTMLAttributes, forwardRef, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks-small.json";
 import { Radio } from "../radio";
@@ -15,20 +21,21 @@ export const Form = forwardRef<
 >((props, ref) => {
   const searchParams = useSearchParams();
 
+  const parsedKinks = kinksSchema.parse(kinks);
+
   const methods = useForm<FormValues>({
     defaultValues: async () => {
       const encodedValues = searchParams.get("answers");
       if (encodedValues) {
-        const shape = getEmptyDefaultValues(kinks);
+        const shape = getEmptyDefaultValues(parsedKinks);
         return decodeValues(encodedValues, shape);
       } else {
-        return getEmptyDefaultValues(kinks);
+        return getEmptyDefaultValues(parsedKinks);
       }
     },
   });
 
   methods.watch((values) => {
-    console.log("watch", values);
     if (Object.keys(values).length > 0) {
       const params = new URLSearchParams(searchParams.toString());
       params.set("answers", encodeValues(values));
@@ -42,10 +49,10 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="flex w-full flex-col flex-wrap gap-8 overflow-auto px-8 py-12 sm:max-h-[3200px] sm:px-12 sm:py-16"
+        className="flex w-full flex-col flex-wrap items-start gap-8 overflow-auto px-8 py-12 sm:max-h-[3200px] sm:px-12 sm:py-16"
         {...props}
       >
-        {kinks.sections.map((section) => (
+        {parsedKinks.sections.map((section) => (
           <Section
             key={section.id}
             sectionId={section.id}
@@ -59,7 +66,12 @@ export const Form = forwardRef<
 });
 Form.displayName = "Form";
 
-function Section({ sectionId, label, questions }) {
+interface SectionProps {
+  sectionId: Section["id"];
+  label: Section["label"];
+  questions: Section["questions"];
+}
+function Section({ sectionId, label, questions }: SectionProps) {
   return (
     <section className="flex flex-col gap-4 rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm sm:text-2xl lg:text-3xl">
@@ -81,7 +93,14 @@ function Section({ sectionId, label, questions }) {
   );
 }
 
-function Question({ questionId, sectionId, label, subquestions }) {
+interface QuestionProps {
+  questionId: Question["id"];
+  sectionId: Section["id"];
+  label: Question["label"];
+  subquestions: Question["subquestions"];
+}
+function Question(props: QuestionProps) {
+  const { questionId, sectionId, label, subquestions } = props;
   return (
     <div className="flex gap-8">
       <div className="mb-4 w-32 text-lg font-medium leading-tight text-gray-600">
@@ -101,7 +120,13 @@ function Question({ questionId, sectionId, label, subquestions }) {
   );
 }
 
-function Subquestion({ subquestionId, questionId, sectionId }) {
+interface SubquestionProps {
+  subquestionId: Subquestion["id"];
+  questionId: Question["id"];
+  sectionId: Section["id"];
+}
+function Subquestion(props: SubquestionProps) {
+  const { subquestionId, questionId, sectionId } = props;
   const { register } = useFormContext();
   const name = `${sectionId}.${questionId}.${subquestionId}`;
 

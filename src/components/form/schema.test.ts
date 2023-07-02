@@ -1,6 +1,6 @@
-import kinks from "../public/kinks.json";
-import { questionDataSchema } from "./schema";
+import kinks from "../../../public/kinks.json";
+import { kinksSchema } from "./schema";
 
 test("data conforms to schema", () => {
-  expect(() => questionDataSchema.parse(kinks)).not.toThrow();
+  expect(() => kinksSchema.parse(kinks)).not.toThrow();
 });
