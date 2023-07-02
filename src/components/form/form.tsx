@@ -3,15 +3,15 @@
 import {
   kinksSchema,
   type FormValues,
-  type Section,
-  type Question,
-  type Subquestion,
+  type TSection,
+  type TQuestion,
+  type TSubquestion,
 } from "./schema";
 import { decodeValues, encodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, forwardRef, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import kinks from "../../../public/kinks-small.json";
+import kinks from "../../../public/kinks.json";
 import { Radio } from "../radio";
 import { getEmptyDefaultValues } from "./default-values";
 
@@ -49,7 +49,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="flex w-full flex-col flex-wrap items-start gap-8 overflow-auto px-8 py-12 sm:max-h-[3200px] sm:px-12 sm:py-16"
+        className="flex w-full flex-col flex-wrap gap-8 overflow-auto px-8 py-12 sm:max-h-[2200px] sm:px-12 sm:py-16"
         {...props}
       >
         {parsedKinks.sections.map((section) => (
@@ -67,63 +67,90 @@ export const Form = forwardRef<
 Form.displayName = "Form";
 
 interface SectionProps {
-  sectionId: Section["id"];
-  label: Section["label"];
-  questions: Section["questions"];
+  sectionId: TSection["id"];
+  label: TSection["label"];
+  questions: TSection["questions"];
 }
 function Section({ sectionId, label, questions }: SectionProps) {
+  const subquestionLabels = useMemo(() => {
+    const uniqueLabels = questions
+      .flatMap((question) =>
+        question.subquestions.map((subquestion) => subquestion.label)
+      )
+      // Remove undefined and empty string
+      .filter((label) => label)
+      // Keep only unique values
+      .filter((label, index, array) => array.indexOf(label) === index);
+
+    if (uniqueLabels.length > 2) {
+      console.warn(
+        `Found more than 2 unique subquestion labels for section ${sectionId}. Using the first two only`
+      );
+      return [uniqueLabels[0], uniqueLabels[1]];
+    }
+
+    return uniqueLabels;
+  }, [questions, sectionId]);
+
   return (
-    <section className="flex flex-col gap-4 rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
+    <section className="rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm sm:text-2xl lg:text-3xl">
         {label}
       </h2>
-      {/* TODO: subquestion headings */}
-      <div className="flex flex-col gap-6">
-        {questions.map((question) => (
-          <Question
-            key={question.id}
-            questionId={question.id}
-            sectionId={sectionId}
-            label={question.label}
-            subquestions={question.subquestions}
-          />
-        ))}
-      </div>
+      <table className="-mx-4 -my-2 border-separate border-spacing-x-4 border-spacing-y-2">
+        <thead>
+          <tr>
+            <th />
+            {subquestionLabels.map((label) => (
+              <th key={label} className="text-gray-600 text-lg font-medium">{label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {questions.map((question) => (
+            <Question
+              key={question.id}
+              questionId={question.id}
+              sectionId={sectionId}
+              label={question.label}
+              subquestions={question.subquestions}
+            />
+          ))}
+        </tbody>
+      </table>
     </section>
   );
 }
 
 interface QuestionProps {
-  questionId: Question["id"];
-  sectionId: Section["id"];
-  label: Question["label"];
-  subquestions: Question["subquestions"];
+  questionId: TQuestion["id"];
+  sectionId: TSection["id"];
+  label: TQuestion["label"];
+  subquestions: TQuestion["subquestions"];
 }
 function Question(props: QuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
   return (
-    <div className="flex gap-8">
-      <div className="mb-4 w-32 text-lg font-medium leading-tight text-gray-600">
+    <tr>
+      <td className="w-32 text-lg font-medium leading-tight text-gray-600">
         {label}
-      </div>
-      <div className="flex gap-8">
-        {subquestions.map((subquestion) => (
-          <Subquestion
-            key={subquestion.id}
-            subquestionId={subquestion.id}
-            questionId={questionId}
-            sectionId={sectionId}
-          />
-        ))}
-      </div>
-    </div>
+      </td>
+      {subquestions.map((subquestion) => (
+        <Subquestion
+          key={subquestion.id}
+          subquestionId={subquestion.id}
+          questionId={questionId}
+          sectionId={sectionId}
+        />
+      ))}
+    </tr>
   );
 }
 
 interface SubquestionProps {
-  subquestionId: Subquestion["id"];
-  questionId: Question["id"];
-  sectionId: Section["id"];
+  subquestionId: TSubquestion["id"];
+  questionId: TQuestion["id"];
+  sectionId: TSection["id"];
 }
 function Subquestion(props: SubquestionProps) {
   const { subquestionId, questionId, sectionId } = props;
@@ -131,14 +158,16 @@ function Subquestion(props: SubquestionProps) {
   const name = `${sectionId}.${questionId}.${subquestionId}`;
 
   return (
-    <div className="flex gap-1">
-      <Radio {...register(name)} value="1" />
-      <Radio {...register(name)} value="2" />
-      <Radio {...register(name)} value="3" />
-      <Radio {...register(name)} value="4" />
-      <Radio {...register(name)} value="5" />
-      <Radio {...register(name)} value="6" />
-      <Radio {...register(name)} value="7" />
-    </div>
+    <td>
+      <div className="flex gap-0.5">
+        <Radio {...register(name)} value="1" />
+        <Radio {...register(name)} value="2" />
+        <Radio {...register(name)} value="3" />
+        <Radio {...register(name)} value="4" />
+        <Radio {...register(name)} value="5" />
+        <Radio {...register(name)} value="6" />
+        <Radio {...register(name)} value="7" />
+      </div>
+    </td>
   );
 }

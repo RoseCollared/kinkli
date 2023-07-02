@@ -1,26 +1,26 @@
 import { z } from "zod";
 
-export type Subquestion = z.infer<typeof subquestionSchema>;
+export type TSubquestion = z.infer<typeof subquestionSchema>;
 export const subquestionSchema = z.object({
   id: z.string().min(1),
   label: z.string(), // TODO: make this optional?
 });
 
-export type Question = z.infer<typeof questionSchema>;
+export type TQuestion = z.infer<typeof questionSchema>;
 export const questionSchema = z.object({
   id: z.string().min(1),
   label: z.string(),
   subquestions: z.array(subquestionSchema).min(1), // TODO: make this optional
 });
 
-export type Section = z.infer<typeof sectionSchema>;
+export type TSection = z.infer<typeof sectionSchema>;
 export const sectionSchema = z.object({
   id: z.string().min(1),
   label: z.string(),
   questions: z.array(questionSchema).min(1),
 });
 
-export type Kinks = z.infer<typeof kinksSchema>;
+export type TKinks = z.infer<typeof kinksSchema>;
 export const kinksSchema = z.object({
   sections: z.array(sectionSchema),
 });
