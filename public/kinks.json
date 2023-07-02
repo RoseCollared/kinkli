@@ -1005,17 +1005,13 @@
               "label": "General"
             }
           ]
-        },
-        {
-          "id": "surrealism",
-          "label": "Surrealism",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "surrealism",
+      "label": "Surrealism",
+      "questions": [
         {
           "id": "futanari",
           "label": "Futanari",
@@ -1217,7 +1213,7 @@
       ]
     },
     {
-      "id": "touch-&-stimulation",
+      "id": "touch-stimulation",
       "label": "Touch & Stimulation",
       "questions": [
         {
