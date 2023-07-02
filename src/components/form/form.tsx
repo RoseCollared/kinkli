@@ -49,7 +49,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="columns-1 gap-x-4 px-8 py-8 sm:px-12 sm:py-12 xl:columns-2 2xl:columns-3"
+        className="columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
         {...props}
       >
         {parsedKinks.sections.map((section) => (
