@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  kinksSchema,
-  type FormValues,
-  type TSection,
-  type TQuestion,
-  type TSubquestion,
-} from "./schema";
 import { decodeValues, encodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, forwardRef, useMemo } from "react";
@@ -14,6 +7,13 @@ import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks.json";
 import { Radio } from "../radio";
 import { getEmptyDefaultValues } from "./default-values";
+import {
+  kinksSchema,
+  type FormValues,
+  type TQuestion,
+  type TSection,
+  type TSubquestion,
+} from "./schema";
 
 export const Form = forwardRef<
   HTMLFormElement,
@@ -49,7 +49,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="columns-1 gap-x-4 px-8 py-12 sm:px-12 sm:py-16 xl:columns-2 2xl:columns-3"
+        className="columns-1 gap-x-4 px-8 py-8 sm:px-12 sm:py-12 xl:columns-2 2xl:columns-3"
         {...props}
       >
         {parsedKinks.sections.map((section) => (
@@ -163,13 +163,13 @@ function Subquestion(props: SubquestionProps) {
   return (
     <td>
       <div className="flex gap-0.5">
-        <Radio {...register(name)} value="1" />
-        <Radio {...register(name)} value="2" />
-        <Radio {...register(name)} value="3" />
-        <Radio {...register(name)} value="4" />
-        <Radio {...register(name)} value="5" />
-        <Radio {...register(name)} value="6" />
         <Radio {...register(name)} value="7" />
+        <Radio {...register(name)} value="6" />
+        <Radio {...register(name)} value="5" />
+        <Radio {...register(name)} value="4" />
+        <Radio {...register(name)} value="3" />
+        <Radio {...register(name)} value="2" />
+        <Radio {...register(name)} value="1" />
       </div>
     </td>
   );
