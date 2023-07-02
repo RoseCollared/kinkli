@@ -94,9 +94,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
 
   return (
     <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-4 shadow-xl shadow-rose-100">
-      <h2 className="text-2xl font-semibold drop-shadow-sm sm:text-2xl lg:text-3xl">
-        {label}
-      </h2>
+      <h2 className="text-2xl font-semibold drop-shadow-sm">{label}</h2>
       <table className="-mx-4 -my-2 border-separate border-spacing-x-4 border-spacing-y-2">
         <thead>
           <tr>
