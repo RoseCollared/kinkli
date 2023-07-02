@@ -49,7 +49,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="flex w-full flex-col flex-wrap gap-8 overflow-auto px-8 py-12 sm:max-h-[2200px] sm:px-12 sm:py-16"
+        className="columns-3 gap-x-4 px-8 py-12 sm:px-12 sm:py-16"
         {...props}
       >
         {parsedKinks.sections.map((section) => (
@@ -93,7 +93,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
   }, [questions, sectionId]);
 
   return (
-    <section className="rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
+    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm sm:text-2xl lg:text-3xl">
         {label}
       </h2>
@@ -102,7 +102,9 @@ function Section({ sectionId, label, questions }: SectionProps) {
           <tr>
             <th />
             {subquestionLabels.map((label) => (
-              <th key={label} className="text-gray-600 text-lg font-medium">{label}</th>
+              <th key={label} className="text-lg font-medium text-gray-600">
+                {label}
+              </th>
             ))}
           </tr>
         </thead>
