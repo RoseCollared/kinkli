@@ -101,11 +101,12 @@ function Section({ sectionId, label, questions }: SectionProps) {
         <thead>
           <tr>
             <th />
-            {subquestionLabels.map((label) => (
-              <th key={label} className="text-lg font-medium text-gray-600">
-                {label}
-              </th>
-            ))}
+            {subquestionLabels.length > 1 &&
+              subquestionLabels.map((label) => (
+                <th key={label} className="text-lg font-medium text-gray-600">
+                  {label}
+                </th>
+              ))}
           </tr>
         </thead>
         <tbody>
