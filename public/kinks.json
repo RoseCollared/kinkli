@@ -9,12 +9,8 @@
           "label": "Skinny",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         },
@@ -23,12 +19,8 @@
           "label": "Chubby",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         },
@@ -37,12 +29,8 @@
           "label": "Small breasts",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         },
@@ -51,12 +39,8 @@
           "label": "Large breasts",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         },
@@ -65,12 +49,8 @@
           "label": "Small cocks",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         },
@@ -79,12 +59,8 @@
           "label": "Large cocks",
           "subquestions": [
             {
-              "id": "self",
-              "label": "Self"
-            },
-            {
-              "id": "partner",
-              "label": "Partner"
+              "id": "general",
+              "label": "General"
             }
           ]
         }
@@ -215,42 +191,82 @@
         {
           "id": "you-and-1-male",
           "label": "You and 1 male",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-1-female",
           "label": "You and 1 female",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-trans-female",
           "label": "You and trans female",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-trans-male",
           "label": "You and trans male",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-1-male-1-female",
           "label": "You and 1 male, 1 female",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-2-males",
           "label": "You and 2 males",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "you-and-2-females",
           "label": "You and 2 females",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "orgy",
           "label": "Orgy",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         }
       ]
     },
@@ -913,47 +929,92 @@
         {
           "id": "incest",
           "label": "Incest",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "age-gap",
           "label": "Age gap",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "raceplay",
           "label": "Raceplay",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "bestiality",
           "label": "Bestiality",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "necrophilia",
           "label": "Necrophilia",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "cheating",
           "label": "Cheating",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "exhibitionism",
           "label": "Exhibitionism",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "voyeurism",
           "label": "Voyeurism",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "surrealism",
           "label": "Surrealism",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "futanari",
@@ -1048,32 +1109,62 @@
         {
           "id": "blood",
           "label": "Blood",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "watersports",
           "label": "Watersports",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "scat",
           "label": "Scat",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "lactation",
           "label": "Lactation",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "diapers",
           "label": "Diapers",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         },
         {
           "id": "cum-play",
           "label": "Cum play",
-          "subquestions": []
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         }
       ]
     },

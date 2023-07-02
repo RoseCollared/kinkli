@@ -10,7 +10,7 @@ export type Question = z.infer<typeof questionSchema>;
 export const questionSchema = z.object({
   id: z.string().min(1),
   label: z.string(),
-  subquestions: z.array(subquestionSchema), // TODO: handle case where this is empty
+  subquestions: z.array(subquestionSchema).min(1), // TODO: make this optional
 });
 
 export type Section = z.infer<typeof sectionSchema>;
