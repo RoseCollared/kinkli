@@ -63,6 +63,16 @@
               "label": "General"
             }
           ]
+        },
+        {
+          "id": "balls",
+          "label": "Balls",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         }
       ]
     },
@@ -156,7 +166,7 @@
         },
         {
           "id": "uniform-costume",
-          "label": "Uniform / costume",
+          "label": "Uniform, costume",
           "subquestions": [
             {
               "id": "self",
@@ -276,7 +286,21 @@
       "questions": [
         {
           "id": "romance-affection",
-          "label": "Romance / Affection",
+          "label": "Romance, affection",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "vanilla-sex",
+          "label": "Vanilla sex",
           "subquestions": [
             {
               "id": "giving",
@@ -290,7 +314,7 @@
         },
         {
           "id": "handjob-fingering",
-          "label": "Handjob / fingering",
+          "label": "Handjob, fingering",
           "subquestions": [
             {
               "id": "giving",
@@ -317,8 +341,8 @@
           ]
         },
         {
-          "id": "deep-throat",
-          "label": "Deep throat",
+          "id": "deepthroat",
+          "label": "Deepthroat",
           "subquestions": [
             {
               "id": "giving",
@@ -416,7 +440,7 @@
         },
         {
           "id": "joi-si",
-          "label": "JOI, SI",
+          "label": "JOI, sexual instructions",
           "subquestions": [
             {
               "id": "giving",
@@ -595,6 +619,20 @@
           ]
         },
         {
+          "id": "blindfold",
+          "label": "Blindfold",
+          "subquestions": [
+            {
+              "id": "self",
+              "label": "Self"
+            },
+            {
+              "id": "partner",
+              "label": "Partner"
+            }
+          ]
+        },
+        {
           "id": "encasement",
           "label": "Encasement",
           "subquestions": [
@@ -677,8 +715,8 @@
       "label": "Domination",
       "questions": [
         {
-          "id": "dominant-submissive",
-          "label": "Dominant / Submissive",
+          "id": "general",
+          "label": "General",
           "subquestions": [
             {
               "id": "dominant",
@@ -705,8 +743,8 @@
           ]
         },
         {
-          "id": "slavery",
-          "label": "Slavery",
+          "id": "ownership",
+          "label": "Ownership",
           "subquestions": [
             {
               "id": "dominant",
@@ -838,7 +876,7 @@
       "questions": [
         {
           "id": "non-con-rape",
-          "label": "Non-con / rape",
+          "label": "Non-con, rape",
           "subquestions": [
             {
               "id": "aggressor",
@@ -852,7 +890,7 @@
         },
         {
           "id": "blackmail-coercion",
-          "label": "Blackmail / coercion",
+          "label": "Blackmail, coercion",
           "subquestions": [
             {
               "id": "aggressor",
@@ -1083,8 +1121,8 @@
           ]
         },
         {
-          "id": "monster-or-alien",
-          "label": "Monster or Alien",
+          "id": "monster-alien",
+          "label": "Monster, alien",
           "subquestions": [
             {
               "id": "self",
@@ -1161,6 +1199,16 @@
               "label": "General"
             }
           ]
+        },
+        {
+          "id": "spit",
+          "label": "Spit",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
         }
       ]
     },
@@ -1209,6 +1257,34 @@
               "label": "Receiving"
             }
           ]
+        },
+        {
+          "id": "objectification",
+          "label": "Objectification",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "face-slapping",
+          "label": "Face slapping",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
         }
       ]
     },
@@ -1218,7 +1294,7 @@
       "questions": [
         {
           "id": "cockpussy-worship",
-          "label": "Cock/Pussy worship",
+          "label": "Cock/pussy worship",
           "subquestions": [
             {
               "id": "actor",
@@ -1303,23 +1379,9 @@
       ]
     },
     {
-      "id": "misc-fetish",
-      "label": "Misc. Fetish",
+      "id": "miscellaneous",
+      "label": "Miscellaneous",
       "questions": [
-        {
-          "id": "fisting",
-          "label": "Fisting",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
         {
           "id": "gangbang",
           "label": "Gangbang",
@@ -1335,8 +1397,22 @@
           ]
         },
         {
-          "id": "breath-play",
-          "label": "Breath play",
+          "id": "choking",
+          "label": "Choking",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "gagging",
+          "label": "Gagging",
           "subquestions": [
             {
               "id": "giving",
@@ -1453,8 +1529,8 @@
           ]
         },
         {
-          "id": "clothes-pins",
-          "label": "Clothes pins",
+          "id": "clothespins",
+          "label": "Clothespins",
           "subquestions": [
             {
               "id": "giving",
@@ -1524,7 +1600,7 @@
         },
         {
           "id": "cockpussy-slapping",
-          "label": "Cock/Pussy slapping",
+          "label": "Cock/pussy slapping",
           "subquestions": [
             {
               "id": "giving",
@@ -1538,7 +1614,7 @@
         },
         {
           "id": "cockpussy-torture",
-          "label": "Cock/Pussy torture",
+          "label": "Cock/pussy torture",
           "subquestions": [
             {
               "id": "giving",
@@ -1552,7 +1628,7 @@
         },
         {
           "id": "hot-wax",
-          "label": "Hot Wax",
+          "label": "Hot wax",
           "subquestions": [
             {
               "id": "giving",
