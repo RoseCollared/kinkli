@@ -14,6 +14,7 @@ import {
   type TSection,
   type TSubquestion,
 } from "./schema";
+import { Button } from "../button";
 
 export const Form = forwardRef<
   HTMLFormElement,
@@ -49,9 +50,20 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
+        className="relative columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
         {...props}
       >
+        <Button
+          onClick={() => {
+            if (confirm("Are you sure you want to clear all data?")) {
+              methods.reset(getEmptyDefaultValues(parsedKinks));
+            }
+          }}
+          variant="secondary"
+          className="absolute right-0 top-0 border-none px-3 py-2 text-base shadow-none"
+        >
+          Clear all
+        </Button>
         {parsedKinks.sections.map((section) => (
           <Section
             key={section.id}
