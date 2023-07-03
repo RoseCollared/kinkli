@@ -25,7 +25,7 @@ export function Legend() {
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
         <Radio value="2" checked readOnly />
-        Dislike
+        Maybe
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
         <Radio value="1" checked readOnly />
