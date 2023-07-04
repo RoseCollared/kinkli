@@ -1,10 +1,11 @@
 "use client";
 
-import { decodeValues, encodeValues } from "@kinklist/utils";
+import { decodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, forwardRef, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks.json";
+import { Button } from "../button";
 import { Radio } from "../radio";
 import { getEmptyDefaultValues } from "./default-values";
 import {
@@ -14,15 +15,15 @@ import {
   type TSection,
   type TSubquestion,
 } from "./schema";
-import { Button } from "../button";
+import { useSaveAnswers } from "./use-save-answers";
 
 export const Form = forwardRef<
   HTMLFormElement,
   FormHTMLAttributes<HTMLFormElement>
 >((props, ref) => {
-  const searchParams = useSearchParams();
-
   const parsedKinks = kinksSchema.parse(kinks);
+
+  const searchParams = useSearchParams();
 
   const methods = useForm<FormValues>({
     defaultValues: async () => {
@@ -36,15 +37,7 @@ export const Form = forwardRef<
     },
   });
 
-  methods.watch((values) => {
-    if (Object.keys(values).length > 0) {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("answers", encodeValues(values));
-      // HACK: use history API because Next.js router.replace() always scrolls to top
-      // See: https://github.com/vercel/next.js/issues/50105#issuecomment-1585699851
-      history.replaceState(null, "", "?" + params.toString());
-    }
-  });
+  useSaveAnswers(methods, getEmptyDefaultValues(parsedKinks));
 
   return (
     <FormProvider {...methods}>
