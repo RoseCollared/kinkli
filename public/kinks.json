@@ -1227,20 +1227,6 @@
       "label": "Degradation",
       "questions": [
         {
-          "id": "glory-hole",
-          "label": "Glory hole",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
           "id": "name-calling",
           "label": "Name calling",
           "subquestions": [
