@@ -1403,6 +1403,20 @@
       "label": "Miscellaneous",
       "questions": [
         {
+          "id": "public-play",
+          "label": "Public play",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
           "id": "gangbang",
           "label": "Gangbang",
           "subquestions": [
