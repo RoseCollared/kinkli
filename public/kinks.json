@@ -1377,8 +1377,22 @@
           ]
         },
         {
-          "id": "degradation",
-          "label": "Degradation",
+          "id": "embarrassment",
+          "label": "Embarrassment",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "objectification",
+          "label": "Objectifica­tion",
           "subquestions": [
             {
               "id": "giving",
