@@ -309,20 +309,6 @@
           ]
         },
         {
-          "id": "vanilla-sex",
-          "label": "Vanilla sex",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
           "id": "handjob-fingering",
           "label": "Handjob, fingering",
           "subquestions": [
@@ -381,6 +367,20 @@
         {
           "id": "facials",
           "label": "Facials",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "piv",
+          "label": "PiV",
           "subquestions": [
             {
               "id": "giving",
