@@ -199,8 +199,8 @@
       "label": "Groupings",
       "questions": [
         {
-          "id": "you-and-1-male",
-          "label": "You and 1 male",
+          "id": "you-and-cis-male",
+          "label": "You + cis male",
           "subquestions": [
             {
               "id": "general",
@@ -209,8 +209,8 @@
           ]
         },
         {
-          "id": "you-and-1-female",
-          "label": "You and 1 female",
+          "id": "you-and-cis-female",
+          "label": "You + cis female",
           "subquestions": [
             {
               "id": "general",
@@ -219,8 +219,8 @@
           ]
         },
         {
-          "id": "you-and-trans-female",
-          "label": "You and trans female",
+          "id": "you-and-non-binary",
+          "label": "You + non-binary",
           "subquestions": [
             {
               "id": "general",
@@ -230,7 +230,17 @@
         },
         {
           "id": "you-and-trans-male",
-          "label": "You and trans male",
+          "label": "You + trans male",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "you-and-trans-female",
+          "label": "You + trans female",
           "subquestions": [
             {
               "id": "general",
@@ -240,7 +250,7 @@
         },
         {
           "id": "you-and-1-male-1-female",
-          "label": "You and 1 male, 1 female",
+          "label": "You + MF",
           "subquestions": [
             {
               "id": "general",
@@ -250,7 +260,7 @@
         },
         {
           "id": "you-and-2-males",
-          "label": "You and 2 males",
+          "label": "You + MM",
           "subquestions": [
             {
               "id": "general",
@@ -260,7 +270,7 @@
         },
         {
           "id": "you-and-2-females",
-          "label": "You and 2 females",
+          "label": "You + FF",
           "subquestions": [
             {
               "id": "general",
