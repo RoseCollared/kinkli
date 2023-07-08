@@ -249,8 +249,8 @@
           ]
         },
         {
-          "id": "you-and-1-male-1-female",
-          "label": "You + MF",
+          "id": "you-and-mf-threesome",
+          "label": "You + MF threesome",
           "subquestions": [
             {
               "id": "general",
@@ -259,8 +259,8 @@
           ]
         },
         {
-          "id": "you-and-2-males",
-          "label": "You + MM",
+          "id": "you-and-mm-threesome",
+          "label": "You + MM threesome",
           "subquestions": [
             {
               "id": "general",
@@ -269,8 +269,8 @@
           ]
         },
         {
-          "id": "you-and-2-females",
-          "label": "You + FF",
+          "id": "you-and-ff-threesome",
+          "label": "You + FF threesome",
           "subquestions": [
             {
               "id": "general",
