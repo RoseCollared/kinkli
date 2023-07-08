@@ -1,6 +1,42 @@
 {
   "sections": [
     {
+      "id": "dynamics",
+      "label": "Dynamics",
+      "questions": [
+        {
+          "id": "vanilla",
+          "label": "Vanilla",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "bedroom only",
+          "label": "Bedroom only",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "24-7-lifestyle",
+          "label": "24/7 lifestyle",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "bodies",
       "label": "Bodies",
       "questions": [
