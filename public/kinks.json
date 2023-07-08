@@ -739,6 +739,34 @@
           ]
         },
         {
+          "id": "ownership",
+          "label": "Ownership",
+          "subquestions": [
+            {
+              "id": "dominant",
+              "label": "Dominant"
+            },
+            {
+              "id": "submissive",
+              "label": "Submissive"
+            }
+          ]
+        },
+        {
+          "id": "power-exchange",
+          "label": "Power exchange",
+          "subquestions": [
+            {
+              "id": "dominant",
+              "label": "Dominant"
+            },
+            {
+              "id": "submissive",
+              "label": "Submissive"
+            }
+          ]
+        },
+        {
           "id": "domestic-servitude",
           "label": "Domestic servitude",
           "subquestions": [
@@ -753,8 +781,8 @@
           ]
         },
         {
-          "id": "ownership",
-          "label": "Ownership",
+          "id": "protocol",
+          "label": "Protocol",
           "subquestions": [
             {
               "id": "dominant",
@@ -853,20 +881,6 @@
         {
           "id": "orgasm-denial",
           "label": "Orgasm denial",
-          "subquestions": [
-            {
-              "id": "dominant",
-              "label": "Dominant"
-            },
-            {
-              "id": "submissive",
-              "label": "Submissive"
-            }
-          ]
-        },
-        {
-          "id": "power-exchange",
-          "label": "Power exchange",
           "subquestions": [
             {
               "id": "dominant",
