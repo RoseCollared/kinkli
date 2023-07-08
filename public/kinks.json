@@ -15,8 +15,18 @@
           ]
         },
         {
-          "id": "bedroom only",
-          "label": "Bedroom only",
+          "id": "occasional-play",
+          "label": "Occasional play",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "regular-play",
+          "label": "Regular play",
           "subquestions": [
             {
               "id": "general",
