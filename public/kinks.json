@@ -41,58 +41,8 @@
       "label": "Bodies",
       "questions": [
         {
-          "id": "skinny",
-          "label": "Skinny",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
-        {
-          "id": "chubby",
-          "label": "Chubby",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
-        {
-          "id": "small-breasts",
-          "label": "Small breasts",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
-        {
-          "id": "large-breasts",
-          "label": "Large breasts",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
-        {
-          "id": "small-cocks",
-          "label": "Small cocks",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
-        },
-        {
-          "id": "large-cocks",
-          "label": "Large cocks",
+          "id": "ass",
+          "label": "Ass",
           "subquestions": [
             {
               "id": "general",
@@ -103,6 +53,66 @@
         {
           "id": "balls",
           "label": "Balls",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "breasts",
+          "label": "Breasts",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "cocks",
+          "label": "Cocks",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "feet",
+          "label": "Feet",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "hands",
+          "label": "Hands",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "legs",
+          "label": "Legs",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "pussy",
+          "label": "Pussy",
           "subquestions": [
             {
               "id": "general",
