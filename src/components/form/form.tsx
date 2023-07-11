@@ -48,7 +48,7 @@ export const Form = forwardRef<
       >
         <Button
           onClick={() => {
-            if (confirm("Are you sure you want to clear all data?")) {
+            if (confirm("Are you sure you want to clear all your answers?")) {
               methods.reset(getEmptyDefaultValues(parsedKinks));
             }
           }}
