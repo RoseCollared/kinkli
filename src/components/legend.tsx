@@ -10,6 +10,7 @@ export function Legend({ className }: LegendProps) {
   const { ref, inView } = useInView({
     threshold: 1,
     rootMargin: "-1px", // to trigger when the element is within 1 px from the edge of the screen
+    initialInView: true,
   });
   const isSticky = !inView;
 
