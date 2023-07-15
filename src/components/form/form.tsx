@@ -37,7 +37,7 @@ export const Form = forwardRef<
     },
   });
 
-  useSaveAnswers(methods, getEmptyDefaultValues(parsedKinks));
+  useSaveAnswers(methods.control, getEmptyDefaultValues(parsedKinks));
 
   return (
     <FormProvider {...methods}>
