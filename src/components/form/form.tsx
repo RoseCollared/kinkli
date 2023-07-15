@@ -43,7 +43,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="relative columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
+        className="relative mx-4 columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
         {...props}
       >
         <Button
@@ -99,11 +99,13 @@ function Section({ sectionId, label, questions }: SectionProps) {
   }, [questions, sectionId]);
 
   return (
-    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-4 shadow-xl shadow-rose-100">
-      <h2 className="text-2xl font-semibold drop-shadow-sm">{label}</h2>
-      <table className="block border-separate border-spacing-x-4 border-spacing-y-2 sm:-mx-4 sm:-my-2 sm:table">
+    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100 lg:p-4">
+      <h2 className="text-3xl font-semibold drop-shadow-sm lg:text-2xl">
+        {label}
+      </h2>
+      <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
         <thead
-          className="hidden sm:table-header-group"
+          className="hidden lg:table-header-group"
           aria-hidden={subquestionLabels.length <= 1}
         >
           {/* This row is rendered even when we don't render subquestion labels because it makes the spacing look good */}
@@ -117,7 +119,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
               ))}
           </tr>
         </thead>
-        <tbody className="mt-4 flex flex-col gap-4 sm:table-row-group">
+        <tbody className="mt-4 flex flex-col gap-8 sm:gap-4 lg:table-row-group">
           {questions.map((question) => (
             <Question
               key={question.id}
@@ -142,21 +144,21 @@ interface QuestionProps {
 function Question(props: QuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
   return (
-    <tr className="flex flex-col gap-2 sm:table-row">
-      {/* Question label only shown on larger screens */}
+    <tr className="grid grid-cols-1 items-center gap-x-4 gap-y-2 sm:grid-cols-2 lg:table-row">
+      {/* Question label only shown above lg*/}
       <td
         aria-hidden
-        className="hidden w-40 text-lg font-medium leading-tight text-gray-600 sm:table-cell"
+        className="hidden text-lg font-medium leading-tight text-gray-600 lg:table-cell lg:w-40"
       >
         {label}
       </td>
       {subquestions.map((subquestion) => (
         <>
-          {/* Question and subquestion label only shown on small screens */}
+          {/* Question and subquestion label only shown below lg */}
           <td
             id={`label:${sectionId}.${questionId}.${subquestion.id}`}
             aria-hidden
-            className="block text-lg font-medium leading-tight text-gray-600 sm:hidden"
+            className="block text-xl font-medium leading-tight text-gray-600 lg:hidden"
           >
             <span>{label}</span>
             {subquestions.length > 1 && <span> ({subquestion.label})</span>}
@@ -184,8 +186,11 @@ function Subquestion(props: SubquestionProps) {
   const name = `${sectionId}.${questionId}.${subquestionId}`;
 
   return (
-    <td className="block sm:table-cell">
-      <fieldset className="flex gap-0.5" aria-labelledby={`label:${name}`}>
+    <td className="block lg:table-cell">
+      <fieldset
+        className="flex gap-2 lg:gap-1"
+        aria-labelledby={`label:${name}`}
+      >
         <Radio {...register(name)} value="7" />
         <Radio {...register(name)} value="6" />
         <Radio {...register(name)} value="5" />
