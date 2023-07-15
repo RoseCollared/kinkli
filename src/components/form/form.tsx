@@ -84,7 +84,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
         question.subquestions.map((subquestion) => subquestion.label)
       )
       // Remove undefined and empty string
-      .filter((label) => label)
+      .filter(Boolean)
       // Keep only unique values
       .filter((label, index, array) => array.indexOf(label) === index);
 
@@ -101,10 +101,10 @@ function Section({ sectionId, label, questions }: SectionProps) {
   return (
     <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-4 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm">{label}</h2>
-      <table className="-mx-4 -my-2 border-separate border-spacing-x-4 border-spacing-y-2">
-        <thead>
+      <table className="block border-separate border-spacing-x-4 border-spacing-y-2 sm:-mx-4 sm:-my-2 sm:table">
+        <thead className="hidden sm:table-header-group">
           <tr>
-            <th />
+            <th aria-hidden />
             {subquestionLabels.length > 1 &&
               subquestionLabels.map((label) => (
                 <th key={label} className="text-lg font-medium text-gray-600">
@@ -113,7 +113,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
               ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="mt-4 flex flex-col gap-4 sm:table-row-group">
           {questions.map((question) => (
             <Question
               key={question.id}
@@ -138,17 +138,29 @@ interface QuestionProps {
 function Question(props: QuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
   return (
-    <tr>
-      <td className="w-40 text-lg font-medium leading-tight text-gray-600">
+    <tr className="flex flex-col gap-2 sm:table-row">
+      {/* Question label only shown on larger screens */}
+      <td aria-hidden className="hidden w-40 text-lg font-medium leading-tight text-gray-600 sm:table-cell">
         {label}
       </td>
       {subquestions.map((subquestion) => (
-        <Subquestion
-          key={subquestion.id}
-          subquestionId={subquestion.id}
-          questionId={questionId}
-          sectionId={sectionId}
-        />
+        <>
+          {/* Question and subquestion label only shown on small screens */}
+          <td
+            id={`label:${sectionId}.${questionId}.${subquestion.id}`}
+            aria-hidden
+            className="block text-lg font-medium leading-tight text-gray-600 sm:hidden"
+          >
+            <span>{label}</span>
+            {subquestions.length > 1 && <span> ({subquestion.label})</span>}
+          </td>
+          <Subquestion
+            key={subquestion.id}
+            subquestionId={subquestion.id}
+            questionId={questionId}
+            sectionId={sectionId}
+          />
+        </>
       ))}
     </tr>
   );
@@ -165,8 +177,8 @@ function Subquestion(props: SubquestionProps) {
   const name = `${sectionId}.${questionId}.${subquestionId}`;
 
   return (
-    <td>
-      <div className="flex gap-0.5">
+    <td className="block sm:table-cell">
+      <fieldset className="flex gap-0.5" aria-labelledby={`label:${name}`}>
         <Radio {...register(name)} value="7" />
         <Radio {...register(name)} value="6" />
         <Radio {...register(name)} value="5" />
@@ -174,7 +186,7 @@ function Subquestion(props: SubquestionProps) {
         <Radio {...register(name)} value="3" />
         <Radio {...register(name)} value="2" />
         <Radio {...register(name)} value="1" />
-      </div>
+      </fieldset>
     </td>
   );
 }
