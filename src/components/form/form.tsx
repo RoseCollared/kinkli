@@ -43,7 +43,7 @@ export const Form = forwardRef<
     <FormProvider {...methods}>
       <form
         ref={ref}
-        className="relative mx-4 columns-1 gap-x-4 py-8 sm:py-12 xl:columns-2 min-[1688px]:columns-3"
+        className="relative mx-4 columns-1 gap-x-4 py-12 xl:columns-2 min-[1688px]:columns-3"
         {...props}
       >
         <Button
