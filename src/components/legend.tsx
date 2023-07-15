@@ -9,7 +9,8 @@ interface LegendProps {
 export function Legend({ className }: LegendProps) {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: "-1px 0px", // to trigger when the element is within 1 px from the edge of the screen
+    // Trigger when the element is within 1 px from the top/bottom edge of the screen, but don't trigger when touching the sides
+    rootMargin: "-1px 0px",
     initialInView: true,
   });
   const isSticky = !inView;
@@ -18,7 +19,8 @@ export function Legend({ className }: LegendProps) {
     <aside
       ref={ref}
       className={twMerge(
-        "z-10 flex flex-wrap justify-center gap-4 rounded-b-3xl bg-transparent px-8 py-4 transition-all",
+        // Fine-tune max width to balance rows
+        "z-10 box-content flex max-w-[260px] flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-all sm:max-w-md md:max-w-none",
         isSticky && "border-2 border-t-0 border-rose-300 bg-white shadow-lg",
         className
       )}
