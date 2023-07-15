@@ -2,7 +2,7 @@
 
 import { decodeValues } from "@kinklist/utils";
 import { useSearchParams } from "next/navigation";
-import { FormHTMLAttributes, forwardRef, useMemo } from "react";
+import { FormHTMLAttributes, Fragment, forwardRef, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks.json";
 import { Button } from "../button";
@@ -153,7 +153,7 @@ function Question(props: QuestionProps) {
         {label}
       </td>
       {subquestions.map((subquestion) => (
-        <>
+        <Fragment key={subquestion.id}>
           {/* Question and subquestion label only shown below lg */}
           <td
             id={`label:${sectionId}.${questionId}.${subquestion.id}`}
@@ -164,12 +164,11 @@ function Question(props: QuestionProps) {
             {subquestions.length > 1 && <span> ({subquestion.label})</span>}
           </td>
           <Subquestion
-            key={subquestion.id}
             subquestionId={subquestion.id}
             questionId={questionId}
             sectionId={sectionId}
           />
-        </>
+        </Fragment>
       ))}
     </tr>
   );
