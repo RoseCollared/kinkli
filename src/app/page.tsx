@@ -1,5 +1,6 @@
 "use client";
 
+import { BackToTopButton } from "@kinklist/components/back-to-top-button";
 import { Form } from "@kinklist/components/form/form";
 import { Legend } from "@kinklist/components/legend";
 import { useRef } from "react";
@@ -11,7 +12,7 @@ export default function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <header className="flex w-full justify-center gap-8 px-12 pt-12 sm:pt-16 pb-2">
+      <header className="flex w-full justify-center gap-8 px-12 pb-2 pt-12 sm:pt-16">
         {/* <div /> */}
         <h1 className="text-4xl font-bold drop-shadow-sm xs:text-5xl">
           Kinklist
@@ -36,6 +37,7 @@ export default function HomePage() {
       </header>
       <Legend className="sm:sticky sm:top-0" />
       <Form ref={formRef} />
+      <BackToTopButton />
     </main>
   );
 }
