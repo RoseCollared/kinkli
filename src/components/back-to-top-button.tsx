@@ -1,3 +1,5 @@
+"use client";
+
 import { throttle } from "lodash-es";
 import { useLayoutEffect, useState } from "react";
 import { BiChevronUp } from "react-icons/bi";

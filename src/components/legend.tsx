@@ -1,3 +1,5 @@
+"use client";
+
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";
