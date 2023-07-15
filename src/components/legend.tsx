@@ -24,31 +24,31 @@ export function Legend({ className }: LegendProps) {
       )}
     >
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="7" checked readOnly />
+        <Radio value="7" checked readOnly alwaysSmall />
         Favorite
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="6" checked readOnly />
+        <Radio value="6" checked readOnly alwaysSmall />
         Love
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="5" checked readOnly />
+        <Radio value="5" checked readOnly alwaysSmall />
         Like
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="4" checked readOnly />
+        <Radio value="4" checked readOnly alwaysSmall />
         Curious
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="3" checked readOnly />
+        <Radio value="3" checked readOnly alwaysSmall />
         Meh
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="2" checked readOnly />
+        <Radio value="2" checked readOnly alwaysSmall />
         Maybe
       </label>
       <label className="flex items-center gap-2 text-lg font-medium text-gray-600">
-        <Radio value="1" checked readOnly />
+        <Radio value="1" checked readOnly alwaysSmall />
         Limit
       </label>
     </aside>

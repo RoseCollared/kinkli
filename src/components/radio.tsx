@@ -14,17 +14,20 @@ const colorMap = {
   "7": "bg-pink-100 before:bg-pink-400", // 🩷
 };
 
-export const Radio = forwardRef<
-  HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
+export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** Whether to render the small variant regardless of screen size */
+  alwaysSmall?: boolean;
+}
+
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const { name, value, className, alwaysSmall } = props;
+
   // This will be undefined when not used in a <FormProvider>
   const formContext = useFormContext() as UseFormReturn | undefined;
 
   const valueOfCheckedInput =
-    formContext && props.name ? formContext.watch(props.name) : undefined;
-  const isChecked =
-    props.value !== undefined && props.value === valueOfCheckedInput;
+    formContext && name ? formContext.watch(name) : undefined;
+  const isChecked = value !== undefined && value === valueOfCheckedInput;
 
   return (
     <input
@@ -34,15 +37,16 @@ export const Radio = forwardRef<
         // If the radio input is clicked while checked, we uncheck it
         // This goes against standard browser behavior, but I think it's the
         // most elegant way to remove the answer from an individual question
-        if (isChecked && props.name && formContext) {
-          formContext.setValue(props.name, null);
+        if (isChecked && name && formContext) {
+          formContext.setValue(name, null);
         }
       }}
       {...props}
       className={twMerge(
         "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
-        props.value && colorMap[props.value as string],
-        props.className
+        alwaysSmall && "h-5 w-5 before:inset-0.5 xs:h-5 xs:w-5",
+        value && colorMap[value as string],
+        className
       )}
     />
   );
