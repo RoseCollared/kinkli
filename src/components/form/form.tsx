@@ -102,7 +102,11 @@ function Section({ sectionId, label, questions }: SectionProps) {
     <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-4 shadow-xl shadow-rose-100">
       <h2 className="text-2xl font-semibold drop-shadow-sm">{label}</h2>
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 sm:-mx-4 sm:-my-2 sm:table">
-        <thead className="hidden sm:table-header-group">
+        <thead
+          className="hidden sm:table-header-group"
+          aria-hidden={subquestionLabels.length <= 1}
+        >
+          {/* This row is rendered even when we don't render subquestion labels because it makes the spacing look good */}
           <tr>
             <th aria-hidden />
             {subquestionLabels.length > 1 &&
@@ -140,7 +144,10 @@ function Question(props: QuestionProps) {
   return (
     <tr className="flex flex-col gap-2 sm:table-row">
       {/* Question label only shown on larger screens */}
-      <td aria-hidden className="hidden w-40 text-lg font-medium leading-tight text-gray-600 sm:table-cell">
+      <td
+        aria-hidden
+        className="hidden w-40 text-lg font-medium leading-tight text-gray-600 sm:table-cell"
+      >
         {label}
       </td>
       {subquestions.map((subquestion) => (
