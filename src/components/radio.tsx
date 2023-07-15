@@ -20,7 +20,7 @@ export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { name, value, className, alwaysSmall } = props;
+  const { name, value, className, alwaysSmall, ...restProps } = props;
 
   // This will be undefined when not used in a <FormProvider>
   const formContext = useFormContext() as UseFormReturn | undefined;
@@ -41,7 +41,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
           formContext.setValue(name, null);
         }
       }}
-      {...props}
+      name={name}
+      value={value}
+      {...restProps}
       className={twMerge(
         "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
         alwaysSmall && "h-5 w-5 before:inset-0.5 xs:h-5 xs:w-5",
