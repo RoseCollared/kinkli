@@ -13,7 +13,7 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col items-center">
       <header className="flex w-full justify-center gap-8 px-12 pt-12 sm:pt-16">
         {/* <div /> */}
-        <h1 className="text-4xl font-bold drop-shadow-sm sm:text-5xl">
+        <h1 className="text-4xl font-bold drop-shadow-sm xs:text-5xl">
           Kinklist
         </h1>
         {/* <Button
@@ -34,7 +34,7 @@ export default function HomePage() {
           Export
         </Button> */}
       </header>
-      <Legend className="sticky top-0" />
+      <Legend className="sm:sticky sm:top-0" />
       <Form ref={formRef} />
     </main>
   );
