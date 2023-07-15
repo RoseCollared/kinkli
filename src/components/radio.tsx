@@ -40,7 +40,7 @@ export const Radio = forwardRef<
       }}
       {...props}
       className={twMerge(
-        "relative h-8 w-8 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 lg:h-5 lg:w-5 lg:before:inset-0.5",
+        "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
         props.value && colorMap[props.value as string],
         props.className
       )}

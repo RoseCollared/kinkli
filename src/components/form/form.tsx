@@ -99,8 +99,8 @@ function Section({ sectionId, label, questions }: SectionProps) {
   }, [questions, sectionId]);
 
   return (
-    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white p-6 shadow-xl shadow-rose-100 lg:p-4">
-      <h2 className="text-3xl font-semibold drop-shadow-sm lg:text-2xl">
+    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white px-2.5 py-4 shadow-xl shadow-rose-100 xs:p-6 lg:p-4">
+      <h2 className="text-2xl font-semibold drop-shadow-sm xs:text-3xl lg:text-2xl">
         {label}
       </h2>
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
