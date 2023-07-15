@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kinklist",
-  description: "The kinkiest kinklist of all kinklists",
+  description: "The kinkiest kinklist of all kinky lists",
 };
 
 export default function RootLayout({
