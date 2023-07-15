@@ -11,7 +11,7 @@ export default function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <header className="flex w-full justify-center gap-8 px-12 pt-12 sm:pt-16">
+      <header className="flex w-full justify-center gap-8 px-12 pt-12 sm:pt-16 pb-2">
         {/* <div /> */}
         <h1 className="text-4xl font-bold drop-shadow-sm xs:text-5xl">
           Kinklist
