@@ -22,7 +22,7 @@ export function ShareButton() {
   }, [currentSearch]);
 
   return (
-    <Link href={{ pathname: "/result", search: newSearch.toString() }}>
+    <Link href={{ pathname: "/results", search: newSearch.toString() }}>
       <Button>Share</Button>
     </Link>
   );
