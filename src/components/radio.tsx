@@ -5,6 +5,7 @@ import { useFormContext, UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 const colorMap = {
+  "0": "bg-white", // ⬜️
   "1": "bg-red-100 before:bg-red-500", // 🟥
   "2": "bg-orange-100 before:bg-orange-400", // 🟧
   "3": "bg-yellow-100 before:bg-yellow-500", // 🟨

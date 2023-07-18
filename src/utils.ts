@@ -2,6 +2,7 @@
  * Iterate through an object in a depth-first manner, mapping each leaf value
  * using a given function.
  */
+// TODO: improve types
 export function deepMapValues(obj: object, fn: (value: any) => any): any {
   const result = {};
   for (const key of Object.keys(obj)) {

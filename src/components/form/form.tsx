@@ -147,7 +147,7 @@ function FormQuestion(props: FormQuestionProps) {
       {/* Question label only shown above lg*/}
       <td
         aria-hidden
-        className="hidden text-lg font-medium leading-tight text-gray-600 lg:table-cell lg:w-40"
+        className="hidden w-40 text-lg font-medium leading-tight text-gray-600 lg:table-cell"
       >
         {label}
       </td>
