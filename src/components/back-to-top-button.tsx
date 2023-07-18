@@ -7,7 +7,9 @@ import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
 
 export function BackToTopButton() {
-  const [scrollTop, setScrollTop] = useState(window?.scrollY);
+  const [scrollTop, setScrollTop] = useState(
+    typeof window === "undefined" ? undefined : window.scrollY
+  );
   const show = scrollTop !== undefined && scrollTop > 150;
 
   useLayoutEffect(() => {

@@ -1,5 +1,7 @@
+"use client";
+
 import { encodeValues } from "@kinklist/utils";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { Control, useWatch } from "react-hook-form";
 import { FormValues } from "./schema";
@@ -13,6 +15,7 @@ export function useSaveAnswers(
 ) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const router = useRouter();
 
   const values = useWatch<FormValues>({ control });
 
@@ -29,12 +32,15 @@ export function useSaveAnswers(
       params.delete("answers");
     }
 
+    const paramstring = params.toString();
     // HACK: use history API because Next.js router.replace() always scrolls to top
     // See: https://github.com/vercel/next.js/issues/50105#issuecomment-1585699851
-    history.replaceState(
-      null,
-      "",
-      pathname + (params.toString() ? "?" + params.toString() : "")
-    );
-  }, [emptyDefaultValues, pathname, searchParams, values]);
+    // history.replaceState(
+    //   null,
+    //   "",
+    //   pathname + (params.toString() ? "?" + params.toString() : "")
+    // );
+    // TODO: use `scroll: false` after upgrading Next.js version
+    router.replace(pathname + (paramstring ? "?" + paramstring : ""));
+  }, [emptyDefaultValues, pathname, searchParams, values, router]);
 }
