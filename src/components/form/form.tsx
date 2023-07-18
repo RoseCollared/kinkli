@@ -7,6 +7,7 @@ import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import kinks from "../../../public/kinks.json";
 import { Button } from "../button";
 import { Radio } from "../radio";
+import { Section } from "../section";
 import { getEmptyDefaultValues } from "./default-values";
 import {
   kinksSchema,
@@ -21,9 +22,9 @@ export const Form = forwardRef<
   HTMLFormElement,
   FormHTMLAttributes<HTMLFormElement>
 >((props, ref) => {
-  const parsedKinks = kinksSchema.parse(kinks);
-
   const searchParams = useSearchParams();
+
+  const parsedKinks = useMemo(() => kinksSchema.parse(kinks), []);
 
   const methods = useForm<FormValues>({
     defaultValues: async () => {
@@ -58,7 +59,7 @@ export const Form = forwardRef<
           Clear all
         </Button>
         {parsedKinks.sections.map((section) => (
-          <Section
+          <FormSection
             key={section.id}
             sectionId={section.id}
             label={section.label}
@@ -72,12 +73,12 @@ export const Form = forwardRef<
 
 Form.displayName = "Form";
 
-interface SectionProps {
+interface FormSectionProps {
   sectionId: TSection["id"];
   label: TSection["label"];
   questions: TSection["questions"];
 }
-function Section({ sectionId, label, questions }: SectionProps) {
+function FormSection({ sectionId, label, questions }: FormSectionProps) {
   const subquestionLabels = useMemo(() => {
     const uniqueLabels = questions
       .flatMap((question) =>
@@ -99,10 +100,8 @@ function Section({ sectionId, label, questions }: SectionProps) {
   }, [questions, sectionId]);
 
   return (
-    <section className="mb-4 break-inside-avoid-column rounded-xl border-2 border-rose-300 bg-white px-2.5 py-4 shadow-xl shadow-rose-100 xs:p-6 lg:p-4">
-      <h2 className="text-2xl font-semibold drop-shadow-sm xs:text-3xl lg:text-2xl">
-        {label}
-      </h2>
+    <Section>
+      <Section.Title>{label}</Section.Title>
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
         <thead
           className="hidden lg:table-header-group"
@@ -121,7 +120,7 @@ function Section({ sectionId, label, questions }: SectionProps) {
         </thead>
         <tbody className="mt-4 flex flex-col gap-8 sm:gap-4 lg:table-row-group">
           {questions.map((question) => (
-            <Question
+            <FormQuestion
               key={question.id}
               questionId={question.id}
               sectionId={sectionId}
@@ -131,17 +130,17 @@ function Section({ sectionId, label, questions }: SectionProps) {
           ))}
         </tbody>
       </table>
-    </section>
+    </Section>
   );
 }
 
-interface QuestionProps {
+interface FormQuestionProps {
   questionId: TQuestion["id"];
   sectionId: TSection["id"];
   label: TQuestion["label"];
   subquestions: TQuestion["subquestions"];
 }
-function Question(props: QuestionProps) {
+function FormQuestion(props: FormQuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
   return (
     <tr className="grid grid-cols-1 items-center gap-x-4 gap-y-2 sm:grid-cols-2 lg:table-row">
@@ -163,7 +162,7 @@ function Question(props: QuestionProps) {
             <span>{label}</span>
             {subquestions.length > 1 && <span> ({subquestion.label})</span>}
           </td>
-          <Subquestion
+          <FormSubquestion
             subquestionId={subquestion.id}
             questionId={questionId}
             sectionId={sectionId}
@@ -174,12 +173,12 @@ function Question(props: QuestionProps) {
   );
 }
 
-interface SubquestionProps {
+interface FormSubquestionProps {
   subquestionId: TSubquestion["id"];
   questionId: TQuestion["id"];
   sectionId: TSection["id"];
 }
-function Subquestion(props: SubquestionProps) {
+function FormSubquestion(props: FormSubquestionProps) {
   const { subquestionId, questionId, sectionId } = props;
   const { register } = useFormContext();
   const name = `${sectionId}.${questionId}.${subquestionId}`;
