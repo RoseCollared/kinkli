@@ -19,14 +19,19 @@ export function BackToTopButton() {
   });
 
   return (
-    <Button
-      className={twMerge(
-        "pointer-events-none fixed bottom-6 left-6 p-0.5 opacity-0 shadow-md transition-opacity sm:p-0.5",
-        show && "pointer-events-auto opacity-100"
-      )}
-      onClick={() => document.body.scrollIntoView({ behavior: "smooth" })}
-    >
-      <BiChevronUp className="h-10 w-10" />
-    </Button>
+    <>
+      {/* Button is semi-transparent until the cursor hovers over this div, but only on lg and above */}
+      <div className="peer fixed -bottom-12 -left-12 h-48 w-48 rounded-full" />
+      <Button
+        className={twMerge(
+          "pointer-events-none fixed bottom-6 left-6 p-0.5 opacity-0 shadow-md transition-all sm:p-0.5",
+          show &&
+            "pointer-events-auto opacity-100 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 lg:opacity-50"
+        )}
+        onClick={() => document.body.scrollIntoView({ behavior: "smooth" })}
+      >
+        <BiChevronUp className="h-10 w-10" />
+      </Button>
+    </>
   );
 }
