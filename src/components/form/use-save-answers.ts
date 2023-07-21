@@ -1,20 +1,22 @@
 import { encodeValues } from "@kinklist/utils";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import type { UseFormReturn } from "react-hook-form";
+import { Control, useWatch } from "react-hook-form";
 import { FormValues } from "./schema";
 
 /**
  * Saves answers in search params when form state changes
  */
 export function useSaveAnswers(
-  methods: UseFormReturn<FormValues>,
+  control: Control<FormValues>,
   emptyDefaultValues: FormValues
 ) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  methods.watch((values) => {
+  const values = useWatch<FormValues>({ control });
+
+  useEffect(() => {
     if (Object.keys(values).length === 0) {
       // Values haven't been loaded yet, don't do anything
       return;
@@ -34,5 +36,5 @@ export function useSaveAnswers(
       "",
       pathname + (params.toString() ? "?" + params.toString() : "")
     );
-  });
+  }, [emptyDefaultValues, pathname, searchParams, values]);
 }
