@@ -137,7 +137,7 @@ function ResultsQuestion(props: ResultsQuestionProps) {
           />
         </td>
       ))}
-      <td className="sm:w-54 pl-3 text-xl leading-tight text-gray-600 lg:pl-2 lg:text-lg">
+      <td className="sm:w-54 pl-3 text-xl font-medium leading-tight text-gray-600 lg:pl-2 lg:text-lg">
         {label}
       </td>
     </tr>
