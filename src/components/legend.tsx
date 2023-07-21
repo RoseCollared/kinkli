@@ -15,15 +15,16 @@ export function Legend({ className }: LegendProps) {
     rootMargin: "-1px 0px",
     initialInView: true,
   });
-  const isSticky = !inView;
+  const isSticking = !inView;
 
   return (
     <aside
       ref={ref}
       className={twMerge(
         // Fine-tune max width to balance rows
-        "z-10 box-content flex max-w-[260px] flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-all sm:max-w-md md:max-w-none",
-        isSticky && "border-2 border-t-0 border-rose-300 bg-white shadow-lg",
+        "z-10 box-content flex max-w-[260px] flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-all sm:sticky sm:top-0 sm:max-w-md md:max-w-none",
+        isSticking &&
+          "sm:border-2 sm:border-t-0 sm:border-rose-300 sm:bg-white sm:shadow-lg",
         className
       )}
     >

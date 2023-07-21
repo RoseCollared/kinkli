@@ -31,7 +31,7 @@ export default function RootLayout({
             <ShareButton />
           </div>
         </header>
-        <Legend className="sm:sticky sm:top-0" />
+        <Legend />
         <main>{children}</main>
         <BackToTopButton />
       </body>
