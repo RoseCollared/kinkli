@@ -32,7 +32,7 @@ export default function ResultsPage() {
   if (!answers) return null;
 
   return (
-    <div>
+    <div className="relative mx-4 columns-1 py-12 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6">
       {parsedKinks.sections.map((section) => (
         <ResultsSection
           key={section.id}
@@ -80,9 +80,11 @@ function ResultsSection(props: ResultsSectionProps) {
     <Section>
       <Section.Title>{label}</Section.Title>
       {subquestionLabels.length > 1 && (
-        <p className="italic text-gray-600">{subquestionLabels.join(", ")}</p>
+        <p className="text-lg italic text-gray-600 lg:text-base">
+          {subquestionLabels.join(", ")}
+        </p>
       )}
-      <table className="border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2">
+      <table className="-mx-2 -my-2 border-separate border-spacing-x-2 border-spacing-y-2 lg:-mx-1 lg:border-spacing-x-1">
         <thead aria-hidden={subquestionLabels.length <= 1}>
           {/* The table head only exists for accessiblity, we don't render any visible headings */}
           <tr>
@@ -123,17 +125,21 @@ function ResultsQuestion(props: ResultsQuestionProps) {
   const { questionId, sectionId, label, subquestions, answers } = props;
 
   return (
-    <tr className="flex">
-      <td className="w-40">{label}</td>
+    <tr>
       {subquestions.map((subquestion) => (
-        <td key={subquestion.id}>
+        // px-0 to match the horizontal spacing between radio buttons in the form
+        <td key={subquestion.id} className="px-0">
           <Radio
-            checked
+            checked={!!answers[sectionId][questionId][subquestion.id]} // don't check if not answered
             value={answers[sectionId][questionId][subquestion.id] ?? "0"}
             readOnly
+            className="block" // to prevent adding space for descenders
           />
         </td>
       ))}
+      <td className="sm:w-54 pl-3 text-xl leading-tight text-gray-600 lg:pl-2 lg:text-lg">
+        {label}
+      </td>
     </tr>
   );
 }
