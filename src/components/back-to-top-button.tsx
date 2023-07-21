@@ -21,7 +21,7 @@ export function BackToTopButton() {
   return (
     <Button
       className={twMerge(
-        "pointer-events-none fixed bottom-6 left-6 p-0.5 opacity-0 shadow-md transition-opacity",
+        "pointer-events-none fixed bottom-6 left-6 p-0.5 opacity-0 shadow-md transition-opacity sm:p-0.5",
         show && "pointer-events-auto opacity-100"
       )}
       onClick={() => document.body.scrollIntoView({ behavior: "smooth" })}

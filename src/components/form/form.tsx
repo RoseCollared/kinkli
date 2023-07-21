@@ -53,8 +53,8 @@ export const Form = forwardRef<
               methods.reset(getEmptyDefaultValues(parsedKinks));
             }
           }}
-          variant="secondary"
-          className="absolute right-0 top-0 border-none px-3 py-2 text-base shadow-none"
+          variant="tertiary"
+          className="absolute right-0 top-0 px-3 py-2 text-base sm:px-3 sm:text-base"
         >
           Clear all
         </Button>
