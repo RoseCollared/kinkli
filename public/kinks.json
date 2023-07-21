@@ -1289,16 +1289,6 @@
               "label": "General"
             }
           ]
-        },
-        {
-          "id": "tears",
-          "label": "Tears",
-          "subquestions": [
-            {
-              "id": "general",
-              "label": "General"
-            }
-          ]
         }
       ]
     },
@@ -1473,6 +1463,48 @@
       "label": "Miscellaneous",
       "questions": [
         {
+          "id": "choking",
+          "label": "Choking",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "crying",
+          "label": "Crying",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "gagging",
+          "label": "Gagging",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
           "id": "public-play",
           "label": "Public play",
           "subquestions": [
@@ -1501,8 +1533,8 @@
           ]
         },
         {
-          "id": "choking",
-          "label": "Choking",
+          "id": "feminization",
+          "label": "Feminization",
           "subquestions": [
             {
               "id": "giving",
@@ -1515,8 +1547,8 @@
           ]
         },
         {
-          "id": "gagging",
-          "label": "Gagging",
+          "id": "cuckold-cuckquean",
+          "label": "Cuckold / Cuckquean",
           "subquestions": [
             {
               "id": "giving",
@@ -1545,34 +1577,6 @@
         {
           "id": "pregnancy",
           "label": "Pregnancy",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
-          "id": "feminization",
-          "label": "Feminization",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
-          "id": "cuckold-cuckquean",
-          "label": "Cuckold / Cuckquean",
           "subquestions": [
             {
               "id": "giving",
