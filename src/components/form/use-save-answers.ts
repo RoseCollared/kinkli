@@ -33,14 +33,8 @@ export function useSaveAnswers(
     }
 
     const paramstring = params.toString();
-    // HACK: use history API because Next.js router.replace() always scrolls to top
-    // See: https://github.com/vercel/next.js/issues/50105#issuecomment-1585699851
-    // history.replaceState(
-    //   null,
-    //   "",
-    //   pathname + (params.toString() ? "?" + params.toString() : "")
-    // );
-    // TODO: use `scroll: false` after upgrading Next.js version
-    router.replace(pathname + (paramstring ? "?" + paramstring : ""));
+    router.replace(pathname + (paramstring ? "?" + paramstring : ""), {
+      scroll: false,
+    });
   }, [emptyDefaultValues, pathname, searchParams, values, router]);
 }
