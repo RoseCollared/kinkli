@@ -15,7 +15,7 @@ export default function ResultsLayout({
         <div className="flex basis-0 items-center justify-start sm:grow">
           <Link href="/">
             <Button
-              variant="tertiary"
+              variant="secondary"
               className="px-3 py-2 text-base sm:px-3 sm:text-base"
             >
               <Button.Icon Component={BiLeftArrowAlt} className="w-6 h-6" />
