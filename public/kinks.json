@@ -477,6 +477,20 @@
           ]
         },
         {
+          "id": "choking",
+          "label": "Choking",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
           "id": "edging",
           "label": "Edging",
           "subquestions": [
@@ -907,20 +921,6 @@
           ]
         },
         {
-          "id": "forced-orgasm",
-          "label": "Forced orgasm",
-          "subquestions": [
-            {
-              "id": "dominant",
-              "label": "Dominant"
-            },
-            {
-              "id": "submissive",
-              "label": "Submissive"
-            }
-          ]
-        },
-        {
           "id": "orgasm-control",
           "label": "Orgasm control",
           "subquestions": [
@@ -947,6 +947,34 @@
               "label": "Submissive"
             }
           ]
+        },
+        {
+          "id": "forced-orgasm",
+          "label": "Forced orgasm",
+          "subquestions": [
+            {
+              "id": "dominant",
+              "label": "Dominant"
+            },
+            {
+              "id": "submissive",
+              "label": "Submissive"
+            }
+          ]
+        },
+        {
+          "id": "ruined-orgasm",
+          "label": "Ruined orgasm",
+          "subquestions": [
+            {
+              "id": "dominant",
+              "label": "Dominant"
+            },
+            {
+              "id": "submissive",
+              "label": "Submissive"
+            }
+          ]
         }
       ]
     },
@@ -957,6 +985,20 @@
         {
           "id": "non-con-rape",
           "label": "Non-con/​rape",
+          "subquestions": [
+            {
+              "id": "aggressor",
+              "label": "Aggressor"
+            },
+            {
+              "id": "target",
+              "label": "Target"
+            }
+          ]
+        },
+        {
+          "id": "free-use",
+          "label": "Free use",
           "subquestions": [
             {
               "id": "aggressor",
@@ -997,6 +1039,34 @@
           ]
         },
         {
+          "id": "primal-play",
+          "label": "Primal play",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "sleep-play",
+          "label": "Sleep play",
+          "subquestions": [
+            {
+              "id": "aggressor",
+              "label": "Aggressor"
+            },
+            {
+              "id": "target",
+              "label": "Target"
+            }
+          ]
+        },
+        {
           "id": "drugs",
           "label": "Drugs",
           "subquestions": [
@@ -1013,20 +1083,6 @@
         {
           "id": "alcohol",
           "label": "Alcohol",
-          "subquestions": [
-            {
-              "id": "aggressor",
-              "label": "Aggressor"
-            },
-            {
-              "id": "target",
-              "label": "Target"
-            }
-          ]
-        },
-        {
-          "id": "sleep-play",
-          "label": "Sleep play",
           "subquestions": [
             {
               "id": "aggressor",
@@ -1057,6 +1113,16 @@
         {
           "id": "age-gap",
           "label": "Age gap",
+          "subquestions": [
+            {
+              "id": "general",
+              "label": "General"
+            }
+          ]
+        },
+        {
+          "id": "abdl",
+          "label": "ABDL",
           "subquestions": [
             {
               "id": "general",
@@ -1293,9 +1359,23 @@
       ]
     },
     {
-      "id": "degradation",
-      "label": "Degradation",
+      "id": "emotional",
+      "label": "Emotional",
       "questions": [
+        {
+          "id": "praise",
+          "label": "Praise",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
         {
           "id": "name-calling",
           "label": "Name calling",
@@ -1463,20 +1543,6 @@
       "label": "Miscellaneous",
       "questions": [
         {
-          "id": "choking",
-          "label": "Choking",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
           "id": "crying",
           "label": "Crying",
           "subquestions": [
@@ -1547,20 +1613,6 @@
           ]
         },
         {
-          "id": "cuckold-cuckquean",
-          "label": "Cuckold/​Cuckquean",
-          "subquestions": [
-            {
-              "id": "giving",
-              "label": "Giving"
-            },
-            {
-              "id": "receiving",
-              "label": "Receiving"
-            }
-          ]
-        },
-        {
           "id": "impregnation",
           "label": "Impregnation",
           "subquestions": [
@@ -1577,6 +1629,20 @@
         {
           "id": "pregnancy",
           "label": "Pregnancy",
+          "subquestions": [
+            {
+              "id": "giving",
+              "label": "Giving"
+            },
+            {
+              "id": "receiving",
+              "label": "Receiving"
+            }
+          ]
+        },
+        {
+          "id": "cuckold-cuckquean",
+          "label": "Cuckold/​Cuckquean",
           "subquestions": [
             {
               "id": "giving",
