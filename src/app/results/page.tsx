@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@kinklist/components/button";
 import { getEmptyDefaultValues } from "@kinklist/components/form/default-values";
 import {
   kinksSchema,
@@ -10,6 +11,7 @@ import {
 import { Radio } from "@kinklist/components/radio";
 import { Section } from "@kinklist/components/section";
 import { decodeValues } from "@kinklist/utils";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import kinks from "../../../public/kinks.json";
@@ -33,6 +35,17 @@ export default function ResultsPage() {
 
   return (
     <div className="relative mx-4 columns-1 py-12 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6">
+      <Link
+        href={{ pathname: "/", search: searchParams.toString() }}
+        className="absolute right-0 top-0"
+      >
+        <Button
+          variant="tertiary"
+          className="px-3 py-2 text-base sm:px-3 sm:text-base"
+        >
+          Edit answers
+        </Button>
+      </Link>
       {parsedKinks.sections.map((section) => (
         <ResultsSection
           key={section.id}
