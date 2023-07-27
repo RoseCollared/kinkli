@@ -1,3 +1,9 @@
 @tailwind base;
+@layer base {
+  /* Strangely, this fixes incorrect vertical alignment of text in html2canvas output */
+  img {
+    @apply inline-block;
+  }
+}
 @tailwind components;
 @tailwind utilities;

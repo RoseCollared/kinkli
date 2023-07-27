@@ -14,7 +14,7 @@ import { decodeValues } from "@kinklist/utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ForwardedRef, forwardRef, useMemo } from "react";
-import kinks from "../../../public/kinks-small.json";
+import kinks from "../../../public/kinks.json";
 
 interface ResultsProps {
   /** Whether to render a minimal view meant for image export. */
@@ -156,6 +156,8 @@ function ResultsQuestion(props: ResultsQuestionProps) {
         // px-0 to match the horizontal spacing between radio buttons in the form
         <td key={subquestion.id} className="px-0">
           <Radio
+            // TODO: use context for isExport
+            isExport
             checked={!!answers[sectionId][questionId][subquestion.id]} // don't check if not answered
             value={answers[sectionId][questionId][subquestion.id] ?? "0"}
             readOnly

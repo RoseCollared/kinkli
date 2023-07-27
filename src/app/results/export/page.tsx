@@ -15,10 +15,11 @@ export default function ExportPage() {
         alert("Whoops, I can't find any results to export!");
         return;
       }
-      console.log(resultsElement);
-      const canvas = await html2canvas(resultsElement);
+      const canvas = await html2canvas(resultsElement, {
+        width: 1920,
+        windowWidth: 1920,
+      });
       const url = canvas.toDataURL();
-      console.log(url);
       setImageDataURL(url);
     }
     asyncEffect();
@@ -26,12 +27,13 @@ export default function ExportPage() {
 
   return (
     <>
-        {/* LEFT HERE */}
-        {/* Try to hide the results */}
-        {/* Don't show the layout */}
-        {/* Improve generated image  */}
-        <img src={imageDataURL} />
+      {/* LEFT HERE */}
+      {/* Use context to pass down isExport prop */}
+      {/* Show different header */}
+      <img src={imageDataURL} alt="results" />
+      <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
         <Results isExport ref={resultsRef} />
+      </div>
     </>
   );
 }
