@@ -18,17 +18,39 @@ const colorMap = {
 export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
   /** Whether to render the small variant regardless of screen size */
   alwaysSmall?: boolean;
+  isExport?: boolean;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { name, value, className, alwaysSmall, ...restProps } = props;
+  const { name, value, className, alwaysSmall, isExport, ...restProps } = props;
 
   // This will be undefined when not used in a <FormProvider>
   const formContext = useFormContext() as UseFormReturn | undefined;
 
   const valueOfCheckedInput =
     formContext && name ? formContext.watch(name) : undefined;
-  const isChecked = value !== undefined && value === valueOfCheckedInput;
+  const isChecked =
+    props.checked || (value !== undefined && value === valueOfCheckedInput);
+
+  const sharedStyles = twMerge(
+    "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
+    alwaysSmall && "h-5 w-5 before:inset-0.5 xs:h-5 xs:w-5",
+    value && colorMap[value as string]
+  );
+
+  if (isExport) {
+    return (
+      <div
+        className={twMerge(
+          "inline-block",
+          sharedStyles,
+          // Since a div can't be "checked", we determine the checked state with JS
+          isChecked && "border-black/40 before:opacity-100",
+          className
+        )}
+      />
+    );
+  }
 
   return (
     <input
@@ -45,12 +67,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       name={name}
       value={value}
       {...restProps}
-      className={twMerge(
-        "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
-        alwaysSmall && "h-5 w-5 before:inset-0.5 xs:h-5 xs:w-5",
-        value && colorMap[value as string],
-        className
-      )}
+      className={twMerge(sharedStyles, className)}
     />
   );
 });
