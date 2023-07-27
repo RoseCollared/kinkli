@@ -1,6 +1,7 @@
 "use client";
 
 import { Results } from "@kinklist/components/results/results";
+import { ExportProvider } from "@kinklist/context/export-context";
 import html2canvas from "html2canvas";
 import { useEffect, useRef, useState } from "react";
 
@@ -28,12 +29,16 @@ export default function ExportPage() {
   return (
     <>
       {/* LEFT HERE */}
-      {/* Use context to pass down isExport prop */}
-      {/* Show different header */}
+      {/* TODO: show different header on this page */}
+      {/* TODO: include legend in export */}
+      {/* TODO: add instructions for saving the results image */}
+      {/* TODO: look at other TODOs */}
       <img src={imageDataURL} alt="results" />
-      <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
-        <Results isExport ref={resultsRef} />
-      </div>
+      <ExportProvider>
+        <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
+          <Results ref={resultsRef} />
+        </div>
+      </ExportProvider>
     </>
   );
 }
