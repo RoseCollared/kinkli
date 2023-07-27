@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsExport } from "@kinklist/context/export-context";
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { useFormContext, UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
@@ -18,11 +19,11 @@ const colorMap = {
 export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
   /** Whether to render the small variant regardless of screen size */
   alwaysSmall?: boolean;
-  isExport?: boolean;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { name, value, className, alwaysSmall, isExport, ...restProps } = props;
+  const { name, value, className, alwaysSmall, ...restProps } = props;
+  const isExport = useIsExport();
 
   // This will be undefined when not used in a <FormProvider>
   const formContext = useFormContext() as UseFormReturn | undefined;
