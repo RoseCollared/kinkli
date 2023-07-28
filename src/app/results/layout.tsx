@@ -28,6 +28,7 @@ export default function ResultsLayout({
         <h1 className="text-4xl font-bold drop-shadow-sm xs:text-5xl">
           Kinklist
         </h1>
+        {/* LEFT HERE */}
         {/* TODO: check responsiveness */}
         <div className="basis-0 items-center justify-end sm:flex sm:grow">
           <ExportButton />
