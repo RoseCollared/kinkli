@@ -1,5 +1,6 @@
 "use client";
 
+import { Legend } from "@kinklist/components/legend";
 import { Results } from "@kinklist/components/results/results";
 import { ExportProvider } from "@kinklist/context/export-context";
 import html2canvas from "html2canvas";
@@ -33,11 +34,10 @@ export default function ExportPage() {
   return (
     <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-8 sm:gap-12 sm:py-12">
       {/* LEFT HERE */}
-      {/* TODO: include legend in export */}
       {/* TODO: add instructions for saving the results image */}
       {/* TODO: look at other TODOs */}
 
-      <p className="mx-4 max-w-prose text-sm font-medium text-gray-700 sm:mx-8 sm:text-base">
+      <p className="mx-4 max-w-prose text-sm font-medium text-gray-600 sm:mx-8 sm:text-base">
         Here&apos;s a picture of your results! You can save it by right-clicking
         and choosing &ldquo;Save Image As...&rdquo; (on a computer) or
         long-pressing (on a mobile device).
@@ -49,15 +49,16 @@ export default function ExportPage() {
         className="max-h-[75vh] max-w-full rounded-3xl border-4 border-rose-300 shadow-2xl"
       />
 
-      <div
-        aria-hidden
-        ref={resultsRef}
-        className="absolute left-[-9999px] top-[-9999px] w-[1920px] bg-rose-50"
-      >
-        <ExportProvider>
-          <Results className="p-12" />
-        </ExportProvider>
-      </div>
+      <ExportProvider>
+        <div
+          aria-hidden
+          ref={resultsRef}
+          className="absolute left-[-9999px] top-[-9999px] flex w-[1920px] flex-col items-center gap-8 bg-rose-50 p-12 pt-8"
+        >
+          <Legend className="border-none pt-4 sm:static sm:bg-transparent" />
+          <Results />
+        </div>
+      </ExportProvider>
     </div>
   );
 }
