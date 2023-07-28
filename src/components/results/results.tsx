@@ -15,9 +15,13 @@ import { decodeValues } from "@kinklist/utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ForwardedRef, forwardRef, useMemo } from "react";
+import { twMerge } from "tailwind-merge";
 import kinks from "../../../public/kinks.json";
 
-function _Results(props: {}, ref: ForwardedRef<HTMLDivElement>) {
+function _Results(
+  { className }: { className?: string },
+  ref: ForwardedRef<HTMLDivElement>
+) {
   const isExport = useIsExport();
   const searchParams = useSearchParams();
   const parsedKinks = useMemo(() => kinksSchema.parse(kinks), []);
@@ -38,7 +42,7 @@ function _Results(props: {}, ref: ForwardedRef<HTMLDivElement>) {
   return (
     <div
       ref={ref}
-      className="relative mx-4 columns-1 py-12 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6"
+      className={twMerge("relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6", className)}
     >
       {!isExport && (
         <Link

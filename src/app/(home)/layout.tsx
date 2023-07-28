@@ -1,13 +1,14 @@
 import { BackToTopButton } from "@kinklist/components/back-to-top-button";
 import { Legend } from "@kinklist/components/legend";
 import { ShareButton } from "@kinklist/components/share-button";
+import { ReactNode } from "react";
 
 // This route group exists because the layout is different from the results page
 
 export default function HomeLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <>
