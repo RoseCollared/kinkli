@@ -3,13 +3,22 @@
 import { Legend } from "@kinklist/components/legend";
 import { Results } from "@kinklist/components/results/results";
 import { ExportProvider } from "@kinklist/context/export-context";
+import { primaryInput } from "detect-it";
 import html2canvas from "html2canvas";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function ExportPage() {
   const [imageDataURL, setImageDataURL] = useState<string>();
   const resultsRef = useRef<HTMLDivElement>(null);
 
+  // Using an effect to prevent hydration errors
+  // This way, the initial client render always matches the server, but then changes if needed
+  const [isTouch, setIsTouch] = useState(false);
+  useLayoutEffect(() => {
+    setIsTouch(primaryInput === "touch");
+  }, []);
+
+  // Render results as image after first React render
   useEffect(() => {
     async function asyncEffect() {
       const resultsElement = resultsRef.current;
@@ -32,15 +41,14 @@ export default function ExportPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-8 sm:gap-12 sm:py-12">
-      {/* LEFT HERE */}
-      {/* TODO: add instructions for saving the results image */}
-      {/* TODO: look at other TODOs */}
-
+    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 sm:gap-12">
       <p className="mx-4 max-w-prose text-sm font-medium text-gray-600 sm:mx-8 sm:text-base">
-        Here&apos;s a picture of your results! You can save it by right-clicking
-        and choosing &ldquo;Save Image As...&rdquo; (on a computer) or
-        long-pressing (on a mobile device).
+        Here&apos;s a picture of your results! You can save it by{" "}
+        {isTouch ? (
+          <>long-pressing and choosing &ldquo;Save Image&rdquo; or similar</>
+        ) : (
+          <>right-clicking and choosing &ldquo;Save Image As...&rdquo;</>
+        )}
       </p>
 
       <img
