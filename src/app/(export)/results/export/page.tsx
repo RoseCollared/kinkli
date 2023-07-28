@@ -12,51 +12,67 @@ import { BiSolidImage } from "react-icons/bi";
 export default function ExportPage() {
   const [image, setImage] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
-  const resultsRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<unknown>(null);
 
-  // Using an effect to prevent hydration errors
+  // Detect whether the user is using a mouse or touch input
+  // We use an effect to prevent hydration errors
   // This way, the initial client render always matches the server, but then changes if needed
   const [isTouch, setIsTouch] = useState(false);
   useLayoutEffect(() => {
     setIsTouch(primaryInput === "touch");
   }, []);
 
-  // Render results as image after first React render
+  // Generate results image after first render
+  const resultsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     async function asyncEffect() {
       const resultsElement = resultsRef.current;
       if (!resultsElement) {
-        alert("Whoops, I can't find any results to export!");
+        setError("Couldn't find results to export");
         setIsLoading(false);
         return;
       }
-      // TODO: handle timeout error
-      const canvas = await html2canvas(resultsElement, {
-        width: 1920,
-        windowWidth: 1920,
+      try {
+        const canvas = await html2canvas(resultsElement, {
+          width: 1920,
+          windowWidth: 1920,
 
-        // For consistent output resolution independent of device
-        // (using 1 causes weird artifacts)
-        scale: 1.4,
-      });
-      const url = canvas.toDataURL();
-      setImage(url);
-      setIsLoading(false);
+          // For consistent output resolution independent of device
+          // (using 1 causes weird artifacts)
+          scale: 1.4,
+        });
+        const url = canvas.toDataURL();
+        setImage(url);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
     }
     asyncEffect();
   }, []);
 
   return (
     <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 sm:gap-12">
-      {isLoading ? (
+      {isLoading && (
         <div className="flex flex-col items-center gap-x-8 gap-y-4 py-12 text-center sm:flex-row">
           <Loader />
           Generating image...
         </div>
-      ) : (
+      )}
+
+      {!!error && (
+        <div className="space-y-4 py-12 text-center">
+          {/* :( */}
+          <p>Oops! Something went wrong :&#40; </p>
+          <pre>{error instanceof Error ? error.message : String(error)}</pre>
+        </div>
+      )}
+
+      {!isLoading && !error && (
         <>
           <p className="mx-4 max-w-prose text-sm sm:mx-8 sm:text-base">
-            Here&apos;s a picture of your results! You can save it by{" "}
+            Here&apos;s a picture of your results! Save it by{" "}
             {isTouch ? (
               <>
                 long-pressing and choosing &ldquo;Save Image&rdquo; or similar
