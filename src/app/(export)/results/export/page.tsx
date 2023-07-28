@@ -6,6 +6,7 @@ import { ExportProvider } from "@kinklist/context/export-context";
 import { primaryInput } from "detect-it";
 import html2canvas from "html2canvas";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { BiSolidImage } from "react-icons/bi";
 
 export default function ExportPage() {
   const [imageDataURL, setImageDataURL] = useState<string>();
@@ -51,11 +52,20 @@ export default function ExportPage() {
         )}
       </p>
 
-      <img
-        src={imageDataURL}
-        alt="results"
-        className="max-h-[75vh] max-w-full rounded-3xl border-4 border-rose-300 shadow-2xl"
-      />
+      <div className="group relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity group-hover:opacity-100"
+        >
+          <BiSolidImage className="h-16 w-16 fill-black/75 sm:h-24 sm:w-24" />
+        </div>
+        <img
+          src={imageDataURL}
+          alt="results"
+          className="max-h-[75vh]"
+          title="This is an image"
+        />
+      </div>
 
       <ExportProvider>
         <div
