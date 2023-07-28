@@ -19,6 +19,10 @@ export default function ExportPage() {
       const canvas = await html2canvas(resultsElement, {
         width: 1920,
         windowWidth: 1920,
+
+        // For consistent output resolution independent of device
+        // (using 1 causes weird artifacts)
+        scale: 1.4,
       });
       const url = canvas.toDataURL();
       setImageDataURL(url);
@@ -27,18 +31,33 @@ export default function ExportPage() {
   }, []);
 
   return (
-    <>
+    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-8 sm:gap-12 sm:py-12">
       {/* LEFT HERE */}
-      {/* TODO: show different header on this page */}
       {/* TODO: include legend in export */}
       {/* TODO: add instructions for saving the results image */}
       {/* TODO: look at other TODOs */}
-      <img src={imageDataURL} alt="results" />
-      <ExportProvider>
-        <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
-          <Results ref={resultsRef} />
-        </div>
-      </ExportProvider>
-    </>
+
+      <p className="mx-4 max-w-prose text-sm font-medium text-gray-700 sm:mx-8 sm:text-base">
+        Here&apos;s a picture of your results! You can save it by right-clicking
+        and choosing &ldquo;Save Image As...&rdquo; (on a computer) or
+        long-pressing (on a mobile device).
+      </p>
+
+      <img
+        src={imageDataURL}
+        alt="results"
+        className="max-h-[75vh] max-w-full rounded-3xl border-4 border-rose-300 shadow-2xl"
+      />
+
+      <div
+        aria-hidden
+        ref={resultsRef}
+        className="absolute left-[-9999px] top-[-9999px] w-[1920px] bg-rose-50"
+      >
+        <ExportProvider>
+          <Results className="p-12" />
+        </ExportProvider>
+      </div>
+    </div>
   );
 }

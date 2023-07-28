@@ -3,12 +3,13 @@ import { Button } from "@kinklist/components/button";
 import { ExportButton } from "@kinklist/components/export-button";
 import { Legend } from "@kinklist/components/legend";
 import Link from "next/link";
+import { ReactNode } from "react";
 import { BiLeftArrowAlt } from "react-icons/bi";
 
 export default function ResultsLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <>
