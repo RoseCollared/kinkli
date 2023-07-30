@@ -6,7 +6,6 @@ export type ButtonVariant = keyof typeof variantStyles;
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
-  Icon?: IconType;
 }
 
 const variantStyles = {
