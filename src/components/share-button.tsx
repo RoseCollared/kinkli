@@ -1,15 +1,19 @@
 "use client";
 
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import * as Dialog from "@radix-ui/react-dialog";
+import { BiSolidShareAlt } from "react-icons/bi";
 import { Button } from "./button";
+import { ShareDialog } from "./share-dialog";
 
 export function ShareButton() {
-  const searchParams = useSearchParams();
-
   return (
-    <Link href={{ pathname: "/results", search: searchParams.toString() }}>
-      <Button>Share</Button>
-    </Link>
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Button icon={<BiSolidShareAlt />}>
+          Share
+        </Button>
+      </Dialog.Trigger>
+      <ShareDialog />
+    </Dialog.Root>
   );
 }
