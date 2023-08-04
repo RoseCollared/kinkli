@@ -3,9 +3,10 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ReactNode } from "react";
-import { BiImage, BiLink, BiX } from "react-icons/bi";
-import { UrlObject } from "url";
+import type { ReactNode } from "react";
+import { BiCheck, BiCopyAlt, BiImage, BiLink, BiX } from "react-icons/bi";
+import useClipboard from "react-use-clipboard";
+import type { UrlObject } from "url";
 import { Button, IconButton } from "./button";
 import { Input } from "./input";
 
@@ -57,6 +58,9 @@ interface ShareOptionProps {
 }
 
 function ShareOption({ href, children }: ShareOptionProps) {
+  const url = `${window.location.origin}${href.pathname}?${href.search}`;
+  const [isCopied, copy] = useClipboard(url, { successDuration: 2000 });
+
   return (
     <div className="flex grow basis-0 flex-col gap-2">
       <Link href={href} target="_blank" tabIndex={-1}>
@@ -64,11 +68,27 @@ function ShareOption({ href, children }: ShareOptionProps) {
           <div className="flex flex-col items-center text-base">{children}</div>
         </Button>
       </Link>
-      <Input
-        readOnly
-        defaultValue={`${window.location.origin}${href.pathname}?${href.search}`}
-        onFocus={(event) => event.target.select()}
-      />
+      <div className="flex items-center gap-2">
+        <Input
+          readOnly
+          defaultValue={url}
+          onFocus={(event) => event.target.select()}
+          className="min-w-0 grow"
+        />
+        <IconButton
+          onClick={copy}
+          icon={
+            isCopied ? (
+              <BiCheck className="h-5 w-5" />
+            ) : (
+              <BiCopyAlt className="h-4 w-4" />
+            )
+          }
+          aria-label={isCopied ? "Copied" : "Copy"}
+          title={isCopied ? "Copied" : "Copy"}
+          className={isCopied ? "p-1.5 sm:p-1.5" : "p-2 sm:p-2"}
+        />
+      </div>
     </div>
   );
 }

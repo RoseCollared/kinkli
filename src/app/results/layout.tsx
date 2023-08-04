@@ -2,7 +2,7 @@ import { BackToTopButton } from "@kinklist/components/back-to-top-button";
 import { ExportButton } from "@kinklist/components/export-button";
 import { Legend } from "@kinklist/components/legend";
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function ResultsLayout({ children }: { children: ReactNode }) {
   return (
