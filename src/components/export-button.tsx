@@ -10,6 +10,7 @@ export function ExportButton() {
   return (
     <Link
       href={{ pathname: "/results/export", search: searchParams.toString() }}
+      tabIndex={-1}
     >
       <Button>Export</Button>
     </Link>
