@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type ButtonVariant = keyof typeof variantStyles;
