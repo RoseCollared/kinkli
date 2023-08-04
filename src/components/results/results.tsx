@@ -42,12 +42,16 @@ function _Results(
   return (
     <div
       ref={ref}
-      className={twMerge("relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6", className)}
+      className={twMerge(
+        "relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
+        className
+      )}
     >
       {!isExport && (
         <Link
           href={{ pathname: "/", search: searchParams.toString() }}
           className="absolute right-0 top-0"
+          tabIndex={-1}
         >
           <Button
             variant="tertiary"
