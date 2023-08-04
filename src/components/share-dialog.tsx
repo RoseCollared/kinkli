@@ -16,14 +16,14 @@ export function ShareDialog() {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 z-10 bg-black/50" />
-      <Dialog.Content className="fixed left-[50%] top-[50%] z-10 flex max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] flex-col gap-4 overflow-y-auto rounded-xl bg-rose-50 p-6 shadow-2xl focus:outline-none xs:gap-4 xs:p-8">
+      <Dialog.Content className="fixed left-[50%] top-[50%] z-10 flex max-h-[85vh] w-[90vw] max-w-md translate-x-[-50%] translate-y-[-50%] flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-rose-50 p-6 drop-shadow-2xl focus:outline-none xs:gap-4 xs:p-8 sm:max-w-2xl">
         <Dialog.Title className="grow text-2xl font-medium sm:text-3xl">
           Share
         </Dialog.Title>
         <Dialog.Description>
           Choose how you want to share your results.
         </Dialog.Description>
-        <div className="flex w-full max-w-xs flex-col gap-x-8 gap-y-8 self-center sm:max-w-none sm:flex-row">
+        <div className="flex flex-col gap-x-8 gap-y-8 sm:max-w-none sm:flex-row">
           <ShareOption
             href={{ pathname: "/results", search: searchParams.toString() }}
           >
@@ -92,3 +92,7 @@ function ShareOption({ href, children }: ShareOptionProps) {
     </div>
   );
 }
+
+// LEFT HERE
+// TODO: add a little description under each share option (or tooltip on mobile?), secondary text color
+// TODO: add icon to indicate button opens in new tab
