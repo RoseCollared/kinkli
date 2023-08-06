@@ -12,7 +12,7 @@ module.exports = {
       xs: "375px",
       ...defaultTheme.screens,
       "3xl": "1664px",
-      "4xl": "1792px"
+      "4xl": "1792px",
     },
     extend: {
       backgroundImage: {

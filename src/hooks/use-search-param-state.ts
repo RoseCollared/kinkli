@@ -3,10 +3,17 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+export interface Options {
+  name: string;
+  initialValue?: string;
+  method?: "push" | "replace";
+}
+
 export function useSearchParamState(
-  name: string,
-  initialValue?: string
+  options: Options
 ): ReturnType<typeof useState<string | null | undefined>> {
+  const { name, initialValue, method = "replace" } = options;
+
   const router = useRouter();
   const pathname = usePathname();
   const currentParams = useSearchParams();
@@ -17,9 +24,13 @@ export function useSearchParamState(
 
   useEffect(() => {
     const params = new URLSearchParams(currentParams.toString());
-    if (state) params.set(name, state);
-    router.replace(pathname + "?" + params.toString());
-  }, [state, name, router, pathname, currentParams]);
+    if (typeof state === "string") {
+      params.set(name, state);
+    } else {
+      params.delete(name);
+    }
+    router[method](pathname + "?" + params.toString(), { scroll: false });
+  }, [state, name, router, pathname, currentParams, method]);
 
   return [state, setState];
 }
