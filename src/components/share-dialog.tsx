@@ -23,31 +23,34 @@ export function ShareDialog({ open }: { open: boolean }) {
             />
           </Dialog.Overlay>
           <Dialog.Content asChild>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }} // LEFT HERE: animating y doesn't quite work, probably because it conflicts with the translate classes below
-              exit={{ opacity: 0 }}
-              className="fixed left-[50%] top-[50%] z-10  flex max-h-[85vh] w-[90vw] max-w-md translate-x-[-50%] translate-y-[-50%] flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none xs:gap-4 xs:p-8 sm:max-w-2xl"
-            >
-              <Dialog.Title className="grow text-2xl font-semibold sm:text-3xl">
-                Share
-              </Dialog.Title>
-              <Dialog.Description>
-                We recommend sharing your results link, but you can also
-                generate an image.
-              </Dialog.Description>
-              <div className="flex flex-col gap-x-8 gap-y-8 sm:max-w-none sm:flex-row">
-                <LinkOption />
-                <ImageOption />
-              </div>
-              <Dialog.Close asChild>
-                <IconButton
-                  variant="tertiary"
-                  icon={<BiX className="h-6 w-6 sm:h-8 sm:w-8" />}
-                  className="absolute right-2 top-2 shrink-0 p-0.5 sm:p-0.5"
-                />
-              </Dialog.Close>
-            </motion.div>
+            <div className="fixed left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ type: "spring" }}
+                className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none xs:gap-4 xs:p-8 sm:max-w-2xl"
+              >
+                <Dialog.Title className="grow text-2xl font-semibold sm:text-3xl">
+                  Share
+                </Dialog.Title>
+                <Dialog.Description>
+                  We recommend sharing your results link, but you can also
+                  generate an image.
+                </Dialog.Description>
+                <div className="flex flex-col gap-x-8 gap-y-8 sm:max-w-none sm:flex-row">
+                  <LinkOption />
+                  <ImageOption />
+                </div>
+                <Dialog.Close asChild>
+                  <IconButton
+                    variant="tertiary"
+                    icon={<BiX className="h-6 w-6 sm:h-8 sm:w-8" />}
+                    className="absolute right-2 top-2 shrink-0 p-0.5 sm:p-0.5"
+                  />
+                </Dialog.Close>
+              </motion.div>
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       )}
