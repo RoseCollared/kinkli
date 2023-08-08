@@ -5,6 +5,7 @@ import { Loader } from "@kinklist/components/loader";
 import { Results } from "@kinklist/components/results/results";
 import { ExportProvider } from "@kinklist/context/export-context";
 import { primaryInput } from "detect-it";
+import { AnimatePresence, motion } from "framer-motion";
 import html2canvas from "html2canvas";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BiSolidImage } from "react-icons/bi";
@@ -55,10 +56,16 @@ export default function ExportPage() {
   return (
     <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 sm:gap-12">
       {isLoading && (
-        <div className="flex flex-col items-center gap-x-8 gap-y-4 py-12 text-center sm:flex-row">
-          <Loader />
-          Generating image...
-        </div>
+        <AnimatePresence>
+          <motion.div
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex flex-col items-center gap-x-8 gap-y-4 py-12 text-center sm:flex-row"
+          >
+            <Loader />
+            Generating image...
+          </motion.div>
+        </AnimatePresence>
       )}
 
       {!!error && (
@@ -70,8 +77,12 @@ export default function ExportPage() {
       )}
 
       {!isLoading && !error && (
-        <>
-          <p className="mx-4 max-w-prose text-sm sm:mx-8 sm:text-base">
+        <AnimatePresence>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-4 max-w-prose text-sm sm:mx-8 sm:text-base"
+          >
             Here&apos;s a picture of your results! Save it by{" "}
             {isTouch ? (
               <>
@@ -80,9 +91,14 @@ export default function ExportPage() {
             ) : (
               <>right-clicking and choosing &ldquo;Save Image As...&rdquo;</>
             )}
-          </p>
+          </motion.p>
 
-          <div className="group relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring" }}
+            className="group relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl"
+          >
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity group-hover:opacity-100"
@@ -95,8 +111,8 @@ export default function ExportPage() {
               className="max-h-[75vh]"
               title="This is an image"
             />
-          </div>
-        </>
+          </motion.div>
+        </AnimatePresence>
       )}
 
       <ExportProvider>
