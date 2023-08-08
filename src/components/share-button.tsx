@@ -12,6 +12,7 @@ export function ShareButton() {
     method: "push",
   });
 
+  // LEFT HERE
   // FIXME: hydration error when loading the page with openParam === "open"
 
   return (
