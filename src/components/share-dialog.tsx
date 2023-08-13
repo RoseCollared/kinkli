@@ -25,10 +25,26 @@ export function ShareDialog({ open }: { open: boolean }) {
           <Dialog.Content asChild>
             <div className="fixed left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
               <motion.div
-                initial={{ opacity: 0, scale: 0.6 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ type: "spring" }}
+                variants={{
+                  initial: {
+                    opacity: 0,
+                    scale: 0.6,
+                  },
+                  animate: {
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                    },
+                  },
+                  exit: {
+                    opacity: 0,
+                    scale: 0.9,
+                  },
+                }}
+                initial="initial"
+                animate="animate"
+                exit="exit"
                 className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none xs:gap-4 xs:p-8 sm:max-w-2xl"
               >
                 <Dialog.Title className="grow text-2xl font-semibold sm:text-3xl">
