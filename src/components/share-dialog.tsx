@@ -2,12 +2,18 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { useSearchParams } from "next/navigation";
 import { BiImage, BiLink, BiX } from "react-icons/bi";
 import { Button, IconButton } from "./button";
 
 export function ShareDialog({ open }: { open: boolean }) {
+  // Pass only the `answers` search param to the links
+  const searchParams = useSearchParams();
+  const linkParams = new URLSearchParams();
+  const answers = searchParams.get("answers");
+  if (answers) linkParams.set("answers", answers);
+
   return (
     <AnimatePresence>
       {open && (
@@ -53,8 +59,18 @@ export function ShareDialog({ open }: { open: boolean }) {
                   generate an image.
                 </Dialog.Description>
                 <div className="flex flex-col gap-x-8 gap-y-8 sm:max-w-none sm:flex-row">
-                  <LinkOption />
-                  <ImageOption />
+                  <LinkOption
+                    href={{
+                      pathname: "/results",
+                      search: linkParams.toString(),
+                    }}
+                  />
+                  <ImageOption
+                    href={{
+                      pathname: "/results/export",
+                      search: linkParams.toString(),
+                    }}
+                  />
                 </div>
                 <Dialog.Close asChild>
                   <IconButton
@@ -72,18 +88,12 @@ export function ShareDialog({ open }: { open: boolean }) {
   );
 }
 
-function LinkOption() {
-  const searchParams = useSearchParams();
-
+function LinkOption({ href }: { href: LinkProps["href"] }) {
   return (
     <div className="flex grow basis-0 flex-col gap-2">
       <h3 className="text-xl font-medium">Link</h3>
 
-      <Link
-        href={{ pathname: "/results", search: searchParams.toString() }}
-        target="_blank"
-        tabIndex={-1}
-      >
+      <Link href={href} target="_blank" tabIndex={-1}>
         <Button variant="secondary" className="w-full py-6 sm:py-12">
           <div className="flex flex-col items-center text-base">
             <BiLink aria-hidden className="h-12 w-12 fill-rose-400" />
@@ -100,18 +110,12 @@ function LinkOption() {
   );
 }
 
-function ImageOption() {
-  const searchParams = useSearchParams();
-
+function ImageOption({ href }: { href: LinkProps["href"] }) {
   return (
     <div className="flex grow basis-0 flex-col gap-2">
       <h3 className="text-xl font-medium">Image</h3>
 
-      <Link
-        href={{ pathname: "/results/export", search: searchParams.toString() }}
-        target="_blank"
-        tabIndex={-1}
-      >
+      <Link href={href} target="_blank" tabIndex={-1}>
         <Button variant="secondary" className="w-full py-6 sm:py-12">
           <div className="flex flex-col items-center text-base">
             <BiImage aria-hidden className="h-12 w-12 fill-rose-400" />
