@@ -4,7 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { BiImage, BiLinkExternal, BiX } from "react-icons/bi";
+import { BiImage, BiLink, BiX } from "react-icons/bi";
 import { Button, IconButton } from "./button";
 
 export function ShareDialog({ open }: { open: boolean }) {
@@ -86,7 +86,7 @@ function LinkOption() {
       >
         <Button variant="secondary" className="w-full py-6 sm:py-12">
           <div className="flex flex-col items-center text-base">
-            <BiLinkExternal aria-hidden className="h-12 w-12 fill-rose-400" />
+            <BiLink aria-hidden className="h-12 w-12 fill-rose-400" />
             Open link
           </div>
         </Button>
