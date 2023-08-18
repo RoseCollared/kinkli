@@ -25,17 +25,21 @@ export function CopyButton() {
 }
 
 export function ImageButton() {
+  // Pass only the `answers` search param to the link
   const searchParams = useSearchParams();
+  const linkParams = new URLSearchParams();
+  const answers = searchParams.get("answers");
+  if (answers) linkParams.set("answers", answers);
 
   return (
     <Link
-      href={{ pathname: "/results/export", search: searchParams.toString() }}
+      href={{ pathname: "/results/export", search: linkParams.toString() }}
       tabIndex={-1}
     >
       <Button icon={<BiImage />}>
         <span className="hidden xl:inline">Get image</span>
         <span className="inline xl:hidden">Image</span>
-        </Button>
+      </Button>
     </Link>
   );
 }
