@@ -1,8 +1,8 @@
 import { BackToTopButton } from "@kinklist/components/back-to-top-button";
-import { ExportButton } from "@kinklist/components/export-button";
 import { Legend } from "@kinklist/components/legend";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CopyButton, ImageButton } from "./buttons";
 
 export default function ResultsLayout({ children }: { children: ReactNode }) {
   return (
@@ -11,13 +11,14 @@ export default function ResultsLayout({ children }: { children: ReactNode }) {
         <div className="hidden basis-0 sm:block sm:grow" />
 
         <Link href="/">
-          <h1 className="text-4xl font-bold drop-shadow-sm xs:text-5xl">
+          <h1 className="text-5xl font-bold drop-shadow-sm">
             Kinklist
           </h1>
         </Link>
 
-        <div className="basis-0 items-center justify-end sm:flex sm:grow">
-          <ExportButton />
+        <div className="basis-0 items-center justify-center sm:justify-end gap-2 flex flex-wrap sm:flex-nowrap sm:grow">
+          <CopyButton />
+          <ImageButton />
         </div>
       </header>
       <Legend />
