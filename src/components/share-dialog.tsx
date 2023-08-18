@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link, { type LinkProps } from "next/link";
 import { useSearchParams } from "next/navigation";
 import { BiImage, BiLink, BiX } from "react-icons/bi";
+import useClipboard from "react-use-clipboard";
 import { Button, IconButton } from "./button";
 
 export function ShareDialog({ open }: { open: boolean }) {
@@ -89,9 +90,25 @@ export function ShareDialog({ open }: { open: boolean }) {
 }
 
 function LinkOption({ href }: { href: LinkProps["href"] }) {
+  const absoluteUrl =
+    window.location.host +
+    (typeof href === "string" ? href : `${href.pathname}?${href.search}`);
+
+  const [isCopied, copy] = useClipboard(absoluteUrl, {
+    successDuration: 2000,
+  });
+
   return (
     <div className="flex grow basis-0 flex-col gap-2">
-      <h3 className="text-xl font-medium">Link</h3>
+      <div className="flex justify-between gap-2">
+        <h3 className="text-xl font-medium">Link</h3>
+        <Button
+          onClick={() => copy()}
+          className="px-2.5 py-0 text-base sm:px-2.5 sm:text-base"
+        >
+          {isCopied ? "Copied" : "Copy"}
+        </Button>
+      </div>
 
       <Link href={href} target="_blank" tabIndex={-1}>
         <Button variant="secondary" className="w-full py-6 sm:py-12">
