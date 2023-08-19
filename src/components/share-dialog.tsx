@@ -91,8 +91,10 @@ export function ShareDialog({ open }: { open: boolean }) {
 
 function LinkOption({ href }: { href: LinkProps["href"] }) {
   const absoluteUrl =
-    window.location.host +
-    (typeof href === "string" ? href : `${href.pathname}?${href.search}`);
+    typeof window !== "undefined"
+      ? window.location.host +
+        (typeof href === "string" ? href : `${href.pathname}?${href.search}`)
+      : "";
 
   const [isCopied, copy] = useClipboard(absoluteUrl, {
     successDuration: 2000,
