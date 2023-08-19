@@ -7,7 +7,8 @@ import { BiCheck, BiImage, BiLink } from "react-icons/bi";
 import useClipboard from "react-use-clipboard";
 
 export function CopyButton() {
-  const [isCopied, copy] = useClipboard(window.location.href, {
+  const url = typeof window !== "undefined" ? window.location.href : "";
+  const [isCopied, copy] = useClipboard(url, {
     successDuration: 2000,
   });
 
