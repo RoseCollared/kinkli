@@ -5,10 +5,9 @@ import { Loader } from "@kinklist/components/loader";
 import { Results } from "@kinklist/components/results/results";
 import { ExportProvider } from "@kinklist/context/export-context";
 import { primaryInput } from "detect-it";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import html2canvas from "html2canvas";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { BiSolidImage } from "react-icons/bi";
 
 export default function ExportPage() {
   const [image, setImage] = useState<string>();
@@ -53,6 +52,12 @@ export default function ExportPage() {
     asyncEffect();
   }, []);
 
+  // Animation that plays when clicking the image
+  const [scope, animate] = useAnimate();
+  // Animation state is kept to prevent starting the animation while it is
+  // playing, which causes an jarring transition
+  const [isAnimating, setIsAnimating] = useState(false);
+
   return (
     <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 sm:gap-12">
       {isLoading && (
@@ -79,6 +84,7 @@ export default function ExportPage() {
       {!isLoading && !error && (
         <AnimatePresence>
           <motion.p
+            key="text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="mx-4 max-w-prose text-sm sm:mx-8 sm:text-base"
@@ -94,22 +100,40 @@ export default function ExportPage() {
           </motion.p>
 
           <motion.div
+            key="image"
+            ref={scope}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring" }}
-            className="group relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl"
+            className="relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl"
           >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity group-hover:opacity-100"
-            >
-              <BiSolidImage className="h-16 w-16 fill-black/75 sm:h-24 sm:w-24" />
-            </div>
+            <div className="pointer-events-none absolute -left-1/4 -right-1/4 bottom-0 top-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/75 to-white/0" />
             <img
               src={image}
               alt="results"
-              className="max-h-[75vh]"
               title="This is an image"
+              onClick={() => {
+                // Play a shimmer and subtle pulse animation on click to
+                // indicate that this is an image, not an interactive element
+                if (!isAnimating) {
+                  animate(
+                    "div",
+                    { x: ["-100%", "100%"] },
+                    {
+                      ease: [0, 0.6, 1, 0.4],
+                      duration: 0.6,
+                      onPlay: () => setIsAnimating(true),
+                      onComplete: () => setIsAnimating(false),
+                    }
+                  );
+                  animate(
+                    scope.current,
+                    { scale: [1, 1.02, 1] },
+                    { ease: "easeOut", duration: 0.6 }
+                  );
+                }
+              }}
+              className="max-h-[75vh]"
             />
           </motion.div>
         </AnimatePresence>
