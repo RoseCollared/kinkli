@@ -6,7 +6,7 @@ import Link, { type LinkProps } from "next/link";
 import { useSearchParams } from "next/navigation";
 import { BiImage, BiLink, BiX } from "react-icons/bi";
 import useClipboard from "react-use-clipboard";
-import { Button, IconButton } from "./button";
+import { Button } from "./button";
 
 export function ShareDialog({ open }: { open: boolean }) {
   // Pass only the `answers` search param to the links
@@ -74,7 +74,7 @@ export function ShareDialog({ open }: { open: boolean }) {
                   />
                 </div>
                 <Dialog.Close asChild>
-                  <IconButton
+                  <Button
                     variant="tertiary"
                     icon={<BiX className="h-6 w-6 sm:h-8 sm:w-8" />}
                     className="absolute right-2 top-2 shrink-0 p-0.5 sm:p-0.5"
