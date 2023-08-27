@@ -1,13 +1,35 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { forwardRef } from "react";
+import type { motion } from "framer-motion";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  type ReactNode,
+} from "react";
 import { twMerge } from "tailwind-merge";
+
+// FIXME: types do not prevent passing wrong ref to element, for example:
+// const aRef = useRef<HTMLAnchorElement>(null);
+// return <Button ref={aRef} />;
+// This does not trigger a type error, but it should
 
 export type ButtonVariant = keyof typeof variantStyles;
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// See: https://stackoverflow.com/questions/72617016/forwarded-ref-with-button-or-anchor-types-typescript
+export type ButtonProps = {
   icon?: ReactNode;
   variant?: ButtonVariant;
-}
+} & (
+  | ({ as?: "button" } & ComponentPropsWithoutRef<"button">)
+  | ({ as: "a" } & ComponentPropsWithoutRef<"a">)
+  | ({ as: typeof motion.button } & Omit<
+      ComponentPropsWithoutRef<typeof motion.button>,
+      "children"
+    > & { children?: ReactNode })
+  | ({ as: typeof motion.a } & Omit<
+      ComponentPropsWithoutRef<typeof motion.a>,
+      "children"
+    > & { children?: ReactNode })
+);
 
 const variantStyles = {
   primary: "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700",
@@ -17,39 +39,37 @@ const variantStyles = {
     "text-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 shadow-none",
 } as const;
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      variant = "primary",
-      icon,
-      className,
-      children,
-      ...restProps
-    } = props;
-    return (
-      <button
-        ref={ref}
-        type="button"
-        {...restProps}
-        className={twMerge(
-          "whitespace-nowrap rounded-lg px-4 py-2.5 text-lg font-semibold leading-none shadow transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300 sm:px-5 sm:text-xl",
-          variantStyles[variant],
-          className
-        )}
-      >
-        <div className="flex items-center justify-center gap-2">
-          {children}
-          {icon}
-        </div>
-      </button>
-    );
-  }
-);
-Button.displayName = "Button";
+export const Button = forwardRef<unknown, ButtonProps>((props, ref) => {
+  const {
+    as = "button",
+    variant = "primary",
+    icon,
+    className,
+    children,
+    ...restProps
+  } = props;
 
-export function IconButton(props: ButtonProps) {
-  const { className, ...restProps } = props;
+  const isIconButton = icon && !children;
+
+  const Component = as as ElementType;
+
   return (
-    <Button className={twMerge("px-2.5 sm:px-2.5", className)} {...restProps} />
+    <Component
+      ref={ref}
+      {...restProps}
+      className={twMerge(
+        "whitespace-nowrap rounded-lg px-4 py-2.5 text-lg font-semibold leading-none shadow transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300 sm:px-5 sm:text-xl",
+        isIconButton && "px-2.5 sm:px-2.5",
+        variantStyles[variant],
+        className
+      )}
+    >
+      <div className="flex items-center justify-center gap-2">
+        {children}
+        {icon}
+      </div>
+    </Component>
   );
-}
+});
+
+Button.displayName = "Button";
