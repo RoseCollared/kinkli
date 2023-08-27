@@ -4,7 +4,7 @@ import { throttle } from "lodash-es";
 import { useLayoutEffect, useState } from "react";
 import { BiChevronUp } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
-import { IconButton } from "./button";
+import { Button } from "./button";
 
 export function BackToTopButton() {
   const [scrollTop, setScrollTop] = useState(
@@ -22,7 +22,7 @@ export function BackToTopButton() {
     <>
       {/* Button is semi-transparent until the cursor hovers over this div, but only on lg and above */}
       <div className="peer fixed -bottom-12 -left-12 h-48 w-48 rounded-full" />
-      <IconButton
+      <Button
         onClick={() => document.body.scrollIntoView({ behavior: "smooth" })}
         icon={<BiChevronUp className="h-10 w-10" />}
         className={twMerge(
