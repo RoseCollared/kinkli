@@ -97,7 +97,7 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
       : "";
 
   const [isCopied, copy] = useClipboard(absoluteUrl, {
-    successDuration: 2000,
+    successDuration: 2500,
   });
 
   return (
@@ -105,10 +105,24 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
       <div className="flex justify-between gap-2">
         <h3 className="text-xl font-medium">Link</h3>
         <Button
+          as={motion.button}
+          layout
           onClick={() => copy()}
           className="px-2.5 py-0 text-base sm:px-2.5 sm:text-base"
         >
-          {isCopied ? "Copied" : "Copy"}
+          <motion.span
+            layout
+            key={String(isCopied)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            // Can't do an exit animation because we're not using <AnimatePresence>.
+            // I couldn't find a way to animate the width of the button without
+            // rendering both elements (entering and exiting) at the same time
+            // which makes the button way too wide for some period of time.
+            transition={{ delay: 0.2 }}
+          >
+            {isCopied ? "Copied" : "Copy"}
+          </motion.span>
         </Button>
       </div>
 
