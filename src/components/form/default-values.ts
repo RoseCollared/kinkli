@@ -6,7 +6,7 @@ export function getEmptyDefaultValues(data: TKinks): FormValues {
     formValues[section.id] = {};
     for (const question of section.questions) {
       formValues[section.id][question.id] = {};
-      for (const subquestion of question.subquestions) {
+      for (const subquestion of section.subquestions) {
         formValues[section.id][question.id][subquestion.id] = null;
       }
     }
