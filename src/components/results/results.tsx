@@ -160,7 +160,9 @@ function ResultsQuestion(props: ResultsQuestionProps) {
         <td key={subquestion.id} className="px-0">
           <Radio
             checked={!!answers[sectionId][questionId][subquestion.id]} // don't check if not answered
-            value={answers[sectionId][questionId][subquestion.id] ?? "0"}
+            value={
+              String(answers[sectionId][questionId][subquestion.id]) ?? "0"
+            }
             alwaysSmall={isExport} // export always renders a large image, so use the small variant
             readOnly
             className="block" // to prevent adding space for descenders
