@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 dark:bg-zinc-800 dark:text-white ${inter.className}`}
+        className={`${inter.className} flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 transition-colors duration-500 dark:bg-zinc-800 dark:text-white`}
       >
         {children}
       </body>
