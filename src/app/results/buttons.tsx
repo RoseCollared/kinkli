@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@kinklist/components/button";
+import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -13,13 +14,15 @@ export function CopyButton() {
     successDuration: 2500,
   });
 
+  const isFirstRender = useIsFirstRender();
+
   return (
     // Not using Button `icon` prop because we need to animate it
     <Button as={motion.button} layout onClick={() => copy()}>
       <motion.div
         layout
         key={String(isCopied)}
-        initial={{ opacity: 0 }}
+        initial={isFirstRender ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
         className="flex items-center justify-center gap-2"
