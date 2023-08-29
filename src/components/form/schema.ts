@@ -17,7 +17,9 @@ export const sectionSchema = z.object({
   id: z.string().min(1),
   label: z.string(),
   questions: z.array(questionSchema).min(1),
-  subquestions: z.array(subquestionSchema).min(1), // TODO: make this optional or set a default
+  subquestions: z
+    .array(subquestionSchema)
+    .default([{ id: "general", label: "General" }]),
 });
 
 export type TKinks = z.infer<typeof kinksSchema>;
