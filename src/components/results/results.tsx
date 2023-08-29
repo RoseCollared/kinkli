@@ -67,6 +67,7 @@ function _Results(
           sectionId={section.id}
           label={section.label}
           questions={section.questions}
+          subquestions={section.subquestions}
           answers={answers}
         />
       ))}
@@ -78,49 +79,30 @@ interface ResultsSectionProps {
   sectionId: TSection["id"];
   label: TSection["label"];
   questions: TSection["questions"];
+  subquestions: TSection["subquestions"];
   answers: FormValues;
 }
 function ResultsSection(props: ResultsSectionProps) {
-  const { sectionId, label, questions, answers } = props;
-
-  // TODO: move subquestions to section level?
-  const subquestionLabels = useMemo(() => {
-    const uniqueLabels = questions
-      .flatMap((question) =>
-        question.subquestions.map((subquestion) => subquestion.label)
-      )
-      // Remove undefined and empty string
-      .filter(Boolean)
-      // Keep only unique values
-      .filter((label, index, array) => array.indexOf(label) === index);
-
-    if (uniqueLabels.length > 2) {
-      console.warn(
-        `Found more than 2 unique subquestion labels for section ${sectionId}. Using the first two only`
-      );
-      return [uniqueLabels[0], uniqueLabels[1]];
-    }
-
-    return uniqueLabels;
-  }, [questions, sectionId]);
+  const { sectionId, label, questions, subquestions, answers } = props;
+  const shouldRenderSubquestions = subquestions.length > 1;
 
   return (
     <Section>
       <Section.Title>{label}</Section.Title>
-      {subquestionLabels.length > 1 && (
+      {shouldRenderSubquestions && (
         <p className="text-lg italic text-gray-600 lg:text-base">
-          {subquestionLabels.join(", ")}
+          {subquestions.map(({ label }) => label).join(", ")}
         </p>
       )}
       <table className="-mx-2 -my-2 border-separate border-spacing-x-2 border-spacing-y-2 lg:-mx-1 lg:border-spacing-x-1">
-        <thead aria-hidden={subquestionLabels.length <= 1}>
+        <thead aria-hidden={!shouldRenderSubquestions}>
           {/* The table head only exists for accessiblity, we don't render any visible headings */}
           <tr>
             <th aria-hidden />
-            {subquestionLabels.length > 1 &&
-              subquestionLabels.map((label) => (
-                <th key={label} className="sr-only">
-                  {label}
+            {shouldRenderSubquestions &&
+              subquestions.map((subquestion) => (
+                <th key={subquestion.id} className="sr-only">
+                  {subquestion.label}
                 </th>
               ))}
           </tr>
@@ -132,7 +114,7 @@ function ResultsSection(props: ResultsSectionProps) {
               questionId={question.id}
               sectionId={sectionId}
               label={question.label}
-              subquestions={question.subquestions}
+              subquestions={subquestions}
               answers={answers}
             />
           ))}
@@ -146,7 +128,7 @@ interface ResultsQuestionProps {
   questionId: TQuestion["id"];
   sectionId: TSection["id"];
   label: TQuestion["label"];
-  subquestions: TQuestion["subquestions"];
+  subquestions: TSection["subquestions"];
   answers: FormValues;
 }
 function ResultsQuestion(props: ResultsQuestionProps) {
