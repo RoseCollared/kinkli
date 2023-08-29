@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
 import type { ReactNode } from "react";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,15 +9,11 @@ export const metadata = {
   description: "The kinkiest kinklist of all kinky lists",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 ${inter.className}`}
+        className={`flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 dark:bg-zinc-800 dark:text-white ${inter.className}`}
       >
         {children}
       </body>

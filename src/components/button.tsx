@@ -32,11 +32,12 @@ export type ButtonProps = {
 );
 
 const variantStyles = {
-  primary: "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700",
+  primary:
+    "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700 dark:bg-red-700 dark:hover:bg-red-800 dark:active:bg-red-900",
   secondary:
-    "text-rose-500 border-2 border-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 active:border-rose-600",
+    "border-2 text-rose-500 border-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 active:border-rose-600 dark:text-gray-100 dark:border-red-800 dark:hover:bg-red-950/40 dark:active:bg-red-950/80 dark:active:text-gray-100 dark:active:border-red-700",
   tertiary:
-    "text-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 shadow-none",
+    "text-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 shadow-none dark:text-red-500 dark:hover:bg-red-950 dark:active:bg-red-900 dark:active:text-gray-100",
 } as const;
 
 export const Button = forwardRef<unknown, ButtonProps>((props, ref) => {

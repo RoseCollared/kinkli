@@ -112,7 +112,7 @@ function FormSection({ sectionId, label, questions }: FormSectionProps) {
             <th aria-hidden />
             {subquestionLabels.length > 1 &&
               subquestionLabels.map((label) => (
-                <th key={label} className="text-lg font-medium text-gray-600">
+                <th key={label} className="text-lg font-medium text-gray-600 dark:text-gray-100">
                   {label}
                 </th>
               ))}
@@ -147,7 +147,7 @@ function FormQuestion(props: FormQuestionProps) {
       {/* Question label only shown above lg*/}
       <td
         aria-hidden
-        className="hidden w-40 text-lg font-medium leading-tight text-gray-600 lg:table-cell"
+        className="hidden w-40 text-lg font-medium leading-tight text-gray-600 lg:table-cell dark:text-gray-100"
       >
         {label}
       </td>
@@ -157,7 +157,7 @@ function FormQuestion(props: FormQuestionProps) {
           <td
             id={`label:${sectionId}.${questionId}.${subquestion.id}`}
             aria-hidden
-            className="block text-xl font-medium leading-tight text-gray-600 lg:hidden"
+            className="block text-xl font-medium leading-tight text-gray-600 dark:text-gray-100 lg:hidden"
           >
             <span>{label}</span>
             {subquestions.length > 1 && <span> ({subquestion.label})</span>}

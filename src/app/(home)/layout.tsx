@@ -16,7 +16,7 @@ export default function HomeLayout({
         <div className="hidden grow sm:block">
           {/* Placeholder which grows to ensure title is centered */}
         </div>
-        <h1 className="text-5xl font-bold drop-shadow-sm">
+        <h1 className="text-5xl font-bold drop-shadow-sm dark:text-red-600">
           Kinklist
         </h1>
         <div className="flex basis-0 justify-end sm:grow">
