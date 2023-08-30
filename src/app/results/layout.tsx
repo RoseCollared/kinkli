@@ -16,7 +16,7 @@ export default function ResultsLayout({ children }: { children: ReactNode }) {
           <ImageButton />
         </div>
       </header>
-      <Legend />
+      <Legend showNA />
       <main>{children}</main>
       <BackToTopButton />
     </>
