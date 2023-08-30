@@ -52,7 +52,7 @@ export function Legend({ showNA, className }: LegendProps) {
           >
             <Radio
               value={value}
-              checked
+              checked={value !== "0"} // everything checked except N/A
               readOnly
               alwaysSmall
               title={undefined} // no need since the label is displayed alongside
