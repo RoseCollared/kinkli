@@ -8,7 +8,7 @@ export function Section({ children }) {
 
 function SectionTitle({ children }) {
   return (
-    <h2 className="text-2xl font-semibold text-gray-800 drop-shadow-sm dark:text-white xs:text-3xl lg:text-2xl">
+    <h2 className="text-2xl font-semibold text-gray-800 drop-shadow-sm dark:text-gray-100 xs:text-3xl lg:text-2xl">
       {children}
     </h2>
   );
