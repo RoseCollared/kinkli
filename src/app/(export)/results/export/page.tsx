@@ -145,7 +145,10 @@ export default function ExportPage() {
           ref={resultsRef}
           className="absolute left-[-9999px] top-[-9999px] flex w-[1920px] flex-col items-center gap-8 bg-rose-50 p-12 pt-8"
         >
-          <Legend className="border-none pt-4 sm:static sm:bg-transparent" />
+          <Legend
+            showNA
+            className="border-none pt-4 sm:static sm:bg-transparent"
+          />
           <Results />
         </div>
       </ExportProvider>
