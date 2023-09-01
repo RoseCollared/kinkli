@@ -3,6 +3,7 @@
 import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useCallback } from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
@@ -10,6 +11,18 @@ import { Button } from "./button";
 export function DarkModeButton() {
   const { resolvedTheme: theme, setTheme } = useTheme();
   const isFirstRender = useIsFirstRender();
+
+  const toggleTheme = useCallback(() => {
+    // @ts-expect-error wait for TS to update DOM types
+    if (typeof document === "undefined" || !document.startViewTransition) {
+      setTheme(theme === "dark" ? "light" : "dark");
+      return;
+    }
+    // @ts-expect-error wait for TS to update DOM types
+    document.startViewTransition(() => {
+      setTheme(theme === "dark" ? "light" : "dark");
+    });
+  }, [theme, setTheme]);
 
   // On first render, the theme may be wrong so we can't render
   // See: https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
@@ -32,7 +45,7 @@ export function DarkModeButton() {
         as={motion.button}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        onClick={() => toggleTheme()}
         icon={
           theme === "dark" ? (
             <BiSun className="h-8 w-8" />
