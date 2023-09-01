@@ -59,7 +59,7 @@ export default function ExportPage() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   return (
-    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 dark:bg-zinc-900 dark:text-gray-100 sm:gap-12">
+    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 dark:bg-zinc-900 dark:text-gray-200 sm:gap-12">
       {isLoading && (
         <AnimatePresence>
           <motion.div
