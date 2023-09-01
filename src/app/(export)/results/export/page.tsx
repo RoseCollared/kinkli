@@ -59,7 +59,7 @@ export default function ExportPage() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   return (
-    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 sm:gap-12">
+    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 dark:bg-zinc-900 dark:text-gray-100 sm:gap-12">
       {isLoading && (
         <AnimatePresence>
           <motion.div
@@ -105,13 +105,13 @@ export default function ExportPage() {
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring" }}
-            className="relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl"
+            className="relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl dark:border-red-700 dark:shadow-red-950"
           >
             <div className="pointer-events-none absolute -left-1/4 -right-1/4 bottom-0 top-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/75 to-white/0" />
             <img
               src={image}
               alt="results"
-              title="This is an image"
+              title="This is an image of your results"
               onClick={() => {
                 // Play a shimmer and subtle pulse animation on click to
                 // indicate that this is an image, not an interactive element
@@ -143,7 +143,7 @@ export default function ExportPage() {
         <div
           aria-hidden
           ref={resultsRef}
-          className="absolute left-[-9999px] top-[-9999px] flex w-[1920px] flex-col items-center gap-8 bg-rose-50 p-12 pt-8"
+          className="absolute left-[-9999px] top-[-9999px] flex w-[1920px] flex-col items-center gap-8 bg-rose-50 p-12 pt-8 dark:bg-zinc-800"
         >
           <Legend
             showNA
