@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { BackToTopButton } from "./back-to-top-button";
+import { DarkModeButton } from "./dark-mode-button";
 import { Legend } from "./legend";
 
 interface DefaultLayoutProps {
@@ -15,8 +16,10 @@ export function DefaultLayout(props: DefaultLayoutProps) {
   return (
     <>
       <header className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-6 px-12 pb-2 pt-12 sm:flex-row sm:justify-between sm:pt-16">
-        <div className="hidden grow sm:block">
-          {/* Placeholder which grows to ensure title is centered */}
+        {/* TODO: put dark mode in hamburger menu on small screens */}
+        {/* TODO: also include legend in hamburger menu? */}
+        <div className="flex grow items-center">
+          <DarkModeButton />
         </div>
 
         <h1 className="text-5xl font-bold drop-shadow-sm">Kinklist</h1>

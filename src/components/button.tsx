@@ -37,7 +37,7 @@ const variantStyles = {
   secondary:
     "border-2 text-rose-500 border-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 active:border-rose-600 dark:text-gray-100 dark:border-red-800 dark:hover:bg-red-950/40 dark:active:bg-red-950/80 dark:active:text-gray-100 dark:active:border-red-700",
   tertiary:
-    "text-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 shadow-none dark:text-red-500 dark:hover:bg-red-950 dark:active:bg-red-900 dark:active:text-gray-100",
+    "text-rose-500 hover:bg-rose-100 active:bg-rose-200 active:text-rose-600 shadow-none dark:text-gray-100 dark:hover:bg-red-950 dark:active:bg-red-900 dark:active:text-gray-100",
 } as const;
 
 export const Button = forwardRef<unknown, ButtonProps>((props, ref) => {

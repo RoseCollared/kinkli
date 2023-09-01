@@ -26,7 +26,7 @@ export function ShareButton() {
       onOpenChange={(open) => setOpenParam(open ? "open" : null)}
     >
       <Dialog.Trigger asChild>
-        <Button icon={<BiSolidShareAlt />}>Share</Button>
+        <Button icon={<BiSolidShareAlt />} variant="secondary">Share</Button>
       </Dialog.Trigger>
       {/* We pass an `open` prop to the dialog so we can render the content
       conditionally, which is required to use <AnimatePresence /> to animate
