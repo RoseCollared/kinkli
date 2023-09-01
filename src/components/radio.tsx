@@ -9,7 +9,7 @@ import { labelMap } from "./legend";
 const colorMap = {
   "0": "bg-white dark:bg-zinc-800 dark:border-white/30", // ⬜️
   "1": "bg-red-100 before:bg-red-500 dark:bg-red-950/60 dark:border-red-800 dark:before:bg-red-500 dark:checked:border-red-800", // 🟥
-  "2": "bg-orange-100 before:bg-orange-400 dark:bg-orange-950/60 dark:border-orange-700 dark:before:bg-orange-400 dark:checked:border-orange-700", // 🟧
+  "2": "bg-orange-100 before:bg-orange-400 dark:bg-orange-950/60 dark:border-orange-800 dark:before:bg-orange-400 dark:checked:border-orange-800", // 🟧
   "3": "bg-yellow-100 before:bg-yellow-500 dark:bg-yellow-950/60 dark:border-yellow-700 dark:before:bg-yellow-400 dark:checked:border-yellow-700", // 🟨
   "4": "bg-green-100 before:bg-green-400 dark:bg-green-950/60 dark:border-green-700 dark:before:bg-green-400 dark:checked:border-green-700", // 🟩
   "5": "bg-sky-100 before:bg-sky-400 dark:bg-sky-950/60 dark:border-sky-700 dark:before:bg-sky-400 dark:checked:border-sky-700", // 🟦
