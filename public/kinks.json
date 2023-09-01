@@ -75,14 +75,14 @@
       "id": "attire",
       "label": "Attire",
       "questions": [
-        { "id": "clothed-sex", "label": "Clothed sex" },
         { "id": "lingerie", "label": "Lingerie" },
         { "id": "stockings", "label": "Stockings" },
         { "id": "heels", "label": "Heels" },
         { "id": "leather", "label": "Leather" },
         { "id": "latex", "label": "Latex" },
         { "id": "uniform-costume", "label": "Uniform/​costume" },
-        { "id": "cross-dressing", "label": "Cross-dressing" }
+        { "id": "cross-dressing", "label": "Cross-dressing" },
+        { "id": "clothed-sex", "label": "Clothed sex" }
       ],
       "subquestions": [
         { "id": "self", "label": "Self" },
