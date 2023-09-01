@@ -44,8 +44,8 @@
       ]
     },
     {
-      "id": "bodies",
-      "label": "Bodies",
+      "id": "parts",
+      "label": "Parts",
       "questions": [
         { "id": "ass", "label": "Ass" },
         { "id": "balls", "label": "Balls" },
