@@ -4,6 +4,24 @@
   img {
     @apply inline-block;
   }
+
+  @keyframes mask-grow {
+    from {
+      mask-size: 100%;
+    }
+    to {
+      mask-size: 20000%;
+    }
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mask-image: radial-gradient(circle at center, black 0.5%, transparent 0.6%);
+    mask-position: center;
+    animation: 500ms ease-in mask-grow;
+  }
+  ::view-transition-old(root) {
+    mask-image: radial-gradient(circle at center, transparent 0.5%, black 0.6%);
+  }
 }
 @tailwind components;
 @tailwind utilities;
