@@ -14,14 +14,10 @@
       "id": "groupings",
       "label": "Groupings",
       "questions": [
-        { "id": "you-and-cis-male", "label": "You + cis male" },
-        { "id": "you-and-cis-female", "label": "You + cis female" },
-        { "id": "you-and-non-binary", "label": "You + non-binary" },
-        { "id": "you-and-trans-male", "label": "You + trans male" },
-        { "id": "you-and-trans-female", "label": "You + trans female" },
-        { "id": "you-and-mf-threesome", "label": "You + MF threesome" },
-        { "id": "you-and-mm-threesome", "label": "You + MM threesome" },
-        { "id": "you-and-ff-threesome", "label": "You + FF threesome" },
+        { "id": "solo-play", "label": "Solo play" },
+        { "id": "single-partner", "label": "Single partner" },
+        { "id": "threesome", "label": "Threesome" },
+        { "id": "four-or-more", "label": "Four or more" },
         { "id": "orgy", "label": "Orgy" }
       ]
     },
