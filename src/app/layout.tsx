@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@kinklist/components/theme-provider";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${inter.className} flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 dark:bg-zinc-800 dark:text-gray-100`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

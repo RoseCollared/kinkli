@@ -1,15 +1,51 @@
+"use client";
+
+import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import { BiMoon, BiSun } from "react-icons/bi";
+import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
 
 export function DarkModeButton() {
-  const isDark = true;
+  const { resolvedTheme: theme, setTheme } = useTheme();
+  const isFirstRender = useIsFirstRender();
+
+  // On first render, the theme may be wrong so we can't render
+  // See: https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+  if (isFirstRender) {
+    // This is an invisible placeholder button which takes up the same amount
+    // of space as the real button
+    return (
+      <Button
+        aria-hidden
+        disabled
+        icon={<div className="h-8 w-8" />}
+        className="pointer-events-none invisible p-1 sm:p-1"
+      />
+    );
+  }
+
   return (
-    <Button
-      icon={
-        isDark ? <BiSun className="h-8 w-8" /> : <BiMoon className="h-8 w-8" />
-      }
-      variant="tertiary"
-      className="p-1 sm:p-1"
-    />
+    <AnimatePresence>
+      <Button
+        as={motion.button}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        icon={
+          theme === "dark" ? (
+            <BiSun className="h-8 w-8" />
+          ) : (
+            <BiMoon className="h-8 w-8" />
+          )
+        }
+        variant="tertiary"
+        className={twMerge(
+          "p-1 transition-opacity sm:p-1",
+          isFirstRender && "opacity-0"
+        )}
+      />
+    </AnimatePresence>
   );
 }
