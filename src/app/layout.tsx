@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     // See: https://github.com/pacocoursey/next-themes/blob/cd67bfa20ef6ea78a814d65625c530baae4075ef/README.md#with-app
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 dark:bg-zinc-800 dark:text-gray-100`}
+        className={`${inter.className} transition-colors duration-700 flex min-h-screen flex-col items-center bg-rose-50 text-gray-800 dark:bg-zinc-800 dark:text-gray-100`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

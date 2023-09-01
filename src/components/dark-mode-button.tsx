@@ -18,6 +18,11 @@ export function DarkModeButton() {
       setTheme(theme === "dark" ? "light" : "dark");
       return;
     }
+
+    // Disable transitions on the body element because it kills performance
+    // when used in combination with the masking view transition we do
+    document.body.style.transition = "none";
+
     // @ts-expect-error wait for TS to update DOM types
     document.startViewTransition(() => {
       setTheme(theme === "dark" ? "light" : "dark");
