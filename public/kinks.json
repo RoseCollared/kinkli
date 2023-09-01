@@ -72,8 +72,8 @@
       ]
     },
     {
-      "id": "clothing",
-      "label": "Clothing",
+      "id": "attire",
+      "label": "Attire",
       "questions": [
         { "id": "clothed-sex", "label": "Clothed sex" },
         { "id": "lingerie", "label": "Lingerie" },
