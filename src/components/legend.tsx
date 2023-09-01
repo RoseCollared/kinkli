@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsExport } from "@kinklist/context/export-context";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";
@@ -31,6 +32,7 @@ export function Legend({ showNA, className }: LegendProps) {
     initialInView: true,
   });
   const isSticking = !inView;
+  const isExport = useIsExport();
 
   return (
     <aside
@@ -40,6 +42,7 @@ export function Legend({ showNA, className }: LegendProps) {
         "z-10 box-content flex max-w-sm flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-all sm:sticky sm:top-0 md:max-w-none",
         showNA && "md:max-w-sm lg:max-w-none",
         isSticking &&
+          !isExport &&
           "sm:border-2 sm:border-t-0 sm:border-rose-300 sm:bg-white sm:shadow-lg dark:sm:border-red-700 dark:sm:bg-zinc-700",
         className
       )}
