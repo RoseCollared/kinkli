@@ -25,7 +25,7 @@ export function DarkModeButton() {
   }, [theme, setTheme]);
 
   // On first render, the theme may be wrong so we can't render
-  // See: https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+  // See: https://github.com/pacocoursey/next-themes/blob/cd67bfa20ef6ea78a814d65625c530baae4075ef/README.md#avoid-hydration-mismatch
   if (isFirstRender) {
     // This is an invisible placeholder button which takes up the same amount
     // of space as the real button
