@@ -5,16 +5,17 @@ import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";
 
 /** Maps input values to labels */
-export const labelMap = {
-  "7": "Favorite",
-  "6": "Love",
-  "5": "Like",
-  "4": "Curious",
-  "3": "Meh",
-  "2": "Maybe",
-  "1": "Limit",
-  "0": "N/A",
-};
+export const labelMap = new Map([
+  ["7", "Favorite"],
+  ["6", "Love"],
+  ["5", "Like"],
+  ["4", "Curious"],
+  ["3", "Meh"],
+  ["2", "Maybe"],
+  ["1", "Limit"],
+  ["0", "N/A"],
+]);
+export const labelKeys = Array.from(labelMap.keys());
 
 interface LegendProps {
   /** Whether to show an input for the "N/A" value */
@@ -43,21 +44,21 @@ export function Legend({ showNA, className }: LegendProps) {
         className
       )}
     >
-      {Object.entries(labelMap)
-        .filter(([value]) => value !== "0" || showNA) // hide N/A by default
-        .map(([value, label]) => (
+      {labelKeys
+        .filter((key) => key !== "0" || showNA) // hide N/A by default
+        .map((key) => (
           <label
-            key={value}
+            key={key}
             className="flex items-center gap-2 text-lg font-medium text-gray-600 dark:text-gray-100"
           >
             <Radio
-              value={value}
-              checked={value !== "0"} // everything checked except N/A
+              value={key}
+              checked={key !== "0"} // everything checked except N/A
               readOnly
               alwaysSmall
               title={undefined} // no need since the label is displayed alongside
             />
-            {label}
+            {labelMap.get(key)}
           </label>
         ))}
     </aside>

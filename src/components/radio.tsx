@@ -63,8 +63,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     <input
       type="radio"
       ref={ref}
-      aria-label={labelMap[value]}
-      title={labelMap[value]}
+      aria-label={labelMap.get(value)}
+      title={labelMap.get(value)}
       onClick={() => {
         // If the radio input is clicked while checked, we uncheck it
         // This goes against standard browser behavior, but I think it's the
