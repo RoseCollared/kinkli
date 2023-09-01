@@ -11,38 +11,6 @@
       ]
     },
     {
-      "id": "bodies",
-      "label": "Bodies",
-      "questions": [
-        { "id": "ass", "label": "Ass" },
-        { "id": "balls", "label": "Balls" },
-        { "id": "breasts", "label": "Breasts" },
-        { "id": "cock", "label": "Cock" },
-        { "id": "feet", "label": "Feet" },
-        { "id": "hands", "label": "Hands" },
-        { "id": "legs", "label": "Legs" },
-        { "id": "pussy", "label": "Pussy" }
-      ]
-    },
-    {
-      "id": "clothing",
-      "label": "Clothing",
-      "questions": [
-        { "id": "clothed-sex", "label": "Clothed sex" },
-        { "id": "lingerie", "label": "Lingerie" },
-        { "id": "stockings", "label": "Stockings" },
-        { "id": "heels", "label": "Heels" },
-        { "id": "leather", "label": "Leather" },
-        { "id": "latex", "label": "Latex" },
-        { "id": "uniform-costume", "label": "Uniform/​costume" },
-        { "id": "cross-dressing", "label": "Cross-dressing" }
-      ],
-      "subquestions": [
-        { "id": "self", "label": "Self" },
-        { "id": "partner", "label": "Partner" }
-      ]
-    },
-    {
       "id": "groupings",
       "label": "Groupings",
       "questions": [
@@ -79,36 +47,17 @@
       ]
     },
     {
-      "id": "Butt-stuff",
-      "label": "Butt stuff",
+      "id": "bodies",
+      "label": "Bodies",
       "questions": [
-        { "id": "anal-toys", "label": "Anal toys" },
-        { "id": "anal-sex-pegging", "label": "Anal sex/​pegging" },
-        { "id": "rimming", "label": "Rimming" },
-        { "id": "double-penetration", "label": "Double penetration" },
-        { "id": "anal-fisting", "label": "Anal fisting" }
-      ],
-      "subquestions": [
-        { "id": "giving", "label": "Giving" },
-        { "id": "receiving", "label": "Receiving" }
-      ]
-    },
-    {
-      "id": "restrictive",
-      "label": "Restrictive",
-      "questions": [
-        { "id": "gag", "label": "Gag" },
-        { "id": "collar", "label": "Collar" },
-        { "id": "leash", "label": "Leash" },
-        { "id": "chastity", "label": "Chastity" },
-        { "id": "bondage-light", "label": "Bondage (Light)" },
-        { "id": "bondage-heavy", "label": "Bondage (Heavy)" },
-        { "id": "blindfold", "label": "Blindfold" },
-        { "id": "encasement", "label": "Encasement" }
-      ],
-      "subquestions": [
-        { "id": "self", "label": "Self" },
-        { "id": "partner", "label": "Partner" }
+        { "id": "ass", "label": "Ass" },
+        { "id": "balls", "label": "Balls" },
+        { "id": "breasts", "label": "Breasts" },
+        { "id": "cock", "label": "Cock" },
+        { "id": "feet", "label": "Feet" },
+        { "id": "hands", "label": "Hands" },
+        { "id": "legs", "label": "Legs" },
+        { "id": "pussy", "label": "Pussy" }
       ]
     },
     {
@@ -119,6 +68,24 @@
         { "id": "plugs", "label": "Plugs" },
         { "id": "vibrators", "label": "Vibrators" },
         { "id": "sounding", "label": "Sounding" }
+      ],
+      "subquestions": [
+        { "id": "self", "label": "Self" },
+        { "id": "partner", "label": "Partner" }
+      ]
+    },
+    {
+      "id": "clothing",
+      "label": "Clothing",
+      "questions": [
+        { "id": "clothed-sex", "label": "Clothed sex" },
+        { "id": "lingerie", "label": "Lingerie" },
+        { "id": "stockings", "label": "Stockings" },
+        { "id": "heels", "label": "Heels" },
+        { "id": "leather", "label": "Leather" },
+        { "id": "latex", "label": "Latex" },
+        { "id": "uniform-costume", "label": "Uniform/​costume" },
+        { "id": "cross-dressing", "label": "Cross-dressing" }
       ],
       "subquestions": [
         { "id": "self", "label": "Self" },
@@ -149,6 +116,39 @@
       ]
     },
     {
+      "id": "restrictive",
+      "label": "Restrictive",
+      "questions": [
+        { "id": "gag", "label": "Gag" },
+        { "id": "collar", "label": "Collar" },
+        { "id": "leash", "label": "Leash" },
+        { "id": "chastity", "label": "Chastity" },
+        { "id": "bondage-light", "label": "Bondage (Light)" },
+        { "id": "bondage-heavy", "label": "Bondage (Heavy)" },
+        { "id": "blindfold", "label": "Blindfold" },
+        { "id": "encasement", "label": "Encasement" }
+      ],
+      "subquestions": [
+        { "id": "self", "label": "Self" },
+        { "id": "partner", "label": "Partner" }
+      ]
+    },
+    {
+      "id": "Butt-stuff",
+      "label": "Butt stuff",
+      "questions": [
+        { "id": "anal-toys", "label": "Anal toys" },
+        { "id": "anal-sex-pegging", "label": "Anal sex/​pegging" },
+        { "id": "rimming", "label": "Rimming" },
+        { "id": "double-penetration", "label": "Double penetration" },
+        { "id": "anal-fisting", "label": "Anal fisting" }
+      ],
+      "subquestions": [
+        { "id": "giving", "label": "Giving" },
+        { "id": "receiving", "label": "Receiving" }
+      ]
+    },
+    {
       "id": "no-consent",
       "label": "No consent",
       "questions": [
@@ -167,6 +167,21 @@
       ]
     },
     {
+      "id": "emotional",
+      "label": "Emotional",
+      "questions": [
+        { "id": "praise", "label": "Praise" },
+        { "id": "teasing", "label": "Teasing" },
+        { "id": "humiliation", "label": "Humiliation" },
+        { "id": "degradation", "label": "Degradation" },
+        { "id": "objectification", "label": "Objectification" }
+      ],
+      "subquestions": [
+        { "id": "giving", "label": "Giving" },
+        { "id": "receiving", "label": "Receiving" }
+      ]
+    },
+    {
       "id": "taboo",
       "label": "Taboo",
       "questions": [
@@ -179,22 +194,6 @@
         { "id": "cheating", "label": "Cheating" },
         { "id": "exhibitionism", "label": "Exhibitionism" },
         { "id": "voyeurism", "label": "Voyeurism" }
-      ]
-    },
-    {
-      "id": "surrealism",
-      "label": "Surrea­lism",
-      "questions": [
-        { "id": "futanari", "label": "Futanari" },
-        { "id": "furry", "label": "Furry" },
-        { "id": "vore", "label": "Vore" },
-        { "id": "transformation", "label": "Transformation" },
-        { "id": "tentacles", "label": "Tentacles" },
-        { "id": "monster-alien", "label": "Monster/​alien" }
-      ],
-      "subquestions": [
-        { "id": "self", "label": "Self" },
-        { "id": "partner", "label": "Partner" }
       ]
     },
     {
@@ -211,14 +210,23 @@
       ]
     },
     {
-      "id": "emotional",
-      "label": "Emotional",
+      "id": "pain",
+      "label": "Pain",
       "questions": [
-        { "id": "praise", "label": "Praise" },
-        { "id": "teasing", "label": "Teasing" },
-        { "id": "humiliation", "label": "Humiliation" },
-        { "id": "degradation", "label": "Degradation" },
-        { "id": "objectification", "label": "Objectification" }
+        { "id": "light-pain", "label": "Light pain" },
+        { "id": "heavy-pain", "label": "Heavy pain" },
+        { "id": "nipple-clamps", "label": "Nipple clamps" },
+        { "id": "clothespins", "label": "Clothespins" },
+        { "id": "caning", "label": "Caning" },
+        { "id": "flogging", "label": "Flogging" },
+        { "id": "beating", "label": "Beating" },
+        { "id": "spanking", "label": "Spanking" },
+        { "id": "cockpussy-slapping", "label": "Cock/​pussy slapping" },
+        { "id": "cockpussy-torture", "label": "Cock/​pussy torture" },
+        { "id": "hot-wax", "label": "Hot wax" },
+        { "id": "scratching", "label": "Scratching" },
+        { "id": "biting", "label": "Biting" },
+        { "id": "cutting", "label": "Cutting" }
       ],
       "subquestions": [
         { "id": "giving", "label": "Giving" },
@@ -243,6 +251,22 @@
       ]
     },
     {
+      "id": "surrealism",
+      "label": "Surrea­lism",
+      "questions": [
+        { "id": "futanari", "label": "Futanari" },
+        { "id": "furry", "label": "Furry" },
+        { "id": "vore", "label": "Vore" },
+        { "id": "transformation", "label": "Transformation" },
+        { "id": "tentacles", "label": "Tentacles" },
+        { "id": "monster-alien", "label": "Monster/​alien" }
+      ],
+      "subquestions": [
+        { "id": "self", "label": "Self" },
+        { "id": "partner", "label": "Partner" }
+      ]
+    },
+    {
       "id": "miscellaneous",
       "label": "Miscellaneous",
       "questions": [
@@ -254,30 +278,6 @@
         { "id": "impregnation", "label": "Impregnation" },
         { "id": "pregnancy", "label": "Pregnancy" },
         { "id": "cuckold-cuckquean", "label": "Cuckold/​Cuckquean" }
-      ],
-      "subquestions": [
-        { "id": "giving", "label": "Giving" },
-        { "id": "receiving", "label": "Receiving" }
-      ]
-    },
-    {
-      "id": "pain",
-      "label": "Pain",
-      "questions": [
-        { "id": "light-pain", "label": "Light pain" },
-        { "id": "heavy-pain", "label": "Heavy pain" },
-        { "id": "nipple-clamps", "label": "Nipple clamps" },
-        { "id": "clothespins", "label": "Clothespins" },
-        { "id": "caning", "label": "Caning" },
-        { "id": "flogging", "label": "Flogging" },
-        { "id": "beating", "label": "Beating" },
-        { "id": "spanking", "label": "Spanking" },
-        { "id": "cockpussy-slapping", "label": "Cock/​pussy slapping" },
-        { "id": "cockpussy-torture", "label": "Cock/​pussy torture" },
-        { "id": "hot-wax", "label": "Hot wax" },
-        { "id": "scratching", "label": "Scratching" },
-        { "id": "biting", "label": "Biting" },
-        { "id": "cutting", "label": "Cutting" }
       ],
       "subquestions": [
         { "id": "giving", "label": "Giving" },
