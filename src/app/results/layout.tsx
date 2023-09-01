@@ -1,26 +1,20 @@
-import { BackToTopButton } from "@kinklist/components/back-to-top-button";
+import { DefaultLayout } from "@kinklist/components/default-layout";
 import { Legend } from "@kinklist/components/legend";
 import type { ReactNode } from "react";
 import { CopyButton, ImageButton } from "./buttons";
 
 export default function ResultsLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-      <header className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-6 px-12 pb-2 pt-12 sm:flex-row sm:justify-between sm:pt-16">
-        <div className="hidden basis-0 sm:block sm:grow">
-          {/* Placeholder which grows to ensure title is centered */}
-        </div>
-
-        <h1 className="text-5xl font-bold drop-shadow-sm">Kinklist</h1>
-
-        <div className="flex basis-0 flex-wrap items-center justify-center gap-2 sm:grow sm:flex-nowrap sm:justify-end">
+    <DefaultLayout
+      buttons={
+        <>
           <CopyButton />
           <ImageButton />
-        </div>
-      </header>
-      <Legend showNA />
-      <main>{children}</main>
-      <BackToTopButton />
-    </>
+        </>
+      }
+      legend={<Legend showNA />}
+    >
+      {children}
+    </DefaultLayout>
   );
 }
