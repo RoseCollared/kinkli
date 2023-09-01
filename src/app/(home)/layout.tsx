@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <header className="flex w-full items-center justify-center gap-8 px-12 pb-2 pt-12 sm:justify-between sm:pt-16">
+      <header className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-6 px-12 pb-2 pt-12 sm:flex-row sm:justify-between sm:pt-16">
         <div className="hidden grow sm:block">
           {/* Placeholder which grows to ensure title is centered */}
         </div>
