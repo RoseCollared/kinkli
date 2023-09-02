@@ -65,6 +65,7 @@ export const Form = forwardRef<
             sectionId={section.id}
             label={section.label}
             questions={section.questions}
+            subquestions={section.subquestions}
           />
         ))}
       </form>
@@ -78,27 +79,11 @@ interface FormSectionProps {
   sectionId: TSection["id"];
   label: TSection["label"];
   questions: TSection["questions"];
+  subquestions: TSection["subquestions"];
 }
-function FormSection({ sectionId, label, questions }: FormSectionProps) {
-  const subquestionLabels = useMemo(() => {
-    const uniqueLabels = questions
-      .flatMap((question) =>
-        question.subquestions.map((subquestion) => subquestion.label)
-      )
-      // Remove undefined and empty string
-      .filter(Boolean)
-      // Keep only unique values
-      .filter((label, index, array) => array.indexOf(label) === index);
-
-    if (uniqueLabels.length > 2) {
-      console.warn(
-        `Found more than 2 unique subquestion labels for section ${sectionId}. Using the first two only`
-      );
-      return [uniqueLabels[0], uniqueLabels[1]];
-    }
-
-    return uniqueLabels;
-  }, [questions, sectionId]);
+function FormSection(props: FormSectionProps) {
+  const { sectionId, label, questions, subquestions } = props;
+  const shouldRenderSubquestions = subquestions.length > 1;
 
   return (
     <Section>
@@ -106,15 +91,18 @@ function FormSection({ sectionId, label, questions }: FormSectionProps) {
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
         <thead
           className="hidden lg:table-header-group"
-          aria-hidden={subquestionLabels.length <= 1}
+          aria-hidden={!shouldRenderSubquestions}
         >
           {/* This row is rendered even when we don't render subquestion labels because it makes the spacing look good */}
           <tr>
             <th aria-hidden />
-            {subquestionLabels.length > 1 &&
-              subquestionLabels.map((label) => (
-                <th key={label} className="text-lg font-medium">
-                  {label}
+            {shouldRenderSubquestions &&
+              subquestions.map((subquestion) => (
+                <th
+                  key={subquestion.id}
+                  className="text-lg font-medium"
+                >
+                  {subquestion.label}
                 </th>
               ))}
           </tr>
@@ -126,7 +114,7 @@ function FormSection({ sectionId, label, questions }: FormSectionProps) {
               questionId={question.id}
               sectionId={sectionId}
               label={question.label}
-              subquestions={question.subquestions}
+              subquestions={subquestions}
             />
           ))}
         </tbody>
@@ -139,7 +127,7 @@ interface FormQuestionProps {
   questionId: TQuestion["id"];
   sectionId: TSection["id"];
   label: TQuestion["label"];
-  subquestions: TQuestion["subquestions"];
+  subquestions: TSection["subquestions"];
 }
 function FormQuestion(props: FormQuestionProps) {
   const { questionId, sectionId, label, subquestions } = props;
