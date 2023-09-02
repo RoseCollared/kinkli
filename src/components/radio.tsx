@@ -2,8 +2,9 @@
 
 import { useIsExport } from "@kinklist/context/export-context";
 import { forwardRef, type InputHTMLAttributes } from "react";
-import { useFormContext, UseFormReturn } from "react-hook-form";
+import { useFormContext, type UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
+import { labelMap } from "./legend";
 
 const colorMap = {
   "0": "bg-white", // ⬜️
@@ -17,10 +18,15 @@ const colorMap = {
 };
 
 export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+  value: string;
   /** Whether to render the small variant regardless of screen size */
   alwaysSmall?: boolean;
 }
 
+/**
+ * Radio button used specifically for the form questions and results.
+ * Not designed as a general-purpose radio button.
+ */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const { name, value, className, alwaysSmall, ...restProps } = props;
   const isExport = useIsExport();
@@ -36,7 +42,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const sharedStyles = twMerge(
     "relative h-7 w-7 appearance-none rounded-full border-2 border-black/20 transition-colors before:absolute before:inset-1 before:rounded-full before:opacity-0 before:transition-opacity checked:border-black/40 checked:before:opacity-100 hover:before:opacity-70 checked:hover:before:opacity-100 xs:h-8 xs:w-8 lg:h-5 lg:w-5 lg:before:inset-0.5",
     alwaysSmall && "h-5 w-5 before:inset-0.5 xs:h-5 xs:w-5",
-    value && colorMap[value as string]
+    value && colorMap[value]
   );
 
   if (isExport) {
@@ -57,6 +63,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     <input
       type="radio"
       ref={ref}
+      aria-label={labelMap[value]}
+      title={labelMap[value]}
       onClick={() => {
         // If the radio input is clicked while checked, we uncheck it
         // This goes against standard browser behavior, but I think it's the

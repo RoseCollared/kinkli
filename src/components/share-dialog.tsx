@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import Link, { type LinkProps } from "next/link";
@@ -100,6 +101,8 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
     successDuration: 2500,
   });
 
+  const isFirstRender = useIsFirstRender();
+
   return (
     <div className="flex grow basis-0 flex-col gap-2">
       <div className="flex justify-between gap-2">
@@ -113,7 +116,7 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
           <motion.span
             layout
             key={String(isCopied)}
-            initial={{ opacity: 0 }}
+            initial={isFirstRender ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             // Can't do an exit animation because we're not using <AnimatePresence>.
             // I couldn't find a way to animate the width of the button without
