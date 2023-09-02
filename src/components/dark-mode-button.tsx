@@ -48,9 +48,10 @@ export function DarkModeButton() {
     <AnimatePresence>
       <Button
         as={motion.button}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
         onClick={() => toggleTheme()}
+        aria-label={
+          theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+        }
         icon={
           theme === "dark" ? (
             <BiSun className="h-8 w-8" />
@@ -59,6 +60,8 @@ export function DarkModeButton() {
           )
         }
         variant="tertiary"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         className={twMerge(
           "p-1 transition-opacity sm:p-1",
           isFirstRender && "opacity-0"
