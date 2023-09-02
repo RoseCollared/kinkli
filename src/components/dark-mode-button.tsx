@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
-import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
 
 export function DarkModeButton() {
@@ -19,8 +18,8 @@ export function DarkModeButton() {
       return;
     }
 
-    // Disable transitions on the body element because it kills performance
-    // when used in combination with the masking view transition we do
+    // Disable transitions on the body element to ensure the "new" view
+    // transition is in the final state as soon as the view transition starts
     document.body.style.transition = "none";
 
     // @ts-expect-error wait for TS to update DOM types
@@ -62,10 +61,7 @@ export function DarkModeButton() {
         variant="tertiary"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={twMerge(
-          "p-1 transition-opacity sm:p-1",
-          isFirstRender && "opacity-0"
-        )}
+        className="p-1 sm:p-1"
       />
     </AnimatePresence>
   );
