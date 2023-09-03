@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@kinklist/components/button";
 import { Legend } from "@kinklist/components/legend";
 import { Loader } from "@kinklist/components/loader";
 import { Results } from "@kinklist/components/results/results";
@@ -7,12 +8,16 @@ import { ExportProvider } from "@kinklist/context/export-context";
 import { primaryInput } from "detect-it";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import html2canvas from "html2canvas";
+import { useTheme } from "next-themes";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function ExportPage() {
   const [image, setImage] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme: theme } = useTheme();
 
   // Detect whether the user is using a mouse or touch input
   // We use an effect to prevent hydration errors
@@ -22,9 +27,8 @@ export default function ExportPage() {
     setIsTouch(primaryInput === "touch");
   }, []);
 
-  // Generate results image after first render
-  const resultsRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  const generateImageEffect = () => {
+    setIsLoading(true);
     async function asyncEffect() {
       const resultsElement = resultsRef.current;
       if (!resultsElement) {
@@ -49,8 +53,11 @@ export default function ExportPage() {
         setIsLoading(false);
       }
     }
-    asyncEffect();
-  }, []);
+    setTimeout(asyncEffect, 0);
+  };
+
+  // Generate results image after first render
+  useEffect(generateImageEffect, [theme]);
 
   // Animation that plays when clicking the image
   const [scope, animate] = useAnimate();
@@ -59,10 +66,11 @@ export default function ExportPage() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   return (
-    <div className="flex min-h-screen min-w-full flex-col items-center gap-8 bg-white px-8 py-12 font-medium text-gray-600 dark:bg-zinc-900 dark:text-gray-200 sm:gap-12">
+    <div className="flex flex-col items-center gap-8 px-8 pb-8 pt-20 font-medium text-gray-600 dark:text-gray-200">
       {isLoading && (
         <AnimatePresence>
           <motion.div
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="flex flex-col items-center gap-x-8 gap-y-4 py-12 text-center sm:flex-row"
@@ -74,11 +82,26 @@ export default function ExportPage() {
       )}
 
       {!!error && (
-        <div className="space-y-4 py-12 text-center">
-          {/* :( */}
-          <p>Oops! Something went wrong :&#40; </p>
-          <pre>{error instanceof Error ? error.message : String(error)}</pre>
-        </div>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="space-y-4 py-12 text-center"
+          >
+            {/* :( */}
+            <p>Oops! Something went wrong :&#40; </p>
+            <pre>{error instanceof Error ? error.message : String(error)}</pre>
+            <Button
+              onClick={() => {
+                setError(null);
+                generateImageEffect();
+              }}
+            >
+              Try again
+            </Button>
+          </motion.div>
+        </AnimatePresence>
       )}
 
       {!isLoading && !error && (
@@ -87,7 +110,8 @@ export default function ExportPage() {
             key="text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mx-4 max-w-prose text-sm sm:mx-8 sm:text-base"
+            exit={{ opacity: 0 }}
+            className="mx-4 max-w-prose sm:mx-8 sm:text-base"
           >
             Here&apos;s a picture of your results! Save it by{" "}
             {isTouch ? (
@@ -104,6 +128,7 @@ export default function ExportPage() {
             ref={scope}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ type: "spring" }}
             className="relative overflow-hidden rounded-3xl border-4 border-rose-300 shadow-2xl dark:border-red-700 dark:shadow-red-950"
           >
@@ -133,7 +158,7 @@ export default function ExportPage() {
                   );
                 }
               }}
-              className="max-h-[75vh]"
+              className="max-h-[70vh]"
             />
           </motion.div>
         </AnimatePresence>
