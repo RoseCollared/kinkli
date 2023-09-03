@@ -19,7 +19,7 @@ export function DefaultLayout(props: DefaultLayoutProps) {
         {/* TODO: put dark mode in hamburger menu on small screens */}
         {/* TODO: also include legend in hamburger menu? */}
         <div className="flex grow items-center">
-          <DarkModeButton />
+          <DarkModeButton className="absolute top-6 left-6 sm:static" />
         </div>
 
         <h1 className="text-5xl font-bold drop-shadow-sm">Kinklist</h1>
@@ -30,7 +30,7 @@ export function DefaultLayout(props: DefaultLayoutProps) {
       </header>
       {legend}
       <main>{children}</main>
-      <BackToTopButton />
+      <BackToTopButton className="fixed bottom-6 left-6" />
     </>
   );
 }

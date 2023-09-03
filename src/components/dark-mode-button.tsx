@@ -5,9 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
+import { twMerge } from "tailwind-merge";
 import { Button } from "./button";
 
-export function DarkModeButton() {
+export function DarkModeButton({ className }: { className?: string }) {
   const { resolvedTheme: theme, setTheme } = useTheme();
   const isFirstRender = useIsFirstRender();
 
@@ -38,7 +39,10 @@ export function DarkModeButton() {
         aria-hidden
         disabled
         icon={<div className="h-8 w-8" />}
-        className="pointer-events-none invisible p-1 sm:p-1"
+        className={twMerge(
+          "pointer-events-none invisible p-1 sm:p-1",
+          className
+        )}
       />
     );
   }
@@ -61,7 +65,7 @@ export function DarkModeButton() {
         variant="tertiary"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="p-1 sm:p-1"
+        className={twMerge("p-1 sm:p-1", className)}
       />
     </AnimatePresence>
   );
