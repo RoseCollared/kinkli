@@ -51,7 +51,7 @@ export function ShareDialog({ open }: { open: boolean }) {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none xs:gap-4 xs:p-8 sm:max-w-2xl"
+                className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none dark:border-red-700 dark:bg-zinc-900 xs:gap-4 xs:p-8 sm:max-w-2xl"
               >
                 <Dialog.Title className="grow text-2xl font-semibold sm:text-3xl">
                   Share
@@ -132,13 +132,16 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
       <Link href={href} target="_blank" tabIndex={-1}>
         <Button variant="secondary" className="w-full py-6 sm:py-12">
           <div className="flex flex-col items-center text-base">
-            <BiLink aria-hidden className="h-12 w-12 fill-rose-400" />
+            <BiLink
+              aria-hidden
+              className="h-12 w-12 fill-rose-400 dark:fill-gray-600"
+            />
             Open link
           </div>
         </Button>
       </Link>
 
-      <p className="px-2 text-gray-500">
+      <p className="px-2 text-gray-500 dark:text-gray-200">
         A link is easier to view on mobile devices and more accessible to people
         with vision impairments.
       </p>
@@ -154,13 +157,16 @@ function ImageOption({ href }: { href: LinkProps["href"] }) {
       <Link href={href} target="_blank" tabIndex={-1}>
         <Button variant="secondary" className="w-full py-6 sm:py-12">
           <div className="flex flex-col items-center text-base">
-            <BiImage aria-hidden className="h-12 w-12 fill-rose-400" />
+            <BiImage
+              aria-hidden
+              className="h-12 w-12 fill-rose-400 dark:fill-gray-600"
+            />
             Generate image
           </div>
         </Button>
       </Link>
 
-      <p className="px-2 text-gray-500">
+      <p className="px-2 text-gray-500 dark:text-gray-200">
         An image is always the same no matter how you&apos;re viewing it.
       </p>
     </div>

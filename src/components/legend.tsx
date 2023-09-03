@@ -1,20 +1,22 @@
 "use client";
 
+import { useIsExport } from "@kinklist/context/export-context";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";
 
 /** Maps input values to labels */
-export const labelMap = {
-  "7": "Favorite",
-  "6": "Love",
-  "5": "Like",
-  "4": "Curious",
-  "3": "Meh",
-  "2": "Maybe",
-  "1": "Limit",
-  "0": "N/A",
-};
+export const labelMap = new Map([
+  ["7", "Favorite"],
+  ["6", "Love"],
+  ["5", "Like"],
+  ["4", "Curious"],
+  ["3", "Meh"],
+  ["2", "Maybe"],
+  ["1", "Limit"],
+  ["0", "N/A"],
+]);
+export const labelKeys = Array.from(labelMap.keys());
 
 interface LegendProps {
   /** Whether to show an input for the "N/A" value */
@@ -30,34 +32,36 @@ export function Legend({ showNA, className }: LegendProps) {
     initialInView: true,
   });
   const isSticking = !inView;
+  const isExport = useIsExport();
 
   return (
     <aside
       ref={ref}
       className={twMerge(
         // Fine-tune max width to balance rows
-        "z-10 box-content flex max-w-sm flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-all sm:sticky sm:top-0 md:max-w-none",
+        "z-10 box-content flex max-w-sm flex-wrap justify-center gap-x-4 gap-y-1 rounded-b-3xl bg-transparent px-8 py-4 transition-colors sm:sticky sm:top-0 sm:border-2 sm:border-t-0 sm:border-transparent md:max-w-none",
         showNA && "md:max-w-sm lg:max-w-none",
         isSticking &&
-          "sm:border-2 sm:border-t-0 sm:border-rose-300 sm:bg-white sm:shadow-lg",
+          !isExport &&
+          "sm:border-rose-300 sm:bg-white sm:shadow-lg dark:sm:border-red-700 dark:sm:bg-zinc-700",
         className
       )}
     >
-      {Object.entries(labelMap)
-        .filter(([value]) => value !== "0" || showNA) // hide N/A by default
-        .map(([value, label]) => (
+      {labelKeys
+        .filter((key) => key !== "0" || showNA) // hide N/A by default
+        .map((key) => (
           <label
-            key={value}
-            className="flex items-center gap-2 text-lg font-medium text-gray-600"
+            key={key}
+            className="flex items-center gap-2 text-lg font-medium text-gray-600 dark:text-gray-100"
           >
             <Radio
-              value={value}
-              checked
+              value={key}
+              checked={key !== "0"} // everything checked except N/A
               readOnly
               alwaysSmall
               title={undefined} // no need since the label is displayed alongside
             />
-            {label}
+            {labelMap.get(key)}
           </label>
         ))}
     </aside>

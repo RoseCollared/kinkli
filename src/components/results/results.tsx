@@ -90,7 +90,7 @@ function ResultsSection(props: ResultsSectionProps) {
     <Section>
       <Section.Title>{label}</Section.Title>
       {shouldRenderSubquestions && (
-        <p className="text-lg italic text-gray-600 lg:text-base">
+        <p className="text-lg italic lg:text-base">
           {subquestions.map(({ label }) => label).join(", ")}
         </p>
       )}
@@ -149,7 +149,7 @@ function ResultsQuestion(props: ResultsQuestionProps) {
           />
         </td>
       ))}
-      <td className="sm:w-54 pl-3 text-xl font-medium leading-tight text-gray-600 lg:pl-2 lg:text-lg">
+      <td className="sm:w-54 pl-3 text-xl font-medium leading-tight lg:pl-2 lg:text-lg">
         {label}
       </td>
     </tr>
