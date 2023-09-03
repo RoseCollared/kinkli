@@ -15,6 +15,7 @@ export function DarkModeButton({ className }: { className?: string }) {
   const toggleTheme = useCallback(() => {
     // @ts-expect-error wait for TS to update DOM types
     if (typeof document === "undefined" || !document.startViewTransition) {
+      // View transitions are not supported, so don't do anything fancy
       setTheme(theme === "dark" ? "light" : "dark");
       return;
     }
