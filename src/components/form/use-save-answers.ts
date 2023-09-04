@@ -1,6 +1,6 @@
 "use client";
 
-import { encodeValues } from "@kinklist/utils";
+import { encodeValues } from "@kinkli/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { Control, useWatch } from "react-hook-form";

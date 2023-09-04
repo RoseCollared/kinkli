@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
+import { useIsFirstRender } from "@kinkli/hooks/use-is-first-render";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";

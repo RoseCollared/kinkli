@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
+import { useIsFirstRender } from "@kinkli/hooks/use-is-first-render";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import Link, { type LinkProps } from "next/link";

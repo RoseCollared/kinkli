@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsExport } from "@kinklist/context/export-context";
+import { useIsExport } from "@kinkli/context/export-context";
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { useFormContext, type UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";

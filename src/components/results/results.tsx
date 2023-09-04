@@ -1,17 +1,17 @@
 "use client";
 
-import { Button } from "@kinklist/components/button";
-import { getEmptyDefaultValues } from "@kinklist/components/form/default-values";
+import { Button } from "@kinkli/components/button";
+import { getEmptyDefaultValues } from "@kinkli/components/form/default-values";
 import {
   kinksSchema,
   type FormValues,
   type TQuestion,
   type TSection,
-} from "@kinklist/components/form/schema";
-import { Radio } from "@kinklist/components/radio";
-import { Section } from "@kinklist/components/section";
-import { useIsExport } from "@kinklist/context/export-context";
-import { decodeValues } from "@kinklist/utils";
+} from "@kinkli/components/form/schema";
+import { Radio } from "@kinkli/components/radio";
+import { Section } from "@kinkli/components/section";
+import { useIsExport } from "@kinkli/context/export-context";
+import { decodeValues } from "@kinkli/utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ForwardedRef, forwardRef, useMemo } from "react";

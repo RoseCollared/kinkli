@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParamState } from "@kinklist/hooks/use-search-param-state";
+import { useSearchParamState } from "@kinkli/hooks/use-search-param-state";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { BiSolidShareAlt } from "react-icons/bi";
@@ -26,7 +26,9 @@ export function ShareButton() {
       onOpenChange={(open) => setOpenParam(open ? "open" : null)}
     >
       <Dialog.Trigger asChild>
-        <Button icon={<BiSolidShareAlt />} variant="secondary">Share</Button>
+        <Button icon={<BiSolidShareAlt />} variant="secondary">
+          Share
+        </Button>
       </Dialog.Trigger>
       {/* We pass an `open` prop to the dialog so we can render the content
       conditionally, which is required to use <AnimatePresence /> to animate

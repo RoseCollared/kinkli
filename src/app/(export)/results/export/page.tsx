@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@kinklist/components/button";
-import { Legend } from "@kinklist/components/legend";
-import { Loader } from "@kinklist/components/loader";
-import { Results } from "@kinklist/components/results/results";
-import { ExportProvider } from "@kinklist/context/export-context";
+import { Button } from "@kinkli/components/button";
+import { Legend } from "@kinkli/components/legend";
+import { Loader } from "@kinkli/components/loader";
+import { Results } from "@kinkli/components/results/results";
+import { ExportProvider } from "@kinkli/context/export-context";
 import { primaryInput } from "detect-it";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import html2canvas from "html2canvas";

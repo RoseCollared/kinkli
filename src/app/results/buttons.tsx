@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@kinklist/components/button";
-import { useIsFirstRender } from "@kinklist/hooks/use-is-first-render";
+import { Button } from "@kinkli/components/button";
+import { useIsFirstRender } from "@kinkli/hooks/use-is-first-render";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

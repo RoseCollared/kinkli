@@ -1,5 +1,5 @@
-import { DefaultLayout } from "@kinklist/components/default-layout";
-import { Legend } from "@kinklist/components/legend";
+import { DefaultLayout } from "@kinkli/components/default-layout";
+import { Legend } from "@kinkli/components/legend";
 import type { ReactNode } from "react";
 import { CopyButton, ImageButton } from "./buttons";
 

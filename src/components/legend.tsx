@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsExport } from "@kinklist/context/export-context";
+import { useIsExport } from "@kinkli/context/export-context";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";

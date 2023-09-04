@@ -22,7 +22,7 @@ export function DefaultLayout(props: DefaultLayoutProps) {
           <DarkModeButton className="absolute top-6 left-6 sm:static" />
         </div>
 
-        <h1 className="text-5xl font-bold drop-shadow-sm">Kinklist</h1>
+        <h1 className="text-5xl font-bold drop-shadow-sm">Kinkli</h1>
 
         <div className="flex basis-0 flex-wrap items-center justify-center gap-2 sm:grow sm:flex-nowrap sm:justify-end">
           {buttons}

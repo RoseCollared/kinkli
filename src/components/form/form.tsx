@@ -1,6 +1,6 @@
 "use client";
 
-import { decodeValues } from "@kinklist/utils";
+import { decodeValues } from "@kinkli/utils";
 import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, Fragment, forwardRef, useMemo } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
@@ -98,10 +98,7 @@ function FormSection(props: FormSectionProps) {
             <th aria-hidden />
             {shouldRenderSubquestions &&
               subquestions.map((subquestion) => (
-                <th
-                  key={subquestion.id}
-                  className="text-lg font-medium"
-                >
+                <th key={subquestion.id} className="text-lg font-medium">
                   {subquestion.label}
                 </th>
               ))}

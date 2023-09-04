@@ -1,4 +1,4 @@
-import { DarkModeButton } from "@kinklist/components/dark-mode-button";
+import { DarkModeButton } from "@kinkli/components/dark-mode-button";
 import { ReactNode } from "react";
 
 export default function ExportLayout({ children }: { children?: ReactNode }) {
