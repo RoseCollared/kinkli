@@ -27,7 +27,7 @@ export const kinksSchema = z.object({
   sections: z.array(sectionSchema),
 });
 
-export type FormValues = z.infer<typeof formValuesSchema>;
+export type TFormValues = z.infer<typeof formValuesSchema>;
 export const formValuesSchema = z.record(
   z.string().min(1),
   z.record(

@@ -4,20 +4,20 @@ import { encodeValues } from "@kinkli/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { Control, useWatch } from "react-hook-form";
-import { FormValues } from "./schema";
+import { TFormValues } from "./schema";
 
 /**
  * Saves answers in search params when form state changes
  */
 export function useSaveAnswers(
-  control: Control<FormValues>,
-  emptyDefaultValues: FormValues
+  control: Control<TFormValues>,
+  emptyDefaultValues: TFormValues
 ) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-  const values = useWatch<FormValues>({ control });
+  const values = useWatch<TFormValues>({ control });
 
   useEffect(() => {
     if (Object.keys(values).length === 0) {
