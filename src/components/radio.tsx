@@ -4,7 +4,7 @@ import { useIsExport } from "@kinkli/context/export-context";
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { useFormContext, type UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
-import { labelMap } from "./legend";
+import { labelMap } from "@kinkli/answer-labels";
 
 const colorMap = {
   "0": "bg-white dark:bg-zinc-800 dark:border-white/30", // ⬜️

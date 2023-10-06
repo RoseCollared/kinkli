@@ -1,22 +1,10 @@
 "use client";
 
+import { labelMap } from "@kinkli/answer-labels";
 import { useIsExport } from "@kinkli/context/export-context";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import { Radio } from "./radio";
-
-/** Maps input values to labels */
-export const labelMap = new Map([
-  ["7", "Favorite"],
-  ["6", "Love"],
-  ["5", "Like"],
-  ["4", "Curious"],
-  ["3", "Meh"],
-  ["2", "Maybe"],
-  ["1", "Limit"],
-  ["0", "N/A"],
-]);
-export const labelKeys = Array.from(labelMap.keys());
 
 interface LegendProps {
   /** Whether to show an input for the "N/A" value */
@@ -47,7 +35,7 @@ export function Legend({ showNA, className }: LegendProps) {
         className
       )}
     >
-      {labelKeys
+      {Array.from(labelMap.keys())
         .filter((key) => key !== "0" || showNA) // hide N/A by default
         .map((key) => (
           <label
