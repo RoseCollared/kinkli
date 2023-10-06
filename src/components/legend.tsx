@@ -11,8 +11,8 @@ export const labelMap = new Map([
   ["6", "Love"],
   ["5", "Like"],
   ["4", "Curious"],
-  ["3", "Meh"],
-  ["2", "Maybe"],
+  ["3", "Maybe"],
+  ["2", "Meh"],
   ["1", "Limit"],
   ["0", "N/A"],
 ]);
