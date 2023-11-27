@@ -1,9 +1,8 @@
 "use client";
 
 import { Button } from "@kinkli/components/button";
-import { getEmptyValues } from "@kinkli/components/form/default-values";
 import {
-  kinksSchema,
+  TKinks,
   type FormValues,
   type TQuestion,
   type TSection,
@@ -14,67 +13,72 @@ import { useIsExport } from "@kinkli/context/export-context";
 import { decodeValues } from "@kinkli/utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ForwardedRef, forwardRef, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
-import kinks from "../../../public/kinks.json";
 
-function _Results(
-  { className }: { className?: string },
-  ref: ForwardedRef<HTMLDivElement>
-) {
-  const isExport = useIsExport();
-  const searchParams = useSearchParams();
-  const parsedKinks = useMemo(() => kinksSchema.parse(kinks), []);
-
-  // Decode answers from search param
-  const answers = useMemo(() => {
-    const encodedValues = searchParams.get("answers");
-    if (encodedValues) {
-      const shape = getEmptyValues(parsedKinks);
-      return decodeValues(encodedValues, shape);
-    } else {
-      return getEmptyValues(parsedKinks);
-    }
-  }, [searchParams, parsedKinks]);
-
-  if (!answers) return null;
-
-  return (
-    <div
-      ref={ref}
-      className={twMerge(
-        "relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
-        !isExport && "pt-12",
-        className
-      )}
-    >
-      {!isExport && (
-        <Link
-          href={{ pathname: "/", search: searchParams.toString() }}
-          className="absolute right-0 top-0"
-          tabIndex={-1}
-        >
-          <Button
-            variant="tertiary"
-            className="px-3 py-2 text-base sm:px-3 sm:text-base"
-          >
-            Edit answers
-          </Button>
-        </Link>
-      )}
-      {parsedKinks.sections.map((section) => (
-        <ResultsSection
-          key={section.id}
-          sectionId={section.id}
-          label={section.label}
-          questions={section.questions}
-          subquestions={section.subquestions}
-          answers={answers}
-        />
-      ))}
-    </div>
-  );
+export interface ResultsProps {
+  kinks: TKinks;
+  emptyValues: FormValues;
+  className?: string;
 }
+
+export const Results = forwardRef<HTMLDivElement, ResultsProps>(
+  ({ kinks, emptyValues, className }, ref) => {
+    const isExport = useIsExport();
+    const searchParams = useSearchParams();
+
+    // Decode answers from search param
+    const answers = useMemo(() => {
+      const encodedValues = searchParams.get("answers");
+      if (encodedValues) {
+        const shape = emptyValues;
+        return decodeValues(encodedValues, shape);
+      } else {
+        return emptyValues;
+      }
+    }, [searchParams, emptyValues]);
+
+    if (!answers) return null;
+
+    return (
+      <div
+        ref={ref}
+        className={twMerge(
+          "relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
+          !isExport && "pt-12",
+          className
+        )}
+      >
+        {!isExport && (
+          <Link
+            href={{ pathname: "/", search: searchParams.toString() }}
+            className="absolute right-0 top-0"
+            tabIndex={-1}
+          >
+            <Button
+              variant="tertiary"
+              className="px-3 py-2 text-base sm:px-3 sm:text-base"
+            >
+              Edit answers
+            </Button>
+          </Link>
+        )}
+        {kinks.sections.map((section) => (
+          <ResultsSection
+            key={section.id}
+            sectionId={section.id}
+            label={section.label}
+            questions={section.questions}
+            subquestions={section.subquestions}
+            answers={answers}
+          />
+        ))}
+      </div>
+    );
+  }
+);
+
+Results.displayName = "Results";
 
 interface ResultsSectionProps {
   sectionId: TSection["id"];
@@ -83,6 +87,7 @@ interface ResultsSectionProps {
   subquestions: TSection["subquestions"];
   answers: FormValues;
 }
+
 function ResultsSection(props: ResultsSectionProps) {
   const { sectionId, label, questions, subquestions, answers } = props;
   const shouldRenderSubquestions = subquestions.length > 1;
@@ -156,5 +161,3 @@ function ResultsQuestion(props: ResultsQuestionProps) {
     </tr>
   );
 }
-
-export const Results = forwardRef(_Results);

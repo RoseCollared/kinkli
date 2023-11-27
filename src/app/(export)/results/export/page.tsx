@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@kinkli/components/button";
+import { getEmptyValues } from "@kinkli/components/form/default-values";
+import { kinksSchema } from "@kinkli/components/form/schema";
 import { Legend } from "@kinkli/components/legend";
 import { Loader } from "@kinkli/components/loader";
 import { Results } from "@kinkli/components/results/results";
@@ -9,9 +11,13 @@ import { primaryInput } from "detect-it";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import html2canvas from "html2canvas";
 import { useTheme } from "next-themes";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import kinksData from "../../../../../public/kinks.json";
 
 export default function ExportPage() {
+  const parsedKinks = useMemo(() => kinksSchema.parse(kinksData), []);
+  const emptyValues = useMemo(() => getEmptyValues(parsedKinks), [parsedKinks]);
+
   const [image, setImage] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
@@ -174,7 +180,7 @@ export default function ExportPage() {
             showNA
             className="border-none pt-4 sm:static sm:bg-transparent"
           />
-          <Results />
+          <Results kinks={parsedKinks} emptyValues={emptyValues} />
         </div>
       </ExportProvider>
     </div>
