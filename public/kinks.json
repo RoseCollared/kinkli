@@ -124,7 +124,7 @@
     },
     {
       "id": "cnc",
-      "label": "Consensual Non-Consent",
+      "label": "CNC",
       "questions": [
         { "id": "free-use", "label": "Free use" },
         { "id": "blackmail-coercion", "label": "Blackmail/​coercion" },
