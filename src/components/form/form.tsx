@@ -88,7 +88,7 @@ function FormSection(props: FormSectionProps) {
 
   return (
     <Section className="mb-4 break-inside-avoid-column">
-      <Section.Title>{label}</Section.Title>
+      <Section.Title id={sectionId}>{label}</Section.Title>
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
         <thead
           className="hidden lg:table-header-group"

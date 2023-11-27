@@ -44,6 +44,7 @@ function _Results(
       ref={ref}
       className={twMerge(
         "relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
+        !isExport && "pt-12",
         className
       )}
     >

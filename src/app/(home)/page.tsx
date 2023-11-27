@@ -11,7 +11,7 @@ export default function HomePage() {
 
   return (
     <>
-      <TableOfContents />
+      <TableOfContents kinks={parsedKinks} className="mt-4 sm:hidden" />
       <Form kinks={parsedKinks} emptyValues={emptyValues} />
     </>
   );

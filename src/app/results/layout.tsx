@@ -14,7 +14,7 @@ export default function ResultsLayout({ children }: { children: ReactNode }) {
       }
     >
       <Legend showNA />
-      <main className="mx-4">{children}</main>
+      <main className="mx-4 mb-12 flex flex-col gap-8">{children}</main>
     </DefaultLayout>
   );
 }

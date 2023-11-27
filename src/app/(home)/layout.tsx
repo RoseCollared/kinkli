@@ -9,7 +9,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <DefaultLayout buttons={<ShareButton />}>
       <Legend />
-      <main className="mx-4 mb-12">{children}</main>
+      <main className="mx-4 mb-12 flex flex-col gap-8">{children}</main>
     </DefaultLayout>
   );
 }
