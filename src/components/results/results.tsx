@@ -94,7 +94,7 @@ function ResultsSection(props: ResultsSectionProps) {
 
   return (
     <Section className="mb-4 break-inside-avoid-column">
-      <Section.Title>{label}</Section.Title>
+      <Section.Title id={sectionId}>{label}</Section.Title>
       {shouldRenderSubquestions && (
         <p className="text-lg italic lg:text-base">
           {subquestions.map(({ label }) => label).join(", ")}
