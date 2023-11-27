@@ -1,28 +1,6 @@
 {
   "sections": [
     {
-      "id": "dynamics",
-      "label": "Dynamics",
-      "questions": [
-        { "id": "vanilla", "label": "Vanilla" },
-        { "id": "occasional-play", "label": "Occasional play" },
-        { "id": "regular-play", "label": "Regular play" },
-        { "id": "24-7-lifestyle", "label": "24/7 lifestyle" }
-      ]
-    },
-    {
-      "id": "groupings",
-      "label": "Groupings",
-      "questions": [
-        { "id": "solo-play", "label": "Solo play" },
-        { "id": "single-partner", "label": "Single partner" },
-        { "id": "threesome", "label": "Threesome" },
-        { "id": "four-or-more", "label": "Four or more" },
-        { "id": "orgy", "label": "Orgy" },
-        { "id": "swinging", "label": "Swinging" }
-      ]
-    },
-    {
       "id": "general",
       "label": "General",
       "questions": [
@@ -44,17 +22,15 @@
       ]
     },
     {
-      "id": "parts",
-      "label": "Parts",
+      "id": "groupings",
+      "label": "Groupings",
       "questions": [
-        { "id": "ass", "label": "Ass" },
-        { "id": "balls", "label": "Balls" },
-        { "id": "breasts", "label": "Breasts" },
-        { "id": "cock", "label": "Cock" },
-        { "id": "feet", "label": "Feet" },
-        { "id": "hands", "label": "Hands" },
-        { "id": "legs", "label": "Legs" },
-        { "id": "pussy", "label": "Pussy" }
+        { "id": "solo-play", "label": "Solo play" },
+        { "id": "single-partner", "label": "Single partner" },
+        { "id": "threesome", "label": "Threesome" },
+        { "id": "four-or-more", "label": "Four or more" },
+        { "id": "orgy", "label": "Orgy" },
+        { "id": "swinging", "label": "Swinging" }
       ]
     },
     {
@@ -147,12 +123,12 @@
       ]
     },
     {
-      "id": "no-consent",
-      "label": "No Consent",
+      "id": "cnc",
+      "label": "Consensual Non-Consent",
       "questions": [
-        { "id": "non-con-rape", "label": "Non-con/​rape" },
         { "id": "free-use", "label": "Free use" },
         { "id": "blackmail-coercion", "label": "Blackmail/​coercion" },
+        { "id": "non-con-rape", "label": "Non-con/​rape" },
         { "id": "kidnapping", "label": "Kidnapping" },
         { "id": "sleep-play", "label": "Sleep play" },
         { "id": "drugs", "label": "Drugs" },
@@ -171,8 +147,7 @@
         { "id": "teasing", "label": "Teasing" },
         { "id": "humiliation", "label": "Humiliation" },
         { "id": "degradation", "label": "Degradation" },
-        { "id": "objectification", "label": "Objectification" },
-        { "id": "primal-play", "label": "Primal play" }
+        { "id": "objectification", "label": "Objectification" }
       ],
       "subquestions": [
         { "id": "giving", "label": "Giving" },
@@ -185,7 +160,8 @@
       "questions": [
         { "id": "incest", "label": "Incest" },
         { "id": "age-gap", "label": "Age gap" },
-        { "id": "abdl", "label": "ABDL" },
+        { "id": "age-play", "label": "Age play" },
+        { "id": "diapers", "label": "Diapers" },
         { "id": "raceplay", "label": "Raceplay" },
         { "id": "bestiality", "label": "Bestiality" },
         { "id": "necrophilia", "label": "Necrophilia" },
@@ -268,6 +244,7 @@
       "id": "miscellaneous",
       "label": "Miscellaneous",
       "questions": [
+        { "id": "primal-play", "label": "Primal play" },
         { "id": "crying", "label": "Crying" },
         { "id": "gagging", "label": "Gagging" },
         { "id": "public-play", "label": "Public play" },
