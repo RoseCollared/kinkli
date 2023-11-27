@@ -12,9 +12,9 @@ export default function ResultsLayout({ children }: { children: ReactNode }) {
           <ImageButton />
         </>
       }
-      legend={<Legend showNA />}
     >
-      {children}
+      <Legend showNA />
+      <main className="mx-4">{children}</main>
     </DefaultLayout>
   );
 }

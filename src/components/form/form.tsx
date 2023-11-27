@@ -44,7 +44,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
       <FormProvider {...methods}>
         <form
           ref={ref}
-          className="relative mx-4 columns-1 py-12 xl:columns-2 3xl:columns-3"
+          className="relative columns-1 pt-12 xl:columns-2 3xl:columns-3"
           {...restProps}
         >
           <Button
@@ -87,7 +87,7 @@ function FormSection(props: FormSectionProps) {
   const shouldRenderSubquestions = subquestions.length > 1;
 
   return (
-    <Section>
+    <Section className="mb-4 break-inside-avoid-column">
       <Section.Title>{label}</Section.Title>
       <table className="block border-separate border-spacing-x-4 border-spacing-y-2 lg:-mx-4 lg:-my-2 lg:table">
         <thead

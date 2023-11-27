@@ -43,7 +43,7 @@ function _Results(
     <div
       ref={ref}
       className={twMerge(
-        "relative mx-4 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
+        "relative columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 4xl:columns-6",
         className
       )}
     >
@@ -87,7 +87,7 @@ function ResultsSection(props: ResultsSectionProps) {
   const shouldRenderSubquestions = subquestions.length > 1;
 
   return (
-    <Section>
+    <Section className="mb-4 break-inside-avoid-column">
       <Section.Title>{label}</Section.Title>
       {shouldRenderSubquestions && (
         <p className="text-lg italic lg:text-base">
