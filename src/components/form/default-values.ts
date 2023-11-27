@@ -1,6 +1,6 @@
-import type { TKinks, FormValues } from "./schema";
+import type { FormValues, TKinks } from "./schema";
 
-export function getEmptyDefaultValues(data: TKinks): FormValues {
+export function getEmptyValues(data: TKinks): FormValues {
   const formValues: FormValues = {};
   for (const section of data.sections) {
     formValues[section.id] = {};

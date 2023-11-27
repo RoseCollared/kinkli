@@ -11,7 +11,7 @@ import { FormValues } from "./schema";
  */
 export function useSaveAnswers(
   control: Control<FormValues>,
-  emptyDefaultValues: FormValues
+  emptyValues: FormValues
 ) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export function useSaveAnswers(
     }
 
     const params = new URLSearchParams(searchParams.toString());
-    if (encodeValues(values) !== encodeValues(emptyDefaultValues)) {
+    if (encodeValues(values) !== encodeValues(emptyValues)) {
       params.set("answers", encodeValues(values));
     } else {
       params.delete("answers");
@@ -36,5 +36,5 @@ export function useSaveAnswers(
     router.replace(pathname + (paramstring ? "?" + paramstring : ""), {
       scroll: false,
     });
-  }, [emptyDefaultValues, pathname, searchParams, values, router]);
+  }, [emptyValues, pathname, searchParams, values, router]);
 }

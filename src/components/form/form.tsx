@@ -2,76 +2,77 @@
 
 import { decodeValues } from "@kinkli/utils";
 import { useSearchParams } from "next/navigation";
-import { FormHTMLAttributes, Fragment, forwardRef, useMemo } from "react";
+import { FormHTMLAttributes, Fragment, forwardRef } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import kinks from "../../../public/kinks.json";
+
 import { Button } from "../button";
 import { Radio } from "../radio";
 import { Section } from "../section";
-import { getEmptyDefaultValues } from "./default-values";
 import {
-  kinksSchema,
   type FormValues,
+  type TKinks,
   type TQuestion,
   type TSection,
   type TSubquestion,
 } from "./schema";
 import { useSaveAnswers } from "./use-save-answers";
 
-export const Form = forwardRef<
-  HTMLFormElement,
-  FormHTMLAttributes<HTMLFormElement>
->((props, ref) => {
-  const searchParams = useSearchParams();
+export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+  kinks: TKinks;
+  emptyValues: FormValues;
+}
 
-  const parsedKinks = useMemo(() => kinksSchema.parse(kinks), []);
+export const Form = forwardRef<HTMLFormElement, FormProps>(
+  ({ kinks, emptyValues, ...restProps }, ref) => {
+    const searchParams = useSearchParams();
 
-  const methods = useForm<FormValues>({
-    defaultValues: async () => {
-      const encodedValues = searchParams.get("answers");
-      if (encodedValues) {
-        const shape = getEmptyDefaultValues(parsedKinks);
-        return decodeValues(encodedValues, shape);
-      } else {
-        return getEmptyDefaultValues(parsedKinks);
-      }
-    },
-  });
+    const methods = useForm<FormValues>({
+      defaultValues: async () => {
+        const encodedValues = searchParams.get("answers");
+        if (encodedValues) {
+          const shape = emptyValues;
+          return decodeValues(encodedValues, shape);
+        } else {
+          return emptyValues;
+        }
+      },
+    });
 
-  useSaveAnswers(methods.control, getEmptyDefaultValues(parsedKinks));
+    useSaveAnswers(methods.control, emptyValues);
 
-  return (
-    <FormProvider {...methods}>
-      <form
-        ref={ref}
-        className="relative mx-4 columns-1 py-12 xl:columns-2 3xl:columns-3"
-        {...props}
-      >
-        <Button
-          onClick={() => {
-            if (confirm("Are you sure you want to clear all your answers?")) {
-              methods.reset(getEmptyDefaultValues(parsedKinks));
-            }
-          }}
-          type="button"
-          variant="tertiary"
-          className="absolute right-0 top-0 px-3 py-2 text-base sm:px-3 sm:text-base"
+    return (
+      <FormProvider {...methods}>
+        <form
+          ref={ref}
+          className="relative mx-4 columns-1 py-12 xl:columns-2 3xl:columns-3"
+          {...restProps}
         >
-          Clear all
-        </Button>
-        {parsedKinks.sections.map((section) => (
-          <FormSection
-            key={section.id}
-            sectionId={section.id}
-            label={section.label}
-            questions={section.questions}
-            subquestions={section.subquestions}
-          />
-        ))}
-      </form>
-    </FormProvider>
-  );
-});
+          <Button
+            onClick={() => {
+              if (confirm("Are you sure you want to clear all your answers?")) {
+                methods.reset(emptyValues);
+              }
+            }}
+            type="button"
+            variant="tertiary"
+            className="absolute right-0 top-0 px-3 py-2 text-base sm:px-3 sm:text-base"
+          >
+            Clear all
+          </Button>
+          {kinks.sections.map((section) => (
+            <FormSection
+              key={section.id}
+              sectionId={section.id}
+              label={section.label}
+              questions={section.questions}
+              subquestions={section.subquestions}
+            />
+          ))}
+        </form>
+      </FormProvider>
+    );
+  }
+);
 
 Form.displayName = "Form";
 

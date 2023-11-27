@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@kinkli/components/button";
-import { getEmptyDefaultValues } from "@kinkli/components/form/default-values";
+import { getEmptyValues } from "@kinkli/components/form/default-values";
 import {
   kinksSchema,
   type FormValues,
@@ -30,10 +30,10 @@ function _Results(
   const answers = useMemo(() => {
     const encodedValues = searchParams.get("answers");
     if (encodedValues) {
-      const shape = getEmptyDefaultValues(parsedKinks);
+      const shape = getEmptyValues(parsedKinks);
       return decodeValues(encodedValues, shape);
     } else {
-      return getEmptyDefaultValues(parsedKinks);
+      return getEmptyValues(parsedKinks);
     }
   }, [searchParams, parsedKinks]);
 
