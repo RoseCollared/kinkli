@@ -34,7 +34,7 @@ function SectionTitle({
     <h2
       className={twMerge(
         // Padding + negative margin to prevent headbutt
-        "-mt-10 pt-10 text-lg lg:text-base uppercase font-semibold text-gray-500 drop-shadow-sm dark:text-gray-200 tracking-wide",
+        "-mt-10 pt-10 text-lg lg:text-base uppercase font-semibold text-gray-500 drop-shadow-sm dark:text-gray-400 tracking-wide",
         className
       )}
       {...restProps}
