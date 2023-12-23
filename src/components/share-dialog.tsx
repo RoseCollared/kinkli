@@ -51,7 +51,7 @@ export function ShareDialog({ open }: { open: boolean }) {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none dark:border-red-700 dark:bg-zinc-900 xs:gap-4 xs:p-8 sm:max-w-2xl"
+                className="flex max-h-[85vh] w-[90vw] max-w-md flex-col gap-4 overflow-y-auto rounded-xl border-2 border-rose-300 bg-white p-6 drop-shadow-2xl focus:outline-none dark:border-red-900 dark:bg-zinc-900 xs:gap-4 xs:p-8 sm:max-w-2xl"
               >
                 <Dialog.Title className="grow text-2xl font-semibold sm:text-3xl">
                   Share

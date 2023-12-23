@@ -59,7 +59,7 @@ export const Button = forwardRef<unknown, ButtonProps>((props, ref) => {
       ref={ref}
       {...restProps}
       className={twMerge(
-        "whitespace-nowrap rounded-lg px-4 py-2.5 text-lg font-semibold leading-none shadow transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300 sm:px-5 sm:text-xl",
+        "whitespace-nowrap rounded-lg px-4 py-2.5 text-lg font-semibold leading-none shadow-lg shadow-rose-100 dark:shadow-red-950 transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300 sm:px-5 sm:text-xl",
         isIconButton && "px-2.5 sm:px-2.5",
         variantStyles[variant],
         className
