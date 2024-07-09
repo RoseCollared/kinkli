@@ -18,7 +18,7 @@ export function DefaultLayout(props: DefaultLayoutProps) {
       <header className="flex w-full flex-col items-center justify-center gap-x-8 gap-y-6 px-12 pb-2 pt-12 sm:flex-row sm:justify-between sm:pt-16">
         {/* TODO: put dark mode in hamburger menu on small screens */}
         {/* TODO: also include legend in hamburger menu? */}
-        <div className="flex grow items-center">
+        <div className="flex basis-0 grow items-center">
           <DarkModeButton className="absolute top-6 left-6 sm:static" />
         </div>
 
