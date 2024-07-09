@@ -7,12 +7,11 @@ import kinksData from "../../../public/kinks.json";
 
 export default function HomePage() {
   const parsedKinks = useMemo(() => kinksSchema.parse(kinksData), []);
-  const emptyValues = useMemo(() => getEmptyValues(parsedKinks), [parsedKinks]);
 
   return (
     <>
       <TableOfContents kinks={parsedKinks} className="mt-4 sm:hidden" />
-      <Form kinks={parsedKinks} emptyValues={emptyValues} />
+      <Form kinks={parsedKinks} />
     </>
   );
 }

@@ -2,6 +2,9 @@
  * Iterate through an object in a depth-first manner, mapping each leaf value
  * using a given function.
  */
+
+import { FormValues } from "./components/form/schema";
+
 // TODO: improve types
 export function deepMapValues(obj: object, fn: (value: any) => any): any {
   const result = {};
@@ -22,7 +25,7 @@ export function deepMapValues(obj: object, fn: (value: any) => any): any {
 /**
  * Encodes form values in a way that can be stored in the URL search params
  */
-export function encodeValues(values: any): string {
+export function encodeValues(values: FormValues): string {
   const flatValues = Object.keys(values)
     .map((sectionName) =>
       Object.keys(values[sectionName]).map((questionName) =>

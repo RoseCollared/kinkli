@@ -1,13 +1,12 @@
 "use client";
 
-import { decodeValues } from "@kinkli/utils";
-import { useSearchParams } from "next/navigation";
 import { FormHTMLAttributes, Fragment, forwardRef } from "react";
-import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import { FormProvider, useForm, useFormContext, useWatch } from "react-hook-form";
 
 import { Button } from "../button";
 import { Radio } from "../radio";
 import { Section } from "../section";
+import { getEmptyValues } from "./default-values";
 import {
   type FormValues,
   type TKinks,
@@ -15,30 +14,25 @@ import {
   type TSection,
   type TSubquestion,
 } from "./schema";
+import { useAnswers } from "./use-answers";
 import { useSaveAnswers } from "./use-save-answers";
 
 export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   kinks: TKinks;
-  emptyValues: FormValues;
 }
 
 export const Form = forwardRef<HTMLFormElement, FormProps>(
-  ({ kinks, emptyValues, ...restProps }, ref) => {
-    const searchParams = useSearchParams();
+  ({ kinks, ...restProps }, ref) => {
+    // The URL is always the source of truth for the form values
+    const answers = useAnswers(kinks);
 
     const methods = useForm<FormValues>({
-      defaultValues: async () => {
-        const encodedValues = searchParams.get("answers");
-        if (encodedValues) {
-          const shape = emptyValues;
-          return decodeValues(encodedValues, shape);
-        } else {
-          return emptyValues;
-        }
-      },
+      defaultValues: async () => answers,
     });
 
-    useSaveAnswers(methods.control, emptyValues);
+    // Save answers in the URL
+    const internalFormValues = useWatch({ control: methods.control });
+    useSaveAnswers(internalFormValues, kinks);
 
     return (
       <FormProvider {...methods}>
@@ -50,7 +44,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
           <Button
             onClick={() => {
               if (confirm("Are you sure you want to clear all your answers?")) {
-                methods.reset(emptyValues);
+                methods.reset(getEmptyValues(kinks));
               }
             }}
             type="button"
