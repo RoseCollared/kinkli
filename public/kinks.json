@@ -10,7 +10,7 @@
         { "id": "deepthroat", "label": "Deepthroat" },
         { "id": "swallowing", "label": "Swallowing" },
         { "id": "facials", "label": "Facials" },
-        { "id": "piv", "label": "PiV" },
+        { "id": "piv", "label": "PIV" },
         { "id": "cunnilingus", "label": "Cunnilingus" },
         { "id": "face-sitting", "label": "Face-sitting" },
         { "id": "choking", "label": "Choking" },
@@ -162,8 +162,6 @@
         { "id": "age-gap", "label": "Age gap" },
         { "id": "age-play", "label": "Age play" },
         { "id": "diapers", "label": "Diapers" },
-        { "id": "raceplay", "label": "Raceplay" },
-        { "id": "bestiality", "label": "Bestiality" },
         { "id": "necrophilia", "label": "Necrophilia" },
         { "id": "cheating", "label": "Cheating" },
         { "id": "exhibitionism", "label": "Exhibitionism" },
@@ -174,13 +172,12 @@
       "id": "fluids",
       "label": "Fluids",
       "questions": [
+        { "id": "cum-play", "label": "Cum" },
+        { "id": "spit", "label": "Spit" },
+        { "id": "lactation", "label": "Lactation" },
         { "id": "blood", "label": "Blood" },
         { "id": "watersports", "label": "Watersports" },
-        { "id": "scat", "label": "Scat" },
-        { "id": "lactation", "label": "Lactation" },
-        { "id": "diapers", "label": "Diapers" },
-        { "id": "cum-play", "label": "Cum play" },
-        { "id": "spit", "label": "Spit" }
+        { "id": "scat", "label": "Scat" }
       ]
     },
     {
@@ -251,7 +248,9 @@
         { "id": "feminization", "label": "Feminization" },
         { "id": "impregnation", "label": "Impregnation" },
         { "id": "pregnancy", "label": "Pregnancy" },
-        { "id": "cuckold-cuckquean", "label": "Cuckold/​Cuckquean" }
+        { "id": "cuckold-cuckquean", "label": "Cuckold/​Cuckquean" },
+        { "id": "hypnosis", "label": "Hypnosis" },
+        { "id": "medical-play", "label": "Medical play"}
       ],
       "subquestions": [
         { "id": "giving", "label": "Giving" },
