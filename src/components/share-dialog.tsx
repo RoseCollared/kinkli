@@ -57,8 +57,7 @@ export function ShareDialog({ open }: { open: boolean }) {
                   Share
                 </Dialog.Title>
                 <Dialog.Description>
-                  We recommend sharing your results link, but you can also
-                  generate an image.
+                  You can choose to share your results in two different ways.
                 </Dialog.Description>
                 <div className="flex flex-col gap-x-8 gap-y-8 sm:max-w-none sm:flex-row">
                   <LinkOption
@@ -142,8 +141,8 @@ function LinkOption({ href }: { href: LinkProps["href"] }) {
       </Link>
 
       <p className="px-2 text-gray-500 dark:text-gray-200">
-        A link is easier to view on mobile devices and more accessible to people
-        with vision impairments.
+        A link lets you edit your answers later. It is also easier to view on
+        mobile devices and more accessible to people with vision impairments.
       </p>
     </div>
   );
